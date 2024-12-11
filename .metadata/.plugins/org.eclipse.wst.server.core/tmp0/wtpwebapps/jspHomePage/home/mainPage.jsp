@@ -5,24 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인 화면</title>
-<script src="https://kit.fontawesome.com/6ff644124c.js"	crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/6ff644124c.js"	crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/common.css" />
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/MainPageStyle.css" />
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/carouselStyle.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/MainPage.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/carouselSection.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/headerNav.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/loginSection.css" />
 
 </head>
 <body>
-    <nav class="menu">Menu</nav>
 <header>
- <div class="carousel">
-<%@ include file="/home/carousel.jsp"%>
-</div>
+ <nav class="headerNav">
+<%@ include file="/home/headerNav.jsp"%>
+</nav>
+ <section class="carouselSection">
+<%@ include file="/home/carouselSection.jsp"%>
+</section>
 </header>
-    <div class="container">
-        <div class="side-menu">Side Menu</div>
-        <div class="main-section">
+    <main class="mainPage">
+        <section class="sideSection">Side Menu</section>
+        <section class="mainSection">
             <!-- 게시판 요약 정보 -->
-            <div class="board-summary">
+            <article class="boardArticle">
                 <h3>게시판 요약</h3>
                 <table>
                     <thead>
@@ -42,9 +46,9 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </article>
             <!-- 상품 요약 정보 -->
-            <div class="product-summary">
+            <article class="productArticle">
                 <h3>상품 요약</h3>
                 <table>
                     <thead>
@@ -64,10 +68,12 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-        <div class="login">Login</div>
-    </div>
+            </article>
+        </section>
+        <section class="loginSection">
+        <%@ include file="/home/loginSection.jsp" %>
+        </section>
+    </main>
         <hr>
     <footer>
      <%@ include file="/home/footer.jsp" %>

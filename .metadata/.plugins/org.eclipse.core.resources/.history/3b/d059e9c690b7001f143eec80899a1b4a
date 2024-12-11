@@ -1,0 +1,5 @@
+@charset "UTF-8";
+.loginSection{
+	display: flex;
+	justify-content: center;
+}

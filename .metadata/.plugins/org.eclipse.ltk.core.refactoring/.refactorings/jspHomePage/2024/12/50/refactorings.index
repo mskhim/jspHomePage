@@ -7,3 +7,15 @@
 1733897473974	Move 'footer.jsp' to 'home'
 1733898025800	Delete element
 1733898036207	Delete element
+1733898768280	Rename resource 'memberLogin.jsp'
+1733900720984	Move 'headerNav.jsp' to 'home'
+1733900835389	Rename resource 'loginPage.jsp'
+1733900841510	Rename resource 'login.jsp'
+1733900849730	Rename resource 'carousel.jsp'
+1733901830467	Rename resource 'carouselStyle.css'
+1733903621753	Copy file
+1733904134331	Rename resource 'MainPageStyle.css'
+1733906195158	Delete element
+1733906197521	Move 'carousel.js' to 'js'
+1733924971708	Copy file
+1733924978233	Delete element

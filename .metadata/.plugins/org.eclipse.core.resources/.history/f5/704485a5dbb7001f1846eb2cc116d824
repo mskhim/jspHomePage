@@ -1,0 +1,43 @@
+<%@page import="co.kh.dev.home.model.CustomerDAO"%>
+<%@page import="co.kh.dev.home.model.CustomerVO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%
+    CustomerDAO mDAO = CustomerDAO.getInstance(); 
+	String id = request.getParameter("id");
+	String pwd = request.getParameter("pwd");
+	CustomerVO mvo = new CustomerVO();
+	CustomerVO idCheckmvo = mDAO.selectByIdDB(mvo);
+	CustomerVO loginCheckmvo = mDAO.selectLoginCheckDB(mvo);
+	
+	try {
+		if (idCheckmvo == null) {
+			response.sendRedirect("/jspStudy/member/memberLogin.jsp?error=2");//아이디일치 x
+		}else {
+			if (loginCheckmvo== null) {
+				response.sendRedirect("/jspStudy/member/memberLogin.jsp?error=1");//비밀번호일치 x
+			}else {
+				session.setAttribute("no", loginCheckmvo.getNo());
+				session.setAttribute("id", loginCheckmvo.getId());
+				session.setAttribute("pwd", loginCheckmvo.getPwd());
+				session.setAttribute("name", loginCheckmvo.getName());
+				response.sendRedirect("/jspStudy/member/memberLogin.jsp");
+			}
+			
+		}
+
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+    %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

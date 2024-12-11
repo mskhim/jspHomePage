@@ -1,0 +1,11 @@
+@charset "UTF-8";
+.maint {
+  text-align: start;
+  color: rgb(143, 143, 143);
+  margin-bottom: 15px;
+}
+.maint label {
+  position: relative;
+  bottom: 4px;
+  font-size: 14px;
+}

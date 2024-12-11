@@ -1,0 +1,49 @@
+@charset "UTF-8";
+.maint {
+  text-align: start;
+  color: rgb(143, 143, 143);
+  margin-bottom: 15px;
+}
+.maint label {
+  position: relative;
+  bottom: 4px;
+  font-size: 14px;
+}
+/* 로그인 정보 입력부분 */
+article.loginInput {
+  position: relative;
+  bottom: 10px;
+  border: 1px solid rgb(225, 227, 229);
+  border-top: none;
+  width: 508px;
+  height: 276px;
+  justify-self: center;
+  padding: -5px;
+  border-radius: 0 0 12px 12px;
+  padding: 24px;
+}
+article.loginInput ul {
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgb(225, 227, 229);
+  border-radius: 12px;
+  line-height: 60px;
+  margin-bottom: 15px;
+}
+article.loginInput ul li:nth-child(1) {
+  height: 60px;
+  width: 458px;
+}
+article.loginInput ul li:nth-child(2) {
+  height: 59px;
+  width: 458px;
+  border-top: 1px solid rgb(225, 227, 229);
+}
+main section.login article.input ul li input {
+  text-align: start;
+  border: none;
+  height: 50px;
+  width: 450px;
+  font-size: 16px;
+  color: rgb(158, 158, 158);
+}

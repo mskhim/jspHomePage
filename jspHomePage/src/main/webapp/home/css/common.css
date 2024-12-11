@@ -10,6 +10,8 @@ a {
 	text-decoration: inherit;
 }
 
+input[type="submit"]:hover, 
+input[type="button"]:hover, 
 button:hover {
 	cursor: pointer;
 }
@@ -20,16 +22,19 @@ button {
 	border: none;
 	color: white;
 }
-ul {
-  list-style-type: none;
-}
-li {
-  display: inline-block;
-}
-body {
-  background-color: rgb(244, 246, 248);
-}
+
 footer article{
   margin: 20px 20% 20px 20%;
   font-size: 13px;
 }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+header{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
