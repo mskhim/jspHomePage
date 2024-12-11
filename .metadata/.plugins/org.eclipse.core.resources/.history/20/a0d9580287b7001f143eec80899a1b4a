@@ -1,0 +1,22 @@
+@charset "UTF-8";
+* {
+	box-sizing: border-box;
+	flex-wrap: nowrap;
+}
+
+a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+button {
+	padding: 5px 10px;
+	background-color: rgb(114, 114, 114);
+	border-radius: 3px;
+	border: none;
+	color: white;
+}

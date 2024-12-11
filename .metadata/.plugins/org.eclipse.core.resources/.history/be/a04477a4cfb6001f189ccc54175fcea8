@@ -1,0 +1,140 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인 화면</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/MainPageStyle.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/common.css" />
+<script src="https://kit.fontawesome.com/6ff644124c.js"	crossorigin="anonymous"></script>
+<style>	
+ header {
+	margin-top: 100px;
+	position: relative;
+	transition: translate(-50%, -50%);
+	height: 300px;
+}
+
+header img {
+	position: absolute;
+	height: 300px;
+	border-radius: 12px;
+	left: 50%;
+	top: 100px;
+	transform: translate(-50%, -50%);
+}
+
+header #navgateleft {
+	position: absolute;
+	left: 30%;
+	top: 80px;
+	font-size: 40px;
+	transition: translate(-50%, -50%);
+	color: rgba(255, 255, 255, 0.651);
+	z-index: 10;
+	cursor: pointer;
+}
+
+header #navgateright {
+	position: absolute;
+	right: 30%;
+	top: 80px;
+	font-size: 40px;
+	transition: translate(-50%, -50%);
+	color: rgba(255, 255, 255, 0.651);
+	z-index: 10;
+	cursor: pointer;
+}
+
+header #indicator>* {
+	margin-right: 10px;
+}
+
+header #indicator {
+	position: absolute;
+	bottom: 80px;
+	color: rgba(255, 255, 255, 0.651);
+	transform: translate(-50%);
+	left: 50%;
+	z-index: 10;
+}
+
+header .active {
+	color: orange;
+}
+</style>
+</head>
+<body>
+<header>
+<a href="#"><img src="./media/slide-1.jpg" alt="" id="img1" /></a> <a
+			href="#"><img src="./media/slide-2.jpg" alt="" id="img4" /></a> <a
+			href="#"><img src="./media/slide-3.jpg" alt="" id="img3" /></a> <a
+			href="#"><img src="./media/slide-4.jpg" alt="" id="img2" /></a> <i
+			class="fa-solid fa-circle-chevron-left" id="navgateleft"></i> <i
+			class="fa-solid fa-circle-chevron-right" id="navgateright"></i>
+		<div id="indicator">
+			<a href="#" class="active"> <i class="fa-solid fa-circle-dot"></i>
+			</a> <a href="#"> <i class="fa-solid fa-circle-dot"></i></a><a href="#">
+				<i class="fa-solid fa-circle-dot"></i>
+			</a><a href="#"> <i class="fa-solid fa-circle-dot"></i></a>
+		</div>
+</header>
+    <div class="menu">Menu</div>
+    <div class="container">
+        <div class="side-menu">Side Menu</div>
+        <div class="main-section">
+            <!-- 게시판 요약 정보 -->
+            <div class="board-summary">
+                <h3>게시판 요약</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>게시판 테스트 제목</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>다른 게시판 제목</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 상품 요약 정보 -->
+            <div class="product-summary">
+                <h3>상품 요약</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>상품명</th>
+                            <th>가격</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>상품 1</td>
+                            <td>10,000원</td>
+                        </tr>
+                        <tr>
+                            <td>상품 2</td>
+                            <td>20,000원</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="login">Login</div>
+    </div>
+    <footer>
+     <div class="footer">Footer</div>
+    </footer>
+</body>
+<script src="<%=request.getContextPath()%>/js/carousel.js"></script>
+</html>
+
