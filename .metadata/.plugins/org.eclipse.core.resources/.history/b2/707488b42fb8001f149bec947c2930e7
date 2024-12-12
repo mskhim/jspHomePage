@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/* 헤더 스타일 */
+/* 하위 메뉴 컨테이너 */
+.subMenuContainer {
+  position: absolute;
+  top: 100%; /* 헤더 바로 아래 */
+  left: 0;
+  width: 100%; /* 헤더와 동일한 너비 */
+  background-color: white; /* 흰색 배경 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px 0; /* 상하 패딩 */
+  overflow: hidden; /* 애니메이션 시 깜빡임 방지 */
+  height: 0; /* 초기 높이 */
+  transition: height 0.3s ease, opacity 0.3s ease;
+  z-index: 1000;
+}
+
+/* 하위 메뉴 활성화 */
+.subMenu.active {
+  opacity: 1; /* 메뉴가 보이도록 설정 */
+}
+
+.subMenu {
+  list-style: none;
+  display: flex; /* 가로 정렬 */
+  justify-content: center; /* 중앙 정렬 */
+  margin: 0;
+  padding: 0;
+  opacity: 0; /* 기본적으로 숨김 */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.subMenu li {
+  padding: 10px 20px;
+  color: black;
+}
+
+.subMenu li a {
+  text-decoration: none;
+  color: black;
+}
+
+.subMenu li:hover {
+  background-color: rgb(9, 170, 92); /* 초록색 배경 */
+  color: white;
+}
+
+

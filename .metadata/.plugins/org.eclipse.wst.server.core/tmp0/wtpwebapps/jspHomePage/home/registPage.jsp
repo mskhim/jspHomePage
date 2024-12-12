@@ -29,13 +29,13 @@
         <tr>
           <td class="col-key">아이디</td>
           <td>
-            영문자, 숫자, _만 입력 가능. 최소 3자 이상 입력하세요.<br /><input
+            영문자, 숫자, _만 입력 가능. 최소 3자 이상 입력하세요. <button type="button" onClick="idCheck();">중복확인</button><br /><input
               id="input-id"
               type="text"
               name="id"
               value=""
               required
-            /><span></span><button type="button" onClick="idCheck();">중복확인</button>
+            /><span></span>
           </td>
         </tr>
         <tr>

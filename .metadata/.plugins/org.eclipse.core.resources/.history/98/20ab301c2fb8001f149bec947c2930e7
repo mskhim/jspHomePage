@@ -1,0 +1,27 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const menuItems = document.querySelectorAll(".mainMenu > li");
+
+  menuItems.forEach((item) => {
+    const subMenu = item.querySelector(".subMenu");
+
+    item.addEventListener("mouseenter", () => {
+      if (subMenu) {
+        subMenu.style.display = "block";
+        subMenu.style.opacity = "0";
+        subMenu.style.transition = "opacity 0.3s ease-in-out";
+        setTimeout(() => {
+          subMenu.style.opacity = "1";
+        }, 0);
+      }
+    });
+
+    item.addEventListener("mouseleave", () => {
+      if (subMenu) {
+        subMenu.style.opacity = "0";
+        setTimeout(() => {
+          subMenu.style.display = "none";
+        }, 300); // Transition 시간과 동일하게 설정
+      }
+    });
+  });
+});

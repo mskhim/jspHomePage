@@ -1,0 +1,33 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const menuItems = document.querySelectorAll(".mainMenu > li");
+  const subMenuContainer = document.querySelector(".subMenuContainer");
+  const subMenus = document.querySelectorAll(".subMenu");
+
+  menuItems.forEach((menuItem) => {
+    menuItem.addEventListener("mouseenter", () => {
+      const targetSubMenu = menuItem.getAttribute("data-menu");
+
+      // 모든 하위 메뉴 숨기기
+      subMenus.forEach((subMenu) => {
+        subMenu.classList.remove("active");
+      });
+
+      // 해당 하위 메뉴 활성화
+      const activeSubMenu = document.querySelector(
+        `.subMenu[data-submenu="${targetSubMenu}"]`
+      );
+      if (activeSubMenu) {
+        activeSubMenu.classList.add("active");
+        subMenuContainer.style.display = "block"; // 하위 메뉴 컨테이너 표시
+      }
+    });
+  });
+
+  // 하위 메뉴 영역에 마우스가 벗어나면 숨기기
+  subMenuContainer.addEventListener("mouseleave", () => {
+    subMenuContainer.style.display = "none";
+    subMenus.forEach((subMenu) => {
+      subMenu.classList.remove("active");
+    });
+  });
+});

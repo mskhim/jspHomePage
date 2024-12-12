@@ -1,4 +1,20 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%
+String status=request.getParameter("status");
+status=(status==null)?"":status;
+boolean alertFlag=false;
+String msg = null;
+%>
+<%
+switch(status){
+case "":
+	alertFlag=true;
+	break;
+case "1": 
+	msg="회원 탈퇴가 완료되었습니다. 감사합니다.";
+	break;
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +27,16 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/carouselSection.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/headerNav.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/loginSection.css" />
+<%
+if(!alertFlag){
+%>	
+<script>
+alert("<%=msg%>"); 
+window.location.replace("<%=request.getContextPath()%>/home/mainPage.jsp");
+</script>
+<%
+}
+%>
 
 </head>
 <body>

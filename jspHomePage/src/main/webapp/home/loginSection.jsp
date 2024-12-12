@@ -1,16 +1,20 @@
+<%@page import="co.kh.dev.home.model.CustomerVO"%>
+<%@page import="co.kh.dev.home.model.CustomerDAO"%>
 <%@page import="co.kh.dev.common.MyUtility"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 
 <%
-String name = (String) session.getAttribute("name");
-if (MyUtility.isNullOrEmpty(name)) {
+CustomerVO cvo = MyUtility.returnCvoBySession(session); 
+if (cvo==null) {
 %>
-	 <script>
+<script>
 	<%if(request.getParameter("error")!=null&&request.getParameter("error").equals("2")){ %>
             alert("아이디 또는 비밀번호가 맞지 않습니다.");
+            history.go(-1);
 	<%} else{ if(request.getParameter("error")!=null&&request.getParameter("error").equals("1")){ %>
             alert("비밀번호가 맞지 않습니다.");
+            history.go(-1);
 	
 	<%}}  %>
    </script>
@@ -28,7 +32,7 @@ if (MyUtility.isNullOrEmpty(name)) {
               <li>
                 <input
                   type="password"
-                  name="psw"
+                  name="pwd"
                   id="psw"
                   placeholder=" 비밀번호"
                 />
@@ -53,19 +57,18 @@ if (MyUtility.isNullOrEmpty(name)) {
 <%
 } else {
 %>
-	<table border="1" width="300" align="center" class="loginPage">
+	<table class="afterLoginPage">
 		<tr>
-			<td width="300" align="center"><%=name%> 님 로그인 되었습니다.</td>
+			
+			<td width="300" align="center"><%=cvo.getName()%> 님 로그인 되었습니다.</td>
 		</tr>
 	</table>
-	<div class="buttons">
-	<a href="/jspStudy/member/memberMyPage.jsp"><input type="button"
-						value="마이페이지"></a>
-				&nbsp;&nbsp;<a href="/jspStudy/board/boardMain.jsp"><input type="button"
-						value="게시판"></a>
-				&nbsp;&nbsp; <a href="/jspStudy/memberLogoutServlet.do"><input type="button"
-						value="로그아웃"></a>
-		</div>
+	<nav class="loginNav">
+        <ul style=" display: flex">
+          <li><a href="myPage.jsp">마이페이지</a></li>
+          <li><a href="logout.jsp">로그아웃</a></li>
+        </ul>
+      </nav>
 <%
 }
 %>

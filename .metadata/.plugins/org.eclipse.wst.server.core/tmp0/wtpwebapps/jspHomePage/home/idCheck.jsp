@@ -8,7 +8,7 @@ request.setCharacterEncoding("UTF-8");
 String id= request.getParameter("id");
 CustomerVO cvo = new CustomerVO();
 cvo.setId(id);
-boolean checkFlag = sDAO.selectCheckByIdDB(cvo);
+boolean checkFlag = sDAO.selectCountByIdDB(cvo);
 %>
 <!DOCTYPE html>
 <html>

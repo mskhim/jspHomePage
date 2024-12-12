@@ -20,10 +20,10 @@ boolean flag = cdao.insertDB(cvo);
 <%
 if(flag){
  out.println("<b>회원가입을 축하 드립니다.</b><br/>");
- out.println("<a href=login.jsp>로그인</a>");
+ out.println("<a href=mainPage.jsp>로그인</a>");
 }else{
  out.println("<b>다시 입력하여 주십시오.</b><br/>");
- out.println("<a href=regForm.jsp>다시 가입</a>");
+ out.println("<a href=registPage.jsp>다시 가입</a>");
 }
 %>
 </main>
