@@ -15,7 +15,6 @@ boolean checkFlag = sDAO.selectCountByIdDB(cvo);
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="script.js"></script>
 </head>
 <body>
 <h3>

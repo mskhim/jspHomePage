@@ -11,7 +11,7 @@
 		if (session != null) {
 			session.invalidate();
 		}
-		response.sendRedirect(request.getContextPath()+"/home/mainPage.jsp");
+		response.sendRedirect(request.getContextPath()+"/mainPageAlertServlet.do?status=2");
     %>
 
 </head>

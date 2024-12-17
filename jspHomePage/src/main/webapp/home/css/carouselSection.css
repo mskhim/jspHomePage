@@ -14,8 +14,8 @@
   z-index: 2;
 }
 div#slide_show {
-  width: 2000px;
-  height: 600px;
+  width: 800px;
+  height: 400px;
   overflow: hidden;
   display: flex;
   flex-wrap: nowrap;
@@ -23,7 +23,7 @@ div#slide_show {
 }
 .carousel img {
   position: absolute;
-  width: 2000px;
+  width: 800px;
   border-radius: 20px;
 }
 

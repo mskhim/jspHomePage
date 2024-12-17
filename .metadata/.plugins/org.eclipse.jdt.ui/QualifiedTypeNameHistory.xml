@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="co.kh.dev.home.model.CustomerDAO"/>
     <fullyQualifiedTypeName name="co.kh.dev.common.ConnectionPool"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="co.kh.dev.home.model.BoardDAO"/>
+    <fullyQualifiedTypeName name="co.kh.dev.home.model.BoardVO"/>
+    <fullyQualifiedTypeName name="java.util.concurrent.LinkedTransferQueue"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="co.kh.dev.home.controller.board.BoardCommentInsertServlet"/>
+    <fullyQualifiedTypeName name="co.kh.dev.home.model.CommentDAO"/>
+    <fullyQualifiedTypeName name="co.kh.dev.home.model.CommentVO"/>
+    <fullyQualifiedTypeName name="java.lang.Object"/>
+    <fullyQualifiedTypeName name="co.kh.dev.home.model.CustomerDAO"/>
+    <fullyQualifiedTypeName name="co.kh.dev.common.MyUtility"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="co.kh.dev.home.model.CustomerVO"/>
 </qualifiedTypeNameHistroy>

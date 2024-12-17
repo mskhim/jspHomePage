@@ -1,0 +1,46 @@
+package co.kh.dev.home.controller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import co.kh.dev.home.model.BoardDAO;
+import co.kh.dev.home.model.BoardVO;
+import co.kh.dev.home.model.CommentDAO;
+import co.kh.dev.home.model.CommentVO;
+
+@WebServlet({ "/boardCommentSelectServlet.do" })
+public class BoardCommentSelectServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public BoardCommentSelectServlet() {
+		super();
+	}
+
+	private void processRequest(HttpServletRequest request, HttpServletResponse response) {
+		CommentDAO cmDAO = CommentDAO.getInstance();
+		ArrayList<CommentVO> cmList = new ArrayList<CommentVO>();
+		try {
+			request.setCharacterEncoding("UTF-8");
+			cmList = cmDAO.selectByBoardNoDB(Integer.parseInt(request.getParameter("boardNO")));
+			request.setAttribute("cmList", cmList);
+			response.sendRedirect("/jspHomePage/home/boardContentPage.jsp");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+		processRequest(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+		processRequest(request, response);
+	}
+
+}

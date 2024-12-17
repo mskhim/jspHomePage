@@ -1,19 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
-String status=request.getParameter("status");
-status=(status==null)?"":status;
-boolean alertFlag=false;
-String msg = null;
-%>
-<%
-switch(status){
-case "":
-	alertFlag=true;
-	break;
-case "1": 
-	msg="회원 탈퇴가 완료되었습니다. 감사합니다.";
-	break;
-}
+String msg=(String)request.getAttribute("msg");
+boolean alertFlag=(msg==null||msg.equals(""))?false:true;
 %>
 <!DOCTYPE html>
 <html>
@@ -22,13 +10,10 @@ case "1":
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인 화면</title>
 	<script src="https://kit.fontawesome.com/6ff644124c.js"	crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/common.css" />
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/MainPage.css" />
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/carouselSection.css" />
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/headerNav.css" />
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/loginSection.css" />
+<%@ include file="/home/css/commonCss.jsp"%>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/MainPage.css" />
 <%
-if(!alertFlag){
+if(alertFlag){
 %>	
 <script>
 alert("<%=msg%>"); 

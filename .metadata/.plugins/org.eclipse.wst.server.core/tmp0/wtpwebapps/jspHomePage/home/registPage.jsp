@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인 화면</title>
 	<script src="https://kit.fontawesome.com/6ff644124c.js"	crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/carouselSection.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/common.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/headerNav.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/registPage.css" />
@@ -17,9 +16,6 @@
  <nav class="headerNav">
 <%@ include file="/home/headerNav.jsp"%>
 </nav>
- <section class="carouselSection">
-<%@ include file="/home/carouselSection.jsp"%>
-</section>
 </header>
     <main class="registPage">
        <h4>회 원 가 입</h4>

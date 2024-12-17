@@ -13,9 +13,9 @@ if (cvo == null) {
 if(cvo.getPwd().equals(request.getParameter("pwd"))){
 cDAO.deleteDB(cvo);
 session.invalidate();
-response.sendRedirect(request.getContextPath() + "/home/mainPage.jsp?status=1");
+response.sendRedirect(request.getContextPath() + "/mainPageAlertServlet.do?status=1");
 }else{
-response.sendRedirect(request.getContextPath() + "/home/myPage.jsp?status=3");
+response.sendRedirect(request.getContextPath() + "/myPageAlertServlet.do?status=3");
 }
 %>
 

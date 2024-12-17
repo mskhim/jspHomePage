@@ -7,13 +7,13 @@
 		<li data-menu="one">Item One</li>
 		<li data-menu="two">Item Two</li>
 		<li data-menu="three">Item Three</li>
-		<li data-menu="four">Item Four</li>
+		<li data-menu="four">고객 지원</li>
 	</ul>
 	<%
   CustomerVO cvo2 = MyUtility.returnCvoBySession(session);
   if(cvo2==null){
   %>
-	<button class="Button" class="authButton" onClick="location.href='<%=request.getContextPath()%>/home/mainPage.jsp'">로그인</button>
+	<button class="Button" class="authButton" onClick="openLoginPopup();">로그인</button>
 	<%
   } else{
   %>
@@ -39,9 +39,10 @@
 		<li><a href="#">Submenu Z</a></li>
 	</ul>
 	<ul class="subMenu" data-submenu="four">
-		<li><a href="#">Submenu Alpha</a></li>
+		<li><a href="<%=request.getContextPath()%>/home/boardPage.jsp">게시판</a></li>
 		<li><a href="#">Submenu Beta</a></li>
 		<li><a href="#">Submenu Gamma</a></li>
 	</ul>
 </div>
 <script src="<%=request.getContextPath()%>/home/js/headerNav.js"></script>
+<script src="<%=request.getContextPath()%>/home/js/common.js"></script>

@@ -2,30 +2,13 @@
 <%
 CustomerVO cvo = MyUtility.returnCvoBySession(session);
 if (cvo == null) {
-	response.sendRedirect(request.getContextPath() + "/home/mainPage.jsp");
+	response.sendRedirect(request.getContextPath() + "/mainPageAlertServlet.do?status=8");//로그인 안되있을시 메인으로가서 8번 경고문 출력
 	return;
 }
-String status=request.getParameter("status");
-status=(status==null)?"":status;
-boolean alertFlag=false;
-String msg = null;
+String msg = (String) request.getAttribute("msg");
+boolean alertFlag = (msg == null || msg.equals("")) ? false : true;
 %>
-<%
-switch(status){
-case "":
-	alertFlag=true;
-	break;
-case "1": 
-	msg="개인정보 수정이 완료되었습니다.";
-	break;
-case "2": 
-	msg="개인정보 수정에 실패하였습니다.";
-	break;
-case "3": 
-	msg="회원 탈퇴에 실패하였습니다. 비밀번호를 확인해주세요.";
-	break;
-}
-%>
+
 
 
 <!DOCTYPE html>
@@ -36,18 +19,14 @@ case "3":
 <title>메인 화면</title>
 <script src="https://kit.fontawesome.com/6ff644124c.js"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/home/css/carouselSection.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/home/css/common.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/home/css/headerNav.css" />
+<%@ include file="/home/css/commonCss.jsp"%>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/home/css/myPage.css" />
 
 <%
-if(!alertFlag){
-%>	
+if (alertFlag) {
+System.out.println(msg);
+%>
 <script>
 alert("<%=msg%>"); 
 window.location.replace("<%=request.getContextPath()%>/home/myPage.jsp");
@@ -62,19 +41,17 @@ window.location.replace("<%=request.getContextPath()%>/home/myPage.jsp");
 		<nav class="headerNav">
 			<%@ include file="/home/headerNav.jsp"%>
 		</nav>
-		<section class="carouselSection">
-			<%@ include file="/home/carouselSection.jsp"%>
-		</section>
 	</header>
 	<main class="myPage">
 		<div class="myPageContainer">
 			<h2>마이페이지</h2>
 			<div class="myPageMenu">
 				<div class="menuItem"
-					onclick="location.href='<%=request.getContextPath()%>/home/myPageModify.jsp'">
+					onclick="location.href='<%=request.getContextPath()%>/home/CustomerUpdatePage.jsp'">
 					<i class="fas fa-user-edit"></i> <a>회원 정보 수정</a>
 				</div>
-				<div class="menuItem" onclick="location.href='<%=request.getContextPath()%>/home/myPageWithdraw.jsp'">
+				<div class="menuItem"
+					onclick="location.href='<%=request.getContextPath()%>/home/myPageWithdraw.jsp'">
 					<i class="fas fa-user-times"></i> <a href="#">회원 탈퇴</a>
 				</div>
 				<div class="menuItem">

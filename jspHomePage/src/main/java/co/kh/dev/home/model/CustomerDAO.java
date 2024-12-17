@@ -14,13 +14,17 @@ public class CustomerDAO {
 	private final String SELECT_LOGIN_ID_CHECK_SQL = "SELECT * FROM Customer WHERE ID = ?";
 	private final String SELECT_LOGIN_CHECK_SQL = "SELECT * FROM Customer WHERE ID = ? AND PWD = ?";
 	private final String UPDATE_SQL = "UPDATE CUSTOMER SET PWD = ?, NAME = ?, NICKNAME = ?, EMAIL = ?, TEL = ?, PHONE = ?, BIRTH = ?, ZIPCODE = ?, ADDRESS1 = ?, ADDRESS2 = ? WHERE ID = ? AND PWD = ?";
-	private final String DELETE_SQL = "DELETE FROM CUSTOMER WHERE ID=?"; 
+	private final String DELETE_SQL = "DELETE FROM CUSTOMER WHERE ID=?";
 	private static CustomerDAO cDAO;
+
+	private CustomerDAO() {
+
+	}
 
 	public static CustomerDAO getInstance() {
 		try {
 			if (cDAO == null) {
-				synchronized (ConnectionPool.class) {
+				synchronized (CustomerDAO.class) {
 					cDAO = new CustomerDAO();
 				}
 			}
@@ -79,25 +83,24 @@ public class CustomerDAO {
 		return (count == 0) ? true : false;
 	}
 
-	// ID 삭제  메서드
-		public boolean deleteDB(CustomerVO cvo) {
-			Connection con = cp.getConnection();
-			PreparedStatement pstmt = null;
-			int rs = 0;
-			try {
-				pstmt = con.prepareStatement(DELETE_SQL);
-				pstmt.setString(1, cvo.getId());
-				rs = pstmt.executeUpdate();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				cp.dbClose(con, pstmt);
-			}
-
-			return (rs != 0) ? true : false;
+	// ID 삭제 메서드
+	public boolean deleteDB(CustomerVO cvo) {
+		Connection con = cp.getConnection();
+		PreparedStatement pstmt = null;
+		int rs = 0;
+		try {
+			pstmt = con.prepareStatement(DELETE_SQL);
+			pstmt.setString(1, cvo.getId());
+			rs = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			cp.dbClose(con, pstmt);
 		}
 
-	
+		return (rs != 0) ? true : false;
+	}
+
 	public CustomerVO selectByIdDB(CustomerVO cvo) {
 		Connection con = cp.getConnection();
 		PreparedStatement pstmt = null;
@@ -136,7 +139,6 @@ public class CustomerDAO {
 		Connection con = cp.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int count = 0;
 		try {
 			pstmt = con.prepareStatement(SELECT_LOGIN_CHECK_SQL);
 			pstmt.setString(1, cvo.getId());

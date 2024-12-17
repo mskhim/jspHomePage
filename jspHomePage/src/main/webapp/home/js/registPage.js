@@ -45,7 +45,6 @@
       zipcode.focus();
       return;
     }
-    alert("서버로 전송하겠습니다.");
     myForm.submit();
   });
   
@@ -61,6 +60,8 @@
       return;
     }
   }
+  
+
 
   inputId.addEventListener("blur", () => {
     validate(inputId, idPattern, "아이디");

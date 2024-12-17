@@ -72,7 +72,7 @@ function moveRight() {
 // 오른쪽 핸들에 기능 추가
 navRight.addEventListener("click", moveRight);
 
-/*// 인터벌을 5초로
+// 인터벌을 5초로
 function startTimer() {
   timerID = setInterval(moveRight, 3000);
 }
@@ -82,7 +82,7 @@ all.addEventListener("mouseenter", () => {
 });
 all.addEventListener("mouseleave", () => {
   startTimer();
-});*/
+});
 
 for (let i = 0; i < indicateA.length; i++) {
   indicateA[i].addEventListener("click", () => {

@@ -1,5 +1,5 @@
-<%@page import="co.kh.dev.home.zipcode.ZipCodeDAO"%>
-<%@page import="co.kh.dev.home.zipcode.ZipCodeVO"%>
+<%@page import="co.kh.dev.home.model.ZipCodeDAO"%>
+<%@page import="co.kh.dev.home.model.ZipCodeVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

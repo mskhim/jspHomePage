@@ -7,8 +7,8 @@ CustomerDAO cdao = CustomerDAO.getInstance();
 <jsp:useBean id="cvo" class="co.kh.dev.home.model.CustomerVO" />
 <jsp:setProperty name="cvo" property="*" />
 <% 
-System.out.println(cvo.toString());
 boolean flag = cdao.insertDB(cvo);
+response.sendRedirect("/jspHomePage/mainPageAlertServlet.do?status="+((flag)?"6":"7"));
 %>
 <html>
 <head>
@@ -17,15 +17,6 @@ boolean flag = cdao.insertDB(cvo);
 <body bgcolor="#FFFFCC">
 <br></br>
 <main>
-<%
-if(flag){
- out.println("<b>회원가입을 축하 드립니다.</b><br/>");
- out.println("<a href=mainPage.jsp>로그인</a>");
-}else{
- out.println("<b>다시 입력하여 주십시오.</b><br/>");
- out.println("<a href=registPage.jsp>다시 가입</a>");
-}
-%>
 </main>
 </body>
 </html>

@@ -1,0 +1,62 @@
+package co.kh.dev.home.controller.user;
+import java.io.IOException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import co.kh.dev.common.MyUtility;
+import co.kh.dev.home.model.CustomerDAO;
+import co.kh.dev.home.model.CustomerVO;
+
+@WebServlet({ "/customerUpdateServlet.do" })
+public class CustomerUpdateServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    public CustomerUpdateServlet() {
+        super();
+    }
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) {
+    	HttpSession session = request.getSession(false);
+    	CustomerVO cvo = MyUtility.returnCvoBySession(session);
+    	CustomerDAO cDAO = CustomerDAO.getInstance();
+    	String status=null;
+    	CustomerVO cvo2 = new CustomerVO();
+    	cvo2.setPwd((String)request.getAttribute("pwd"));
+    	cvo2.setName((String)request.getAttribute("name"));
+    	cvo2.setNickName((String)request.getAttribute("nickName"));
+    	cvo2.setPwd((String)request.getAttribute("pwd"));
+    	cvo2.setPwd((String)request.getAttribute("pwd"));
+    	cvo2.setPwd((String)request.getAttribute("pwd"));
+    	cvo2.setPwd((String)request.getAttribute("pwd"));
+    	cvo2.setPwd((String)request.getAttribute("pwd"));
+    	cvo2.setPwd((String)request.getAttribute("pwd"));
+    	try {
+			request.setCharacterEncoding("UTF-8");
+    	if (cvo == null) {
+    		response.sendRedirect(request.getContextPath() + "/mainPageAlertServlet.jsp?status=8");
+    		return;
+    	}
+    	boolean flag = cDAO.updateDB(cvo);
+    	if (flag) {
+    	status="1";
+    	} else {
+    	status="2";
+    	}
+    	response.sendRedirect(request.getContextPath() + "/myPageAlertServlet.do?status="+status);
+    	} catch (IOException e) {
+    		// TODO Auto-generated catch block
+    		e.printStackTrace();
+    	};
+    }
+    
+	protected void doGet(HttpServletRequest request, HttpServletResponse response){
+		processRequest(request, response);
+	}
+
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response){
+		processRequest(request, response);
+	}
+
+}

@@ -6,6 +6,7 @@ import co.kh.dev.home.model.CustomerDAO;
 import co.kh.dev.home.model.CustomerVO;
 
 public class MyUtility {
+	//비어있거나 NULL인 문자열 확인
 	public static boolean isNullOrEmpty(String str) {
 	    return str == null || str.trim().isEmpty();
 	}
