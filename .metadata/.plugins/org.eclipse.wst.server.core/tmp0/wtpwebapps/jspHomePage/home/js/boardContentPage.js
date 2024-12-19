@@ -12,7 +12,7 @@ function toggleDisp(togle1) {
  function deletePost(no) {
      if (confirm("게시글을 삭제하시겠습니까?")) {
          // 확인을 눌렀을 때 실행
-         window.location.href = "/jspHomePage/boardContentDeleteServlet.do?no="+no;
+         window.location.href = "/jspHomePage/boardListDelete.do?no="+no;
      } else {
          // 취소를 눌렀을 때 실행
          alert("삭제가 취소되었습니다.");

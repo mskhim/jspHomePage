@@ -8,7 +8,7 @@ CustomerDAO cdao = CustomerDAO.getInstance();
 <jsp:setProperty name="cvo" property="*" />
 <% 
 boolean flag = cdao.insertDB(cvo);
-response.sendRedirect("/jspHomePage/mainPageAlertServlet.do?status="+((flag)?"6":"7"));
+response.sendRedirect("/jspHomePage/mainPageAlert.do?status="+((flag)?"6":"7"));
 %>
 <html>
 <head>

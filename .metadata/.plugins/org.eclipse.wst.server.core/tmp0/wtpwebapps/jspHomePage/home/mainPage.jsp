@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 String msg=(String)request.getAttribute("msg");
-boolean alertFlag=(msg==null||msg.equals(""))?false:true;
+boolean alertFlag=(request.getAttribute("alertFlag")==null)?false:(boolean)request.getAttribute("alertFlag");
 %>
 <!DOCTYPE html>
 <html>

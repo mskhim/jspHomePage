@@ -45,21 +45,21 @@ ArrayList<ZipCodeVO> zipcodeList = zdao.selectByDongDB(zvo);
 			<tr>
 				<td align="center"><br />검색된 결과가 없습니다.</td>
 			</tr>
-			</table>
-			<%
-			} else {
-			%>
-			 <h3>※검색 후, 아래 우편번호를 클릭하면 자동으로 입력됩니다.</h3>
-			
-				<table class="zipTable">
-			 <tr>
-            <th>우편번호</th>
-            <th>시도</th>
-            <th>구군</th>
-            <th>동</th>
-            <th>번지</th>
-            <th>선택</th>
-        </tr>
+		</table>
+		<%
+		} else {
+		%>
+		<h3>※검색 후, 아래 우편번호를 클릭하면 자동으로 입력됩니다.</h3>
+
+		<table class="zipTable">
+			<tr>
+				<th>우편번호</th>
+				<th>시도</th>
+				<th>구군</th>
+				<th>동</th>
+				<th>번지</th>
+				<th>선택</th>
+			</tr>
 			<%
 			for (ZipCodeVO data : zipcodeList) {
 				String tempZipcode = data.getZipcode();

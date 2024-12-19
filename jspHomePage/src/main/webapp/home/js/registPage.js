@@ -1,3 +1,4 @@
+
 // 패턴검색 내용
   const idPattern = /^[\w]{3,}$/;
   const pwdPattern = /^[\w]{6,10}$/;
@@ -99,16 +100,6 @@
     validate(inputDate, datePattern, "날짜");
   });
   
-  function idCheck(){
-  let value = document.regForm.id.value;
-  if(value === ""){
-  alert("아이디를 입력해 주세요.");
-  document.regForm.id.focus();
-  }else{
-  url="idCheck.jsp?id=" + value;
-  window.open(url,"post","width=300,height=150");
-  }
-  }
   
   function zipCheck(){
   url="zipCheck.jsp?check=y";
@@ -132,3 +123,53 @@
   opener.document.regForm.address1.value=address;
   self.close();
   }
+  
+  document.getElementById("checkIdBtn").addEventListener("click", function () {
+      const userId = document.getElementById("input-id").value;
+
+      if (userId.trim() === "") {
+          alert("아이디를 입력하세요.");
+          return;
+      }
+
+      fetch("/jspHomePage/customerIdDupCheck.do", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: `userId=${encodeURIComponent(userId)}`
+      })
+          .then(response => response.text())
+          .then(result => {
+              if (result === "SUCCESS") {
+                  alert("사용 가능한 아이디입니다.");
+              } else {
+                  alert("이미 사용 중인 아이디입니다.");
+              }
+          });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("btn-join").addEventListener("click", function (e) {
+          e.preventDefault();  // 기본 제출 방지
+
+          const form = document.getElementById("regForm");
+          const userId = document.getElementById("input-id").value;
+          fetch("/jspHomePage/customerInsertCheck.do", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+              },
+              body: `userId=${encodeURIComponent(userId)}`
+          })
+          .then(response => response.text())
+          .then(result => {
+              console.log("서버 응답 결과:", result);  // 디버깅 로그 추가
+              if (result === "FALSE") {
+                  alert("아이디 중복체크가 필요합니다.");
+              } else {
+                  form.submit();  // 폼 직접 제출
+              }
+          })
+      });
+  });

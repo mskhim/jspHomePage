@@ -7,7 +7,7 @@
 CustomerVO cvo = MyUtility.returnCvoBySession(session);
 CommentDAO cmDAO = CommentDAO.getInstance();
 if (request.getAttribute("bList") == null) {//강제로 접근시 서블릿으로 보내는 기능
-	response.sendRedirect("/jspHomePage/boardListServlet.do");
+	response.sendRedirect("/jspHomePage/boardSelect.do");
 	return;
 }
 ArrayList<BoardVO> bList = (ArrayList<BoardVO>) request.getAttribute("bList");
@@ -17,7 +17,7 @@ int pageStartNum = (int) request.getAttribute("pageStartNum");
 int pageEndNum = (int) request.getAttribute("pageEndNum");
 int pageCount = (int) request.getAttribute("pageCount");
 String msg = (String) request.getAttribute("msg");
-boolean alertFlag = (msg == null || msg.equals("")) ? false : true;
+boolean alertFlag=(request.getAttribute("alertFlag")==null)?false:(boolean)request.getAttribute("alertFlag");
 %>
 
 <!DOCTYPE html>
@@ -53,7 +53,7 @@ window.location.replace("<%=request.getContextPath()%>/home/boardPage.jsp");
 		</article>
 		<article class="article3">
 			<div class="all">
-				<form method="get" action="/jspHomePage/boardListServlet.do">
+				<form method="get" action="/jspHomePage/boardSelect.do">
 					<select name="viewTime" id="view">
 						<option value="10"
 							<%=(viewTime == 10) ? "selected='selected'" : ""%>>10개씩</option>
@@ -64,7 +64,7 @@ window.location.replace("<%=request.getContextPath()%>/home/boardPage.jsp");
 					</select>
 					<button type="submit" id="BoardViewButton">보기</button>
 				</form>
-				<form method="get" action="/jspHomePage/boardFindListServlet.do">
+				<form method="get" action="/jspHomePage/boardFindSelect.do">
 					<select name="findValue" id="find">
 						<option value="title">제목</option>
 						<option value="text">내용</option>
@@ -88,8 +88,8 @@ window.location.replace("<%=request.getContextPath()%>/home/boardPage.jsp");
 				<tr>
 					<td class="tbNum"><%=data.getRownum()%></td>
 					<td class="tbMain"><a
-						href=" <%=request.getContextPath()%>/boardContentSelectServlet.do?no=<%=data.getNo()%>"><%=data.getTitle()%></a>&nbsp;&nbsp;
-						[<%=cmDAO.selectCountByBoardNoDB(data)%>]</td>
+						href=" <%=request.getContextPath()%>/boardListSelect.do?no=<%=data.getNo()%>&count=1"><%=data.getTitle()%></a>&nbsp;&nbsp;
+						[<%=data.getCommentNum()%>]</td>
 					<td class="tbWriter"><%=data.getCustomerId()%></td>
 					<td class="tbView"><%=data.getCount()%></td>
 					<td class="tbDate"><%=data.getSubdate()%></td>
@@ -103,28 +103,27 @@ window.location.replace("<%=request.getContextPath()%>/home/boardPage.jsp");
 		<article class="article5">
 			<ul>
 				<li><i class="fa-solid fa-angles-left"
-					onclick="location.href='/jspHomePage/boardListServlet.do?viewTime=${viewTime}&pageNum=<%=1%>'"></i></li>
+					onclick="location.href='/jspHomePage/boardSelect.do?viewTime=${viewTime}&pageNum=1'"></i></li>
 				<li><i class="fa-solid fa-angle-left"
-					onclick="location.href='/jspHomePage/boardListServlet.do?viewTime=${viewTime}&pageNum=<%=((pageNum - 1) < 0) ? 1 : pageNum - 1%>'"></i></li>
+					onclick="location.href='/jspHomePage/boardSelect.do?viewTime=${viewTime}&pageNum=${pageNum - 1 < 0 ? 1 : pageNum - 1}'"></i></li>
 				<%
 				for (int i = pageStartNum; i <= pageEndNum; i++) {
 				%>
 				<li <%=(pageNum == i) ? "class='active'" : ""%>
-					onclick="location.href='/jspHomePage/boardListServlet.do?viewTime=${viewTime}&pageNum=<%=i%>'">
+					onclick="location.href='/jspHomePage/boardSelect.do?viewTime=${viewTime}&pageNum=<%=i%>'">
 					<%=i%>
 				</li>
 				<%
 				}
 				%>
 				<li><i class="fa-solid fa-chevron-right"
-					onclick="location.href='/jspHomePage/boardListServlet.do?viewTime=${viewTime}&pageNum=<%=((pageNum + 1) > pageCount) ? pageCount : pageNum + 1%>'"></i></li>
+					onclick="location.href='/jspHomePage/boardSelect.do?viewTime=${viewTime}&pageNum=${pageNum + 1 > pageCount? pageCount : pageNum + 1}'"></i></li>
 				<li><i class="fa-solid fa-angles-right"
-					onclick="location.href='/jspHomePage/boardListServlet.do?viewTime=${viewTime}&pageNum=${pageCount}'"></i></li>
+					onclick="location.href='/jspHomePage/boardSelect.do?viewTime=${viewTime}&pageNum=${pageCount}'"></i></li>
 			</ul>
 
 			<form action="#" method="get" name="boardWrite.do">
-				<button type="button" id="writeButton"
-					onclick=<%=(cvo == null) ? "openLoginPopup()" : "location.href='/jspHomePage/home/boardWritePage.jsp';"%>>글쓰기</button>
+				<button type="button" id="writeButton" onclick=<%=(cvo == null) ? "openLoginPopup()" : "location.href='/jspHomePage/home/boardWritePage.jsp';"%>>글쓰기</button>
 			</form>
 		</article>
 	</main>

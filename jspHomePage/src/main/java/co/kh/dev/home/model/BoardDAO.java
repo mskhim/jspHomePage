@@ -11,12 +11,9 @@ import co.kh.dev.common.ConnectionPool;
 
 public class BoardDAO {
 	ConnectionPool cp = ConnectionPool.getInstance();
-	private final String SELECT_SQL = "SELECT * FROM BOARD_J_CUSTOMER_ROWNUM A\r\n"
-			+ "LEFT JOIN(SELECT BOARD_NO,COUNT(*) COMMENT_NUM FROM B_COMMENT GROUP BY BOARD_NO) B\r\n"
-			+ "ON A.NO=B.BOARD_NO\r\n"
-			+ "WHERE RNUM BETWEEN ? AND ? ORDER BY RNUM DESC;";
+	private final String SELECT_SQL = "SELECT * FROM BOARD_J_CUSTOMER_ROWNUM A LEFT JOIN(SELECT BOARD_NO,COUNT(*) COMMENT_NUM FROM B_COMMENT GROUP BY BOARD_NO) B ON A.NO=B.BOARD_NO WHERE RNUM BETWEEN ? AND ? ORDER BY RNUM DESC";
 	private final String SELECT_RECORD_SQL = "SELECT COUNT(*) COUNT FROM BOARD_J_CUSTOMER_ROWNUM";
-	private final String SELECT_BY_TITLE_SQL = "SELECT * FROM (SELECT ROWNUM AS RNUM,CUSTOMER_ID, NO, NAME,TITLE,CONTENT,COUNT,SUBDATE  FROM BOARD_J_CUSTOMER WHERE TITLE LIKE '%'||?||'%') WHERE RNUM BETWEEN ? AND ? ORDER BY RNUM DESC";
+	private final String SELECT_BY_TITLE_SQL = "SELECT * FROM (SELECT ROWNUM AS RNUM,CUSTOMER_ID, NO, NAME,TITLE,CONTENT,COUNT,SUBDATE  FROM BOARD_J_CUSTOMER WHERE TITLE LIKE '%'||?||'%') A LEFT JOIN(SELECT BOARD_NO,COUNT(*) COMMENT_NUM FROM B_COMMENT GROUP BY BOARD_NO) B ON A.NO=B.BOARD_NO WHERE RNUM BETWEEN ? AND ? ORDER BY RNUM DESC";
 	private final String SELECT_BY_TITLE_RECORD_SQL = "SELECT COUNT(*) COUNT FROM BOARD_J_CUSTOMER_ROWNUM WHERE TITLE LIKE '%'||?||'%'";
 	private final String SELECT_BY_RNUM_SQL = "SELECT * FROM BOARD_J_CUSTOMER_ROWNUM WHERE NO=?";
 	private final String UPDATE_SQL = "UPDATE BOARD SET TITLE = ?, CONTENT = ?, COUNT = ? WHERE NO = ?";
@@ -54,7 +51,8 @@ public class BoardDAO {
 				String content = rs.getString("CONTENT");
 				int count = rs.getInt("COUNT");
 				Date subdate = rs.getDate("SUBDATE");
-				BoardVO mvo = new BoardVO(rownum, no, customerId, name, title, content, count, subdate);
+				int commentNum = rs.getInt("COMMENT_NUM");
+				BoardVO mvo = new BoardVO(rownum, no, customerId, name, title, content, count, subdate, commentNum);
 				mList.add(mvo);
 			}
 		} catch (SQLException e) {
@@ -104,7 +102,8 @@ public class BoardDAO {
 				String content = rs.getString("CONTENT");
 				int count = rs.getInt("COUNT");
 				Date subdate = rs.getDate("SUBDATE");
-				BoardVO mvo2 = new BoardVO(rownum, no, customerId, name, title, content, count, subdate);
+				int commentNum = rs.getInt("COMMENT_NUM");
+				BoardVO mvo2 = new BoardVO(rownum, no, customerId, name, title, content, count, subdate, commentNum);
 				mList.add(mvo2);
 			}
 		} catch (SQLException e) {
@@ -116,25 +115,24 @@ public class BoardDAO {
 
 	// 제목을 입력받아서 비슷한 내용의BOARD의 레코드 개수를 출력
 	public int selectRecordByTitleDB(String findText) {
-			Connection con = cp.getConnection();
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			int count = 0;
-			try {
-				pstmt = con.prepareStatement(SELECT_BY_TITLE_RECORD_SQL);
-				pstmt.setString(1, findText);
-				rs = pstmt.executeQuery();
-				if (rs.next()) {
-					count = rs.getInt("COUNT");
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
+		Connection con = cp.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		try {
+			pstmt = con.prepareStatement(SELECT_BY_TITLE_RECORD_SQL);
+			pstmt.setString(1, findText);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				count = rs.getInt("COUNT");
 			}
-			cp.dbClose(con, rs, pstmt);
-			return count;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		cp.dbClose(con, rs, pstmt);
+		return count;
+	}
 
-	
 	// ROWNUM 입력받아서 내용들을출력
 	public BoardVO selectByNoDB(BoardVO bvo) {
 		Connection con = cp.getConnection();
@@ -162,7 +160,6 @@ public class BoardDAO {
 		return bvo;
 	}
 
-
 	public Boolean insertDB(BoardVO bvo) {
 		Connection con = cp.getConnection();
 		PreparedStatement pstmt = null;
@@ -185,14 +182,14 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 		int rs = 0;
 		try {
-			pstmt= con.prepareStatement(DELETE_SQL);
+			pstmt = con.prepareStatement(DELETE_SQL);
 			pstmt.setInt(1, bvo.getNo());
 			rs = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		cp.dbClose(con,pstmt);
-		return (rs==0)?false:true;
+		cp.dbClose(con, pstmt);
+		return (rs == 0) ? false : true;
 	}
 
 	public Boolean updateDB(BoardVO bvo) {
@@ -200,7 +197,7 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 		int rs = 0;
 		try {
-			pstmt= con.prepareStatement(UPDATE_SQL);
+			pstmt = con.prepareStatement(UPDATE_SQL);
 			pstmt.setString(1, bvo.getTitle());
 			pstmt.setString(2, bvo.getContent());
 			pstmt.setInt(3, bvo.getCount());
@@ -209,15 +206,16 @@ public class BoardDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		cp.dbClose(con,pstmt);
-		return (rs==0)?false:true;
+		cp.dbClose(con, pstmt);
+		return (rs == 0) ? false : true;
 	}
+
 	public Boolean updateTCDB(BoardVO bvo) {
 		Connection con = cp.getConnection();
 		PreparedStatement pstmt = null;
 		int rs = 0;
 		try {
-			pstmt= con.prepareStatement(UPDATE_TC_SQL);
+			pstmt = con.prepareStatement(UPDATE_TC_SQL);
 			pstmt.setString(1, bvo.getTitle());
 			pstmt.setString(2, bvo.getContent());
 			pstmt.setInt(3, bvo.getNo());
@@ -225,7 +223,7 @@ public class BoardDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		cp.dbClose(con,pstmt);
-		return (rs==0)?false:true;
+		cp.dbClose(con, pstmt);
+		return (rs == 0) ? false : true;
 	}
 }

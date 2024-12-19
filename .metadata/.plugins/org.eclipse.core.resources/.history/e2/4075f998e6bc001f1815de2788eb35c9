@@ -1,0 +1,14 @@
+package co.kh.dev.home.action;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import co.kh.dev.home.control.ActionForward;
+
+public interface Action {
+
+	
+	public ActionForward execute(HttpServletRequest requetst, HttpServletResponse response) throws IOException;
+}

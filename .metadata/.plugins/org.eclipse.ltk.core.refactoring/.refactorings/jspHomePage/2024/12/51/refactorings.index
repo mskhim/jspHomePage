@@ -24,3 +24,70 @@
 1734405422165	Delete element
 1734405446570	Rename package 'co.kh.dev.home.controller.user'
 1734411102177	Rename resource 'loginPopup.jsp'
+1734482878626	Move compilation unit
+1734483852559	Move compilation unit
+1734486541329	Rename local variable 'af'
+1734489380523	Delete element
+1734490202647	Delete element
+1734490470696	Copy compilation unit
+1734491117475	Delete element
+1734491179708	Rename type 'boardDeleteAction'
+1734491206396	Rename type 'BoardDeleteAction'
+1734491446786	Copy compilation unit
+1734493537076	Copy compilation unit
+1734493715757	Delete element
+1734498306686	Delete element
+1734498478840	Copy compilation unit
+1734498655983	Delete element
+1734498989266	Copy compilation unit
+1734499508426	Delete element
+1734499569051	Copy compilation unit
+1734500192979	Delete element
+1734500507154	Copy compilation unit
+1734500978645	Delete element
+1734500980826	Delete element
+1734501539055	Move compilation units
+1734501688699	Rename package 'co.kh.dev.home.controller.customer'
+1734501712589	Rename package 'co.kh.dev.home.board.action'
+1734501744462	Rename package 'co.kh.dev.home.customer.action'
+1734501757647	Copy compilation unit
+1734501781073	Rename type 'BoardAlertAction'
+1734502328853	Delete element
+1734502672271	Copy compilation unit
+1734502956815	Delete element
+1734503851349	Copy compilation unit
+1734503897182	Move compilation unit
+1734503903123	Move compilation unit
+1734503908337	Move compilation unit
+1734503913944	Move compilation unit
+1734503920121	Delete element
+1734503923680	Delete element
+1734504222785	Delete element
+1734504272780	Copy compilation unit
+1734504284939	Rename type 'CustomerPopLoginAlert'
+1734504315240	Rename type 'CustomerPopLoginAlertAction'
+1734504565386	Delete element
+1734504582792	Copy compilation unit
+1734504592614	Rename type 'MainAlertAction2'
+1734505285929	Delete element
+1734505297086	Rename type 'MainAlertAction'
+1734505302021	Rename type 'BoardAlertAction'
+1734505328900	Copy compilation unit
+1734505414481	Delete element
+1734507784784	Copy compilation unit
+1734508770489	Rename type 'BoardContentAlertAction'
+1734513413904	Rename resource 'boardContentModifyPage.jsp'
+1734513501593	Rename resource 'boardContentPage.jsp'
+1734513580846	Copy compilation unit
+1734567069910	Delete element
+1734567310093	Copy compilation unit
+1734567811937	Delete element
+1734568014986	Copy compilation unit
+1734568183784	Rename resource 'registPage.jsp'
+1734568210527	Rename resource 'CustomerUpdatePage.jsp'
+1734568350985	Rename type 'CustomerDupCheckAction'
+1734570552940	Delete element
+1734571411103	Copy compilation unit
+1734572793777	Copy compilation unit
+1734573465182	Delete element
+1734575534614	Copy compilation unit

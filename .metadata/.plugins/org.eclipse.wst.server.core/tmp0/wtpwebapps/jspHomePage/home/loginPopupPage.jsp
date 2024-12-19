@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+ 	<%@ page contentType="text/html; charset=UTF-8"%>
 <%@page import="co.kh.dev.home.model.CustomerVO"%>
 <%@page import="co.kh.dev.home.model.CustomerDAO"%>
 <%@page import="co.kh.dev.common.MyUtility"%>
@@ -60,7 +60,7 @@ if (cvo != null) {%>
 	<div class="loginSection">
 		<article class="loginInput">
 			<form method="post"
-				action="/jspHomePage/BoardLoginPopupCheckServlet.do">
+				action="/jspHomePage/customerPopLoginCheck.do">
 				<ul>
 					<li><input type="text" name="id" id="id"
 						placeholder=" 아이디 또는 전화번호" <%=(!MyUtility.isNullOrEmpty(cid))?"value="+cid:"" %>></li>
@@ -80,7 +80,7 @@ if (cvo != null) {%>
 			<ul style="display: flex">
 				<li><a href="#">비밀번호 찾기</a></li>
 				<li><a href="#">아이디 찾기</a></li>
-				<li><a href="registPage.jsp">회원가입</a></li>
+				<li><a href="customerRegistPage.jsp">회원가입</a></li>
 			</ul>
 		</nav>
 

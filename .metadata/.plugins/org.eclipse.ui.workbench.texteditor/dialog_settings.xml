@@ -9,6 +9,11 @@
 		<item value="Customer"/>
 	</list>
 	<list key="searchhistory">
+		<item value="boardContentModifyPage.jsp"/>
+		<item value="Servlet"/>
+		<item value="Servelt"/>
+		<item value="Servlet&apos;"/>
+		<item value="Survlet"/>
 		<item value="cvo"/>
 		<item value="CustomerVO cvo"/>
 		<item value="memberNo"/>

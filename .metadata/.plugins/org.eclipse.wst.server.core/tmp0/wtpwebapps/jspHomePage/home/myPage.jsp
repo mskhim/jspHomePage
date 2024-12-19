@@ -2,11 +2,11 @@
 <%
 CustomerVO cvo = MyUtility.returnCvoBySession(session);
 if (cvo == null) {
-	response.sendRedirect(request.getContextPath() + "/mainPageAlertServlet.do?status=8");//로그인 안되있을시 메인으로가서 8번 경고문 출력
+	response.sendRedirect(request.getContextPath() + "/mainPageAlert.do?status=8");//로그인 안되있을시 메인으로가서 8번 경고문 출력
 	return;
 }
 String msg = (String) request.getAttribute("msg");
-boolean alertFlag = (msg == null || msg.equals("")) ? false : true;
+boolean alertFlag=(request.getAttribute("alertFlag")==null)?false:(boolean)request.getAttribute("alertFlag");
 %>
 
 
@@ -47,7 +47,7 @@ window.location.replace("<%=request.getContextPath()%>/home/myPage.jsp");
 			<h2>마이페이지</h2>
 			<div class="myPageMenu">
 				<div class="menuItem"
-					onclick="location.href='<%=request.getContextPath()%>/home/CustomerUpdatePage.jsp'">
+					onclick="location.href='<%=request.getContextPath()%>/home/customerUpdatePage.jsp'">
 					<i class="fas fa-user-edit"></i> <a>회원 정보 수정</a>
 				</div>
 				<div class="menuItem"

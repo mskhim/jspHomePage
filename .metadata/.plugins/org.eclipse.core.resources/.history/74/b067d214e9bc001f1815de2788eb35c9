@@ -1,0 +1,18 @@
+package co.kh.dev.home.action;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import co.kh.dev.home.control.ActionForward;
+
+public class BoardCommentInsertAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest requetst, HttpServletResponse response) throws IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

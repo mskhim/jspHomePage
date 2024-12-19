@@ -6,7 +6,7 @@
 <%
 CustomerVO cvo = MyUtility.returnCvoBySession(session);
 if (request.getAttribute("findValue") == null) {//강제로 접근시 서블릿으로 보내는 기능
-	response.sendRedirect("/jspHomePage/boardListServlet.do");
+	response.sendRedirect("/jspHomePage/boardSelect.do");
 	return;
 }
 CommentDAO cmDAO = CommentDAO.getInstance();
@@ -45,7 +45,7 @@ String findText = (String) request.getAttribute("findText");
 		</article>
 		<article class="article3">
 			<div class="all">
-				<form method="get" action="/jspHomePage/boardFindListServlet.do">
+				<form method="get" action="/jspHomePage/boardFindSelect.do">
 					<%
 					System.out.print(viewTime);
 					%>
@@ -61,9 +61,9 @@ String findText = (String) request.getAttribute("findText");
 					</select>
 					<button type="submit" id="BoardViewButton">보기</button>
 				</form>
-				<form method="get" action="/jspHomePage/boardFindListServlet.do">
+				<form method="get" action="/jspHomePage/boardFindSelect.do">
 					<button type="button"
-						onclick="location.href='/jspHomePage/boardListServlet.do'">검색취소</button>
+						onclick="location.href='/jspHomePage/boardSelect.do'">검색취소</button>
 					<select name="findValue" id="find">
 						<option value="title"
 							<%=(findValue.equals("title")) ? "selected='selected'" : ""%>>제목</option>
@@ -90,7 +90,7 @@ String findText = (String) request.getAttribute("findText");
 				<tr>
 					<td class="tbNum"><%=data.getRownum()%></td>
 					<td class="tbMain"><a
-						href=" <%=request.getContextPath()%>/boardContentSelectServlet.do?rowNum=<%=data.getRownum()%>"><%=data.getTitle()%></a>&nbsp;&nbsp;
+						href=" <%=request.getContextPath()%>/boardListSelect.do?rowNum=<%=data.getRownum()%>"><%=data.getTitle()%></a>&nbsp;&nbsp;
 						[<%=cmDAO.selectCountByBoardNoDB(data)%>]</td>
 					<td class="tbWriter"><%=data.getCustomerId()%></td>
 					<td class="tbView"><%=data.getCount()%></td>
@@ -105,23 +105,23 @@ String findText = (String) request.getAttribute("findText");
 		<article class="article5">
 			<ul>
 				<li><i class="fa-solid fa-angles-left"
-					onclick="location.href='/jspHomePage/boardFindListServlet.do?viewTime=<%=viewTime%>&pageNum=<%=1%>&findValue=<%=findValue%>&findText=<%=findText%>'"></i></li>
+					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=<%=viewTime%>&pageNum=<%=1%>&findValue=<%=findValue%>&findText=<%=findText%>'"></i></li>
 				<li><i class="fa-solid fa-angle-left"
-					onclick="location.href='/jspHomePage/boardFindListServlet.do?viewTime=<%=viewTime%>&pageNum=<%=((pageNum - 1) < 0) ? 1 : pageNum - 1%>&findValue=<%=findValue%>&findText=<%=findText%>'"></i></li>
+					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=<%=viewTime%>&pageNum=<%=((pageNum - 1) < 0) ? 1 : pageNum - 1%>&findValue=<%=findValue%>&findText=<%=findText%>'"></i></li>
 				<%
 				for (int i = pageStartNum; i <= pageEndNum; i++) {
 				%>
 				<li <%=(pageNum == i) ? "class='active'" : ""%>
-					onclick="location.href='/jspHomePage/boardFindListServlet.do?viewTime=<%=viewTime%>&pageNum=<%=i%>&findValue=<%=findValue%>&findText=<%=findText%>'">
+					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=<%=viewTime%>&pageNum=<%=i%>&findValue=<%=findValue%>&findText=<%=findText%>'">
 					<%=i%>
 				</li>
 				<%
 				}
 				%>
 				<li><i class="fa-solid fa-chevron-right"
-					onclick="location.href='/jspHomePage/boardFindListServlet.do?viewTime=<%=viewTime%>&pageNum=<%=((pageNum + 1) > pageCount) ? pageCount : pageNum + 1%>&findValue=<%=findValue%>&findText=<%=findText%>'"></i></li>
+					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=<%=viewTime%>&pageNum=<%=((pageNum + 1) > pageCount) ? pageCount : pageNum + 1%>&findValue=<%=findValue%>&findText=<%=findText%>'"></i></li>
 				<li><i class="fa-solid fa-angles-right"
-					onclick="location.href='/jspHomePage/boardFindListServlet.do?viewTime=<%=viewTime%>&pageNum=<%=pageCount%>&findValue=<%=findValue%>&findText=<%=findText%>'"></i></li>
+					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=<%=viewTime%>&pageNum=<%=pageCount%>&findValue=<%=findValue%>&findText=<%=findText%>'"></i></li>
 			</ul>
 
 			<form action="#" method="get" name="boardWrite.do">

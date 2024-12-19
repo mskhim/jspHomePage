@@ -1,0 +1,47 @@
+package co.kh.dev.home.control;
+
+import co.kh.dev.home.action.Action;
+import co.kh.dev.home.action.BoardCommentInsertAction;
+import co.kh.dev.home.action.BoardListDeleteAction;
+import co.kh.dev.home.action.BoardListSelectAction;
+
+public class ActionFactory {
+	private static ActionFactory af = null;
+
+	public static synchronized ActionFactory getInstance() {
+		if (af == null) {
+			af = new ActionFactory();
+		}
+		return af;
+	}
+
+	private ActionFactory() {
+		super();
+	}
+
+	public Action getAction(String cmd) {
+		Action action = null;
+
+		switch (cmd) {
+		case "boardCommentInsert": {
+			action = new BoardCommentInsertAction();
+			break;
+		}
+		case "boardListDelete": {
+			action = new BoardListDeleteAction();
+			break;
+		}
+		case "boardListSelect": {
+			action = new BoardListSelectAction();
+			break;
+		}
+		default: {
+			action = null;
+			break;
+		}
+
+		}
+		return action;
+	}
+
+}

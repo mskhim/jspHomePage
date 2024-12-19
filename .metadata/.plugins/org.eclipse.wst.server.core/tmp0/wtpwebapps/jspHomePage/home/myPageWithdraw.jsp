@@ -2,7 +2,7 @@
 <%
 CustomerVO cvo = MyUtility.returnCvoBySession(session);
 if (cvo == null) {
-	response.sendRedirect(request.getContextPath() + "/mainPageAlertServlet.do?status=8");//로그인 안되있을시 메인으로가서 8번 경고문 출력
+	response.sendRedirect(request.getContextPath() + "/mainPageAlert.do?status=8");//로그인 안되있을시 메인으로가서 8번 경고문 출력
 	return;
 }
 %>
@@ -32,7 +32,7 @@ if (cvo == null) {
 			<h1>회원탈퇴</h1>
 			<p>회원탈퇴를 위해 비밀번호를 입력하세요.</p>
 
-			<form action="<%=request.getContextPath()%>/home/deleteAccount.jsp"
+			<form action="<%=request.getContextPath()%>/customerDelete.do"
 				method="post" class="delete-form" name="withForm">
 				<label for="password">비밀번호</label> <input type="password"
 					id="password" name="pwd" required placeholder="비밀번호 입력" /> <input
@@ -45,7 +45,7 @@ if (cvo == null) {
 		<%@ include file="/home/footer.jsp"%>
 	</footer>
 	<script
-		src="<%=request.getContextPath()%>/home/js/withdraw.js?status=1"></script>
+		src="<%=request.getContextPath()%>/home/js/withdraw.js"></script>
 </body>
 
 </html>

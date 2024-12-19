@@ -1,0 +1,24 @@
+package co.kh.dev.home.control;
+
+public class ActionForward {
+	private String url; 		//화면요청
+	private boolean redirect;	//true redirect false forward
+	
+	
+	
+	
+	public ActionForward(String url, boolean redirect) {
+		super();
+		this.url = url;
+		this.redirect = redirect;
+	}
+
+
+	public ActionForward() {
+		super();
+	}
+	
+	
+	
+	
+}

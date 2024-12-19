@@ -2,7 +2,7 @@
 <%
 CustomerVO cvo = MyUtility.returnCvoBySession(session);
 if(cvo==null){
-response.sendRedirect(request.getContextPath()+"/mainPageAlertServlet.do?status=8");//로그인 안되있을시 메인으로가서 8번 경고문 출력
+response.sendRedirect(request.getContextPath()+"/mainPageAlert.do?status=8");//로그인 안되있을시 메인으로가서 8번 경고문 출력
 return;
 }
 String id = cvo.getId();
@@ -38,7 +38,7 @@ String address2 = cvo.getAddress2();
 </header>
     <main class="registPage">
        <h4>정  보  수  정</h4>
-    <form action="/jspHomePage/customerUpdateServlet.do" method="post" id="div-main" class="myForm" name="regForm">
+    <form action="/jspHomePage/customerUpdate.do" method="post" id="div-main" class="myForm" name="regForm">
       <div class="title-table">사이트 이용정보 수정</div>
       <table>
         <tr>
@@ -195,7 +195,7 @@ String address2 = cvo.getAddress2();
           id="btn-cancel"
           type="button"
           value="취소"
-          onclick="location.href='<%=request.getContextPath()%>/home/mainPage.jsp'"
+          onclick="location.href='<%=request.getContextPath()%>/home/myPage.jsp'"
         />
       </div>
     </form>

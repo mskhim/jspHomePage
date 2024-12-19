@@ -14,9 +14,9 @@ public class CommentDAO {
 	private final String INSERT_SQL = "INSERT INTO B_COMMENT VALUES ((SELECT NVL(MAX(NO),0)+1 FROM B_COMMENT),?,?,?,?,?,sysdate)";
 	private final String SELECT_SQL = "SELECT LEVEL,NO,  BOARD_NO, CUSTOMER_ID, PARENT_NO,CONTENT,DEPTH,SUBDATE FROM B_COMMENT WHERE BOARD_NO = ? START WITH PARENT_NO =0 CONNECT BY PRIOR NO = PARENT_NO ORDER SIBLINGS BY SUBDATE ASC";
 	private final String SELECT_COUNT_BY_BOARD_NO_SQL = "SELECT COUNT(*) COUNT FROM B_COMMENT WHERE BOARD_NO = ?";
-	private final String SELECT_LOGIN_CHECK_SQL = "SELECT * FROM Customer WHERE ID = ? AND PWD = ?";
-	private final String UPDATE_SQL = "UPDATE CUSTOMER SET PWD = ?, NAME = ?, NICKNAME = ?, EMAIL = ?, TEL = ?, PHONE = ?, BIRTH = ?, ZIPCODE = ?, ADDRESS1 = ?, ADDRESS2 = ? WHERE ID = ? AND PWD = ?";
-	private final String DELETE_SQL = "DELETE FROM CUSTOMER WHERE ID=?";
+//	private final String SELECT_LOGIN_CHECK_SQL = "SELECT * FROM Customer WHERE ID = ? AND PWD = ?";
+//	private final String UPDATE_SQL = "UPDATE CUSTOMER SET PWD = ?, NAME = ?, NICKNAME = ?, EMAIL = ?, TEL = ?, PHONE = ?, BIRTH = ?, ZIPCODE = ?, ADDRESS1 = ?, ADDRESS2 = ? WHERE ID = ? AND PWD = ?";
+//	private final String DELETE_SQL = "DELETE FROM CUSTOMER WHERE ID=?";
 	private static CommentDAO cDAO;
 
 	private CommentDAO() {

@@ -1,0 +1,7 @@
+package co.kh.dev.home.control;
+
+import javax.servlet.http.HttpSession;
+
+public interface Action {
+
+}

@@ -17,7 +17,7 @@
 	<%
   } else{
   %>
-	<button class="Button" class="authButton" onClick="location.href='<%=request.getContextPath()%>/home/logout.jsp'">로그아웃</button>
+	<button class="Button" class="authButton" onClick="location.href='<%=request.getContextPath()%>/home/customerLogout.do'">로그아웃</button>
 	<%
   }
   %>
@@ -39,7 +39,7 @@
 		<li><a href="#">Submenu Z</a></li>
 	</ul>
 	<ul class="subMenu" data-submenu="four">
-		<li><a href="<%=request.getContextPath()%>/home/boardPage.jsp">게시판</a></li>
+		<li><a href="<%=request.getContextPath()%>/boardSelect.do">게시판</a></li>
 		<li><a href="#">Submenu Beta</a></li>
 		<li><a href="#">Submenu Gamma</a></li>
 	</ul>

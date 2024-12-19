@@ -17,6 +17,7 @@ public class BoardVO {
     private String title;       // Not Null
     private String content;        // Not Null
     private int count;          // Default 0
+    private Date subdate;       // Not Null
     private int commentNum;          // Default 0
     
     
@@ -32,7 +33,7 @@ public class BoardVO {
 
 
 	public BoardVO(int rownum, int no, String customerId, String name, String title, String content, int count,
-			int commentNum, Date subdate) {
+			 Date subdate, int commentNum) {
 		super();
 		this.rownum = rownum;
 		this.no = no;
@@ -60,7 +61,7 @@ public class BoardVO {
 	public int getNo() {
 		return no;
 	}
-	private Date subdate;       // Not Null
+	
     
 
 

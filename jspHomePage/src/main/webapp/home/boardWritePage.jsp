@@ -5,7 +5,7 @@
 <%
 CustomerVO cvo =MyUtility.returnCvoBySession(session);
 if (cvo==null) {//세션이 없다면 글쓰기 불가능
-	response.sendRedirect("/jspHomePage/mainPageAlertServlet.do?status=8");//강제접근으로 로그인 안되있을시 메인으로가서 8번 경고문 출력
+	response.sendRedirect("/jspHomePage/mainPageAlert.do?status=8");//강제접근으로 로그인 안되있을시 메인으로가서 8번 경고문 출력
 	return;
 }
 %>
@@ -35,7 +35,7 @@ if (cvo==null) {//세션이 없다면 글쓰기 불가능
 	</header>
 	<main class="boardWritePage">
     <h2>게시글 작성</h2>
-    <form method="post" action="/jspHomePage/boardInsertServlet.do" class="boardForm">
+    <form method="post" action="/jspHomePage/boardInsert.do" class="boardForm">
         <label for="title">제목</label>
         <input type="text" id="title" name="title" placeholder="제목을 입력하세요" required />
 
