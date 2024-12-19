@@ -1,0 +1,23 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+            <article class="boardArticle">
+                <h3>게시판 요약</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>게시판 테스트 제목</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>다른 게시판 제목</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+

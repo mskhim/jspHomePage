@@ -25,13 +25,13 @@ public class MyPageAlertAction implements Action {
 			break;
 		default:
 			alertFlag = false;
-			ActionForward forward = new ActionForward("/home/myPage.jsp", false);
+			ActionForward forward = new ActionForward("/home/myPage/myPage.jsp", false);
 			return forward;
 		}
 
 		request.setAttribute("alertFlag", alertFlag);
 		request.setAttribute("msg", msg);
-		ActionForward forward = new ActionForward("/home/myPage.jsp", false);
+		ActionForward forward = new ActionForward("/home/myPage/myPage.jsp", false);
 		return forward;
 	}
 

@@ -14,7 +14,7 @@
 <body>
 <header>
  <nav class="headerNav">
-<%@ include file="/home/headerNav.jsp"%>
+<%@ include file="/home/headerNavSection.jsp"%>
 </nav>
 </header>
     <main class="registPage">
@@ -174,14 +174,14 @@
           id="btn-cancel"
           type="button"
           value="취소"
-          onclick="location.href='<%=request.getContextPath()%>/home/mainPage.jsp'"
+          onclick="location.href='<%=request.getContextPath()%>/mainPageAlert.do'"
         />
       </div>
     </form>
     </main>
         <hr>
     <footer>
-     <%@ include file="/home/footer.jsp" %>
+     <%@ include file="/home/footerSection.jsp" %>
     </footer>
     <script src="<%=request.getContextPath()%>/home/js/registPage.js"></script>
 </body>

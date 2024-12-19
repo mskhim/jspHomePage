@@ -25,14 +25,17 @@ public class BoardPageAlertAction implements Action {
 		case "3":
 			msg = "게시글 삭제가 완료되었습니다.";
 			break;
+		case "4":
+			msg = "게시글 작성이 완료되었습니다.";
+			break;
 		default:
 			alertFlag = false;
-			ActionForward forward = new ActionForward("/home/boardPage.jsp", false);
+			ActionForward forward = new ActionForward("/boardSelect.do", false);
 			return forward;
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("alertFlag", alertFlag);
-		ActionForward forward = new ActionForward("/home/boardPage.jsp", false);
+		ActionForward forward = new ActionForward("/boardSelect.do", false);
 		return forward;
 	}
 

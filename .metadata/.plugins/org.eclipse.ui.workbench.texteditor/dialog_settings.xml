@@ -3,12 +3,21 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="true"/>
 	<list key="replacehistory">
+		<item value="notice"/>
+		<item value="Notice"/>
+		<item value="Notce"/>
+		<item value="nvo"/>
+		<item value="NoticeVO"/>
 		<item value="cmvo"/>
 		<item value="CommentVO cmvo"/>
 		<item value="customerId"/>
 		<item value="Customer"/>
 	</list>
 	<list key="searchhistory">
+		<item value="board"/>
+		<item value="Board"/>
+		<item value="bvo"/>
+		<item value="BoardVO"/>
 		<item value="boardContentModifyPage.jsp"/>
 		<item value="Servlet"/>
 		<item value="Servelt"/>

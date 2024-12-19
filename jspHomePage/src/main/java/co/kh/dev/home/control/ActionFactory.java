@@ -4,6 +4,8 @@ import co.kh.dev.home.action.alert.BoardListAlertAction;
 import co.kh.dev.home.action.alert.BoardPageAlertAction;
 import co.kh.dev.home.action.alert.MainPageAlertAction;
 import co.kh.dev.home.action.alert.MyPageAlertAction;
+import co.kh.dev.home.action.alert.NoticeListAlertAction;
+import co.kh.dev.home.action.alert.NoticePageAlertAction;
 import co.kh.dev.home.action.alert.PopLoginAlertAction;
 import co.kh.dev.home.action.board.BoardCommentInsertAction;
 import co.kh.dev.home.action.board.BoardFindSelectAction;
@@ -20,6 +22,13 @@ import co.kh.dev.home.action.customer.CustomerLoginCheckAction;
 import co.kh.dev.home.action.customer.CustomerLogoutAction;
 import co.kh.dev.home.action.customer.CustomerPopLoginCheckAction;
 import co.kh.dev.home.action.customer.CustomerUpdateAction;
+import co.kh.dev.home.action.mainPage.miniBoardSelectAction;
+import co.kh.dev.home.action.notice.NoticeFindSelectAction;
+import co.kh.dev.home.action.notice.NoticeInsertAction;
+import co.kh.dev.home.action.notice.NoticeListDeleteAction;
+import co.kh.dev.home.action.notice.NoticeListSelectAction;
+import co.kh.dev.home.action.notice.NoticeListUpdateAction;
+import co.kh.dev.home.action.notice.NoticeSelectAction;
 
 public class ActionFactory {
 	private static ActionFactory af = null;
@@ -39,9 +48,6 @@ public class ActionFactory {
 		Action action = null;
 
 		switch (cmd) {
-		case "boardAlert": 
-			action = new BoardPageAlertAction();
-			break;
 		case "popLoginAlert": 
 			action = new PopLoginAlertAction();
 			break;
@@ -53,6 +59,9 @@ public class ActionFactory {
 			break;
 		case "boardListAlert": 
 			action = new BoardListAlertAction();
+			break;
+		case "boardPageAlert": 
+			action = new BoardPageAlertAction();
 			break;
 		case "boardSelect": 
 			action = new BoardSelectAction();
@@ -99,7 +108,35 @@ public class ActionFactory {
 		case "customerInsertCheck": 
 			action = new CustomerInsertCheckAction();
 			break;
+		case "miniBoardSelect": 
+			action = new miniBoardSelectAction();
+			break;
 		
+			
+		case "noticePageAlert": 
+			action = new NoticePageAlertAction();
+			break;
+		case "noticeListAlert": 
+			action = new NoticeListAlertAction();
+			break;
+		case "noticeSelect": 
+			action = new NoticeSelectAction();
+			break;
+		case "noticeInsert": 
+			action = new NoticeInsertAction();
+			break;
+		case "noticeFindSelect": 
+			action = new NoticeFindSelectAction();
+			break;
+		case "noticeListSelect": 
+			action = new NoticeListSelectAction();
+			break;
+		case "noticeListDelete": 
+			action = new NoticeListDeleteAction();
+			break;
+		case "noticeListUpdate": 
+			action = new NoticeListUpdateAction();
+			break;
 		default: 
 			action = null;
 			break;

@@ -102,7 +102,7 @@
   
   
   function zipCheck(){
-  url="zipCheck.jsp?check=y";
+  url="zipCheckPage.jsp?check=y";
   window.open(url,"post","toolbar=no ,width=500 ,height=300 ,directories=no,status=yes,scrollbars=yes,menubar=no");
   }
   

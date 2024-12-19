@@ -91,3 +91,67 @@
 1734572793777	Copy compilation unit
 1734573465182	Delete element
 1734575534614	Copy compilation unit
+1734580474859	Delete element
+1734584421608	Rename resource 'zipCheck.jsp'
+1734584533463	Rename resource 'footer.jsp'
+1734584584054	Rename resource 'headerNav.jsp'
+1734584668964	Rename resource 'myPageWithdraw.jsp'
+1734584902996	Move 5 resources to 'board'
+1734585013906	Rename resource 'customerUpdatePage.jsp'
+1734585056234	Move 3 resources to 'myPage'
+1734585338804	Move 3 resources to 'css'
+1734585395718	Move 'boardContentPage.js' to 'js'
+1734585502629	Rename resource 'withdraw.js'
+1734585509827	Move 'myPageWithdraw.js' to 'js'
+1734585539006	Move 2 resources to 'css'
+1734586613721	Copy file
+1734587693899	Copy file
+1734587749639	Copy file
+1734587800795	Delete element
+1734589136274	Copy compilation unit
+1734589145918	Rename type 'BoardSelectAction'
+1734591894740	Copy file
+1734591930613	Copy file
+1734592503087	Rename resource 'miniNoticeSection.css'
+1734592518708	Rename resource 'miniNoticeSection.jsp'
+1734594537583	Move 7 resources to 'notice'
+1734594742491	Move 7 resources to 'board'
+1734594748661	Copy files
+1734594751685	Copy folders
+1734594866049	Copy compilation unit
+1734594877873	Copy compilation unit
+1734595842234	Rename type 'BoardDAO'
+1734595855560	Rename type 'Boa1rdDAO'
+1734596288893	Rename resource 'boardPage.jsp'
+1734596296940	Rename resource 'boardWritePage.jsp'
+1734596300243	Rename resource 'boardListUpdatePage.jsp'
+1734596303383	Rename resource 'boardListPage.jsp'
+1734596307364	Rename resource 'boardFindPage.jsp'
+1734596340447	Copy compilation units
+1734596345144	Delete element
+1734596360242	Rename type 'BoardSelectAction'
+1734596373396	Rename type 'BoardListUpdateAction'
+1734596378344	Rename type 'BoardListSelectAction'
+1734596381477	Rename type 'BoardListDeleteAction'
+1734596384991	Rename type 'BoardInsertAction'
+1734596390165	Rename type 'BoardFindSelectAction'
+1734596435104	Rename local variable 'bDAO'
+1734596676012	Copy compilation unit
+1734596696489	Copy compilation unit
+1734597925977	Delete elements
+1734597940733	Copy compilation units
+1734597951026	Delete elements
+1734597955877	Copy compilation units
+1734597963641	Rename type 'BoardCommentInsertAction'
+1734597971067	Rename type 'BoardSelectAction'
+1734597981106	Rename type 'BoardListUpdateAction'
+1734597995364	Rename type 'BoardListSelectAction'
+1734597998947	Rename type 'BoardListDeleteAction'
+1734598002160	Rename type 'BoardInsertAction'
+1734598005413	Rename type 'BoardFindSelectAction'
+1734598008113	Delete element
+1734598112403	Rename local variable 'bDAO'
+1734598128029	Rename local variable 'bList'
+1734598251424	Rename resource 'boardPage.css'
+1734598257787	Rename resource 'boardWritePage.css'
+1734598263263	Rename resource 'boardContentPage.css'

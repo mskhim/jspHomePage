@@ -1,0 +1,34 @@
+package co.kh.dev.home.action.mainPage;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import co.kh.dev.home.action.Action;
+import co.kh.dev.home.control.ActionForward;
+import co.kh.dev.home.model.BoardDAO;
+import co.kh.dev.home.model.BoardVO;
+
+public class miniBoardSelectAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		BoardDAO bDAO = BoardDAO.getInstance();
+    	//객체들의 기본값 요소 설정
+    	//항상 get 방식으로 전달되어야 하는 값들
+    	int viewTime = 5; 						 // 한페이지에 보여줄 리스트 개수
+    	//get 방식으로 값을 받아서 입력
+    	//데이터베이스 에서 가져오는 값
+    	int recordCount = bDAO.selectRecordDB(); //전체 리스트 개수 findText값이 있을시 해당 항목으로 변경
+		int startListNum =(recordCount-viewTime<0)?1:recordCount-viewTime;	 //출력할 리스트번호 시작
+		int endListNum =recordCount;			 //출력할 리스트번호 마지막
+		ArrayList<BoardVO> bList = bDAO.selectDB(startListNum, endListNum);//원하는 구간의 db를 출력
+		request.setAttribute("bList", bList);
+		request.setAttribute("viewTime", viewTime);
+		ActionForward forward = new ActionForward("/home/board/boardPage.jsp", false);
+		return forward;
+	}
+
+}

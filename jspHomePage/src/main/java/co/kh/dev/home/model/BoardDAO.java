@@ -227,3 +227,22 @@ public class BoardDAO {
 		return (rs == 0) ? false : true;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

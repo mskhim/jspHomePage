@@ -1,0 +1,50 @@
+<%@page import="co.kh.dev.home.model.CommentVO"%>
+<%@page import="co.kh.dev.common.MyUtility"%>
+<%@page import="co.kh.dev.home.model.BoardVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="co.kh.dev.home.model.CustomerVO"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%
+CustomerVO cvo = MyUtility.returnCvoBySession(session);
+CommentDAO cmDAO = CommentDAO.getInstance();
+if (request.getAttribute("bList") == null) {//강제로 접근시 서블릿으로 보내는 기능
+	response.sendRedirect("/jspHomePage/boardSelect.do");
+	return;
+}
+SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd   HH:mm");
+ArrayList<BoardVO> bList = (ArrayList<BoardVO>) request.getAttribute("bList");
+int viewTime = (int) request.getAttribute("viewTime");
+int pageNum = (int) request.getAttribute("pageNum");
+int pageStartNum = (int) request.getAttribute("pageStartNum");
+int pageEndNum = (int) request.getAttribute("pageEndNum");
+int pageCount = (int) request.getAttribute("pageCount");
+String msg = (String) request.getAttribute("msg");
+boolean alertFlag=(request.getAttribute("alertFlag")==null)?false:(boolean)request.getAttribute("alertFlag");
+%>
+<article class="boardArticle">
+    <h3>게시판 요약</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성일자</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>게시판 테스트 제목</td>
+                <td>2024-12-19</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>다른 게시판 제목</td>
+                <td>2024-12-18</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="<%=request.getContextPath()%>/boardSelect.do" class="moreButton">더보기</a>
+</article>
+

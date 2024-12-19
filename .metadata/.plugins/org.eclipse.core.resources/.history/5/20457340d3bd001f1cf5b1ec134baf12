@@ -1,0 +1,67 @@
+package co.kh.dev.home.action.alert;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import co.kh.dev.home.action.Action;
+import co.kh.dev.home.control.ActionForward;
+import co.kh.dev.home.model.BoardDAO;
+import co.kh.dev.home.model.BoardVO;
+
+public class MainPageAlertAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// miniBoard용 코드
+		BoardDAO bDAO = BoardDAO.getInstance();
+		int viewTime = 5; // 한페이지에 보여줄 리스트 개수
+		int recordCount = bDAO.selectRecordDB(); // 전체 리스트 개수 findText값이 있을시 해당 항목으로 변경
+		int startListNum = (recordCount - viewTime < 0) ? 1 : recordCount - viewTime; // 출력할 리스트번호 시작
+		int endListNum = recordCount; // 출력할 리스트번호 마지막
+		ArrayList<BoardVO> bList = bDAO.selectDB(startListNum, endListNum);// 원하는 구간의 db를 출력
+		request.setAttribute("bList", bList);
+		// miniBoard용 코드
+
+		String status = request.getParameter("status") == null ? "" : request.getParameter("status");
+		String msg = "";
+		boolean alertFlag = false;
+		switch (status) {
+		case "1":
+			msg = "회원 탈퇴가 완료되었습니다. 감사합니다.";
+			break;
+		case "2":
+			msg = "로그아웃 되었습니다. 감사합니다.";
+			break;
+		case "3":
+			msg = "로그인 되었습니다. 환영합니다.";
+			break;
+		case "4":
+			msg = "아이디 또는 비밀번호가 맞지 않습니다.";
+			break;
+		case "5":
+			msg = "비밀번호가 맞지 않습니다.";
+			break;
+		case "6":
+			msg = "회원가입이 완료되었습니다!";
+			break;
+		case "7":
+			msg = "회원가입에 실패하였습니다.";
+			break;
+		case "8":
+			msg = "잘못된 접근입니다.";
+			break;
+		default:
+			alertFlag = false;
+			ActionForward forward = new ActionForward("/home/mainPage.jsp", false);
+			return forward;
+		}
+		request.setAttribute("msg", msg);
+		request.setAttribute("alertFlag", alertFlag);
+		ActionForward forward = new ActionForward("/home/mainPage.jsp", false);
+		return forward;
+	}
+
+}

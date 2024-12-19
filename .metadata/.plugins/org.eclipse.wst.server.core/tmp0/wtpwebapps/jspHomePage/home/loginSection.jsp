@@ -42,7 +42,7 @@ if (cvo == null) {
 	<ul style="display: flex">
 		<li><a href="#">비밀번호 찾기</a></li>
 		<li><a href="#">아이디 찾기</a></li>
-		<li><a href="customerRegistPage.jsp">회원가입</a></li>
+		<li><a href="/jspHomePage/home/customerRegistPage.jsp">회원가입</a></li>
 	</ul>
 </nav>
 
@@ -58,7 +58,7 @@ if (cvo == null) {
 </table>
 <nav class="loginNav">
 	<ul style="display: flex">
-		<li><a href="myPage.jsp">마이페이지</a></li>
+		<li><a href="<%=request.getContextPath()%>/myPageAlert.do">마이페이지</a></li>
 		<li><a href="<%=request.getContextPath()%>/customerLogout.do">로그아웃</a></li>
 	</ul>
 </nav>
