@@ -3,6 +3,7 @@ package co.kh.dev.home.control;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.kh.dev.home.action.Action;
 
+@MultipartConfig(
+	    fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+	    maxFileSize = 1024 * 1024 * 10,      // 10MB
+	    maxRequestSize = 1024 * 1024 * 50   // 50MB
+	)
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = { "*.do" })
 public class ControllerServlet extends HttpServlet {

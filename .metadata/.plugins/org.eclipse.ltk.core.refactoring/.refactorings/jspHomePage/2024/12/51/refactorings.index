@@ -155,3 +155,51 @@
 1734598251424	Rename resource 'boardPage.css'
 1734598257787	Rename resource 'boardWritePage.css'
 1734598263263	Rename resource 'boardContentPage.css'
+1734674702174	Rename local variable 'bvo'
+1734674709882	Rename local variable 'bDAO'
+1734674718544	Rename local variable 'bDAO'
+1734674770636	Rename local variable 'bDAO'
+1734674774733	Rename local variable 'bvo'
+1734674780699	Rename local variable 'bDAO'
+1734674783503	Rename local variable 'bvo'
+1734674791044	Rename local variable 'bDAO'
+1734674793260	Rename local variable 'bvo'
+1734676344775	Rename resource 'boardContentPage.js'
+1734676423812	Copy compilation unit
+1734681243470	Rename type 'miniBoardSelectAction'
+1734681246657	Delete element
+1734683853730	Copy compilation units
+1734683921374	Delete elements
+1734683930019	Delete elements
+1734684009559	Move 'noticePage.jsp' to 'product'
+1734684308037	Copy folder
+1734684310543	Copy folder
+1734684321043	Rename resource 'noticeContentPage.css'
+1734684324845	Rename resource 'noticeWritePage.css'
+1734684328786	Rename resource 'noticePage.css'
+1734684334063	Rename resource 'noticeContentPage.js'
+1734684379251	Move 'noticePage.jsp' to 'notice'
+1734684389229	Copy file
+1734684592381	Rename resource 'noticePage.jsp'
+1734684888919	Copy package
+1734684926057	Delete elements
+1734684931328	Copy compilation units
+1734684981924	Rename compilation unit 'NoticeSelectAction.java'
+1734685029800	Rename compilation unit 'productSelectAction.java'
+1734685035727	Rename compilation unit 'NoticeListUpdateAction.java'
+1734685039592	Rename compilation unit 'NoticeListSelectAction.java'
+1734685042479	Rename compilation unit 'NoticeListDeleteAction.java'
+1734685045316	Rename compilation unit 'NoticeInsertAction.java'
+1734685049489	Rename compilation unit 'NoticeFindSelectAction.java'
+1734685951007	Rename local variable 'mList'
+1734687932639	Copy file
+1734687952975	Rename resource 'noticeWritePage.jsp'
+1734689656734	Copy compilation unit
+1734689734165	Rename local variable 'nDAO'
+1734689738533	Rename local variable 'nList'
+1734705730209	Copy file
+1734705743011	Rename resource 'noticeListUpdatePage.jsp'
+1734768550971	Rename resource 'productWritePage.jsp'
+1734768861537	Delete element
+1734769097041	Rename local variable 'nDAO'
+1734769098946	Rename local variable 'nvo'

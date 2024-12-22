@@ -1,12 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
-/* if (request.getAttribute("bList") == null) {
+ if (request.getAttribute("bList") == null) {
 	response.sendRedirect(request.getContextPath() + "/mainPageAlert.do");
-} */
+}
 String msg = (String) request.getAttribute("msg");
 boolean alertFlag = (boolean) request.getAttribute("alertFlag");
-System.out.print((String) request.getAttribute("msg"));
-System.out.print((boolean) request.getAttribute("alertFlag"));
 %>
 <!DOCTYPE html>
 <html>
@@ -18,19 +16,19 @@ System.out.print((boolean) request.getAttribute("alertFlag"));
 	crossorigin="anonymous"></script>
 <%@ include file="/home/css/commonCss.jsp"%>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/home/css/MainPage.css" />
+	href="${pageContext.request.contextPath}/home/css/MainPage.css" />
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/home/css/miniBoardSection.css" />
+	href="${pageContext.request.contextPath}/home/css/miniBoardSection.css" />
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/home/css/sideSection.css" />
+	href="${pageContext.request.contextPath}/home/css/sideSection.css" />
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/home/css/miniShoppingSection.css" />
+	href="${pageContext.request.contextPath}/home/css/miniShoppingSection.css" />
 <%
 if (alertFlag) {
 %>
 <script>
 alert("<%=msg%>"); 
-window.location.replace("<%=request.getContextPath()%>/mainPageAlert.do");
+window.location.replace("${pageContext.request.contextPath}/mainPageAlert.do");
 </script>
 <%
 }

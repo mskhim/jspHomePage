@@ -1,0 +1,56 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="co.kh.dev.home.model.CommentDAO"%>
+<%@page import="co.kh.dev.home.model.NoticeDAO"%>
+<%@page import="co.kh.dev.home.model.NoticeVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>공지사항 검색 결과</title>
+<link rel="stylesheet" href="<c:url value='/home/css/commonCss.jsp' />" />
+</head>
+<body>
+<header>
+    <nav class="headerNav">
+        <%@ include file="/home/headerNavSection.jsp" %>
+    </nav>
+</header>
+
+<main>
+    <h2>공지사항 검색 결과</h2>
+
+    <c:if test="${empty nList}">
+        <p>검색된 공지사항이 없습니다.</p>
+    </c:if>
+
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성일</th>
+        </tr>
+
+        <c:forEach var="nvo" items="${nList}">
+            <tr>
+                <td>${nvo.no}</td>
+                <td><a href="<c:url value='/noticeListSelect.do?no=${nvo.no}' />">${nvo.title}</a></td>
+                <td><fmt:formatDate value="${nvo.subdate}" pattern="yyyy-MM-dd" /></td>
+            </tr>
+        </c:forEach>
+    </table>
+</main>
+
+<footer>
+    <%@ include file="/home/footerSection.jsp" %>
+</footer>
+<script src="<c:url value='/home/js/common.js' />"></script>
+</body>
+</html>
+
+
+

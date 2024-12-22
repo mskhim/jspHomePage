@@ -7,6 +7,8 @@ import co.kh.dev.home.action.alert.MyPageAlertAction;
 import co.kh.dev.home.action.alert.NoticeListAlertAction;
 import co.kh.dev.home.action.alert.NoticePageAlertAction;
 import co.kh.dev.home.action.alert.PopLoginAlertAction;
+import co.kh.dev.home.action.alert.ProductPageAlertAction;
+import co.kh.dev.home.action.alert.ShopPageAlertAction;
 import co.kh.dev.home.action.board.BoardCommentInsertAction;
 import co.kh.dev.home.action.board.BoardFindSelectAction;
 import co.kh.dev.home.action.board.BoardInsertAction;
@@ -22,13 +24,26 @@ import co.kh.dev.home.action.customer.CustomerLoginCheckAction;
 import co.kh.dev.home.action.customer.CustomerLogoutAction;
 import co.kh.dev.home.action.customer.CustomerPopLoginCheckAction;
 import co.kh.dev.home.action.customer.CustomerUpdateAction;
-import co.kh.dev.home.action.mainPage.miniBoardSelectAction;
+import co.kh.dev.home.action.mainPage.mainPageSelectAction;
 import co.kh.dev.home.action.notice.NoticeFindSelectAction;
 import co.kh.dev.home.action.notice.NoticeInsertAction;
 import co.kh.dev.home.action.notice.NoticeListDeleteAction;
 import co.kh.dev.home.action.notice.NoticeListSelectAction;
 import co.kh.dev.home.action.notice.NoticeListUpdateAction;
 import co.kh.dev.home.action.notice.NoticeSelectAction;
+import co.kh.dev.home.action.product.ProductFindSelectAction;
+import co.kh.dev.home.action.product.ProductInsertAction;
+import co.kh.dev.home.action.product.ProductListDeleteAction;
+import co.kh.dev.home.action.product.ProductListUpdateAction;
+import co.kh.dev.home.action.product.ProductSelectAction;
+import co.kh.dev.home.action.shop.ShopCartInsertAction;
+import co.kh.dev.home.action.shop.ShopCartSelectAction;
+import co.kh.dev.home.action.shop.ShopInsertAction;
+import co.kh.dev.home.action.shop.ShopInsertPageSelectAction;
+import co.kh.dev.home.action.shop.ShopListDeleteAction;
+import co.kh.dev.home.action.shop.ShopListSelectAction;
+import co.kh.dev.home.action.shop.ShopSelectAction;
+
 
 public class ActionFactory {
 	private static ActionFactory af = null;
@@ -51,6 +66,9 @@ public class ActionFactory {
 		case "popLoginAlert": 
 			action = new PopLoginAlertAction();
 			break;
+		case "shopPageAlert": 
+			action = new ShopPageAlertAction();
+			break;
 		case "mainPageAlert": 
 			action = new MainPageAlertAction();
 			break;
@@ -62,6 +80,15 @@ public class ActionFactory {
 			break;
 		case "boardPageAlert": 
 			action = new BoardPageAlertAction();
+			break;
+		case "noticePageAlert": 
+			action = new NoticePageAlertAction();
+			break;
+		case "noticeListAlert": 
+			action = new NoticeListAlertAction();
+			break;
+		case "productPageAlert": 
+			action = new ProductPageAlertAction();
 			break;
 		case "boardSelect": 
 			action = new BoardSelectAction();
@@ -108,17 +135,10 @@ public class ActionFactory {
 		case "customerInsertCheck": 
 			action = new CustomerInsertCheckAction();
 			break;
-		case "miniBoardSelect": 
-			action = new miniBoardSelectAction();
+		case "mainPageSelect": 
+			action = new mainPageSelectAction();
 			break;
-		
-			
-		case "noticePageAlert": 
-			action = new NoticePageAlertAction();
-			break;
-		case "noticeListAlert": 
-			action = new NoticeListAlertAction();
-			break;
+
 		case "noticeSelect": 
 			action = new NoticeSelectAction();
 			break;
@@ -136,6 +156,43 @@ public class ActionFactory {
 			break;
 		case "noticeListUpdate": 
 			action = new NoticeListUpdateAction();
+			break;
+			
+		case "productSelect": 
+			action = new ProductSelectAction();
+			break;
+		case "productInsert": 
+			action = new ProductInsertAction();
+			break;
+		case "productFindSelect": 
+			action = new ProductFindSelectAction();
+			break;
+		case "productListDelete": 
+			action = new ProductListDeleteAction();
+			break;
+		case "productListUpdate": 
+			action = new ProductListUpdateAction();
+			break;
+		case "shopSelect": 
+			action = new ShopSelectAction();
+			break;
+		case "shopInsert": 
+			action = new ShopInsertAction();
+			break;
+		case "shopInsertPageSelect": 
+			action = new ShopInsertPageSelectAction();
+			break;
+		case "shopListSelect": 
+			action = new ShopListSelectAction();
+			break;
+		case "shopListDelete": 
+			action = new ShopListDeleteAction();
+			break;
+		case "shopCartInsert": 
+			action = new ShopCartInsertAction();
+			break;
+		case "shopCartSelect": 
+			action = new ShopCartSelectAction();
 			break;
 		default: 
 			action = null;

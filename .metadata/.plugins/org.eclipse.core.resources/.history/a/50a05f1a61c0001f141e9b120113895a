@@ -1,0 +1,103 @@
+.itemsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3개의 열 */
+    gap: 20px; /* 아이템 간의 간격 */
+    justify-items: center; /* 아이템을 중앙 정렬 */
+    max-width: 1200px;
+    margin: 0 auto; /* 컨테이너 중앙 정렬 */
+}
+
+.productItem {
+    width: 300px; /* 고정된 너비 */
+    height: 400px; /* 고정된 높이 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.productItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.productImg {
+    width: 100%;
+    height: 250px; /* 고정된 이미지 높이 */
+    object-fit: cover; /* 비율 유지하면서 이미지 맞춤 */
+    border-bottom: 1px solid #ddd;
+}
+
+.productInfo {
+    padding: 15px;
+    font-size: 16px;
+    color: #333;
+}
+
+.productInfo h2 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #007bff;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; /* 제목이 길 경우 생략 표시 */
+}
+
+.productInfo p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    margin: 5px 0;
+}
+
+/* 페이지 네비게이션 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pagination ul {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+}
+
+.pagination ul li {
+    margin: 0 5px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination ul li.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination ul li:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+/* 버튼 스타일 */
+#writeButton {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+#writeButton:hover {
+    background-color: #0056b3;
+}

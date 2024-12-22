@@ -19,7 +19,7 @@ ArrayList<ZipCodeVO> zipcodeList = zdao.selectByDongDB(zvo);
 <head>
 <title>우편번호검색</title>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/home/css/zipCode.css" />
+	href="${pageContext.request.contextPath}/home/css/zipCode.css" />
 <!-- ② -->
 </head>
 <body bgcolor="#FFFFCC">
@@ -90,6 +90,6 @@ ArrayList<ZipCodeVO> zipcodeList = zdao.selectByDongDB(zvo);
 			</tr>
 		</table>
 	</main>
-	<script src="<%=request.getContextPath()%>/home/js/registPage.js"></script>
+	<script src="${pageContext.request.contextPath}/home/js/registPage.js"></script>
 </body>
 </html>

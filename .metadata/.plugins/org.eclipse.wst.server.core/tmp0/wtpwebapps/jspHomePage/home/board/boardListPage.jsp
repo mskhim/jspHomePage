@@ -4,147 +4,129 @@
 <%@page import="co.kh.dev.home.model.BoardDAO"%>
 <%@page import="co.kh.dev.home.model.BoardVO"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page contentType="text/html; charset=UTF-8"%>
-
-<%
-SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd   HH:mm");
-CustomerVO cvo = MyUtility.returnCvoBySession(session);
-ArrayList<CommentVO> cmList = (ArrayList<CommentVO>) request.getAttribute("cmList");
-BoardVO bvo = (BoardVO) request.getAttribute("bvo");
-if (bvo == null) {
-	response.sendRedirect("/jspHomePage/home/board/boardPage.jsp");
-}
-String msg=(String)request.getAttribute("msg");
-boolean alertFlag=(request.getAttribute("alertFlag")==null)?false:(boolean)request.getAttribute("alertFlag");
-request.setCharacterEncoding("UTF-8");
-%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>게시판</title>
-<script src="https://kit.fontawesome.com/6ff644124c.js"
-	crossorigin="anonymous"></script>
-<%@ include file="/home/css/commonCss.jsp"%>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/home/board/css/boardContentPage.css" />
-	<%
-if(alertFlag){
-%>	
+<script src="https://kit.fontawesome.com/6ff644124c.js" crossorigin="anonymous"></script>
+<%@ include file="/home/css/commonCss.jsp" %>
+<link rel="stylesheet" href="<c:url value='/home/board/css/boardContentPage.css' />" />
+
+<c:if test="${alertFlag}">
 <script>
-alert("<%=msg%>");
-window.location.replace("<%=request.getContextPath()%>/boardListSelect.do?no=<%=bvo.getNo()%>");
+alert("${msg}");
+window.location.replace("<c:url value='/boardListSelect.do?no=${bvo.no}' />");
 </script>
-<%
-}
-%>
+</c:if>
 </head>
 <body>
-	<header>
-		<nav class="headerNav">
-			<%@ include file="/home/headerNavSection.jsp"%>
-		</nav>
-	</header>
-	<main class="boardContentPage">
-		<section class="boardView">
-			<h2>게시글 상세 조회</h2>
-			<!-- 게시글 상세 정보 -->
-			<div class="postDetail">
-				<table>
-					<tr>
-						<th>제목</th>
-						<td id="postTitle"><%=bvo.getTitle()%></td>
-					</tr>
-					<tr>
-						<th>글쓴이</th>
-						<td id="postWriter"><%=bvo.getCustomerId()%></td>
-					</tr>
-					<tr>
-						<th>작성일</th>
-						<td id="postDate"><%=sf.format(bvo.getSubdate())%></td>
-					</tr>
-					<tr>
-						<th>조회수</th>
-						<td id="postDate"><%=bvo.getCount()%></td>
-					</tr>
-				</table>
-				<div id="postContent"><%=bvo.getContent()%></div>
+<header>
+    <nav class="headerNav">
+        <%@ include file="/home/headerNavSection.jsp" %>
+    </nav>
+</header>
 
-				<div
-					class=<%=(cvo != null && bvo.getCustomerId().equals(cvo.getId())) ? "postActions" : "dispNone"%>>
-					<form method="post"
-						action="/jspHomePage/home/board/boardListUpdatePage.jsp">
-						<input type="hidden" name="no" value="<%=bvo.getNo()%>"> <input
-							type="hidden" name="title" value="<%=bvo.getTitle()%>"> <input
-							type="hidden" name="content" value="<%=bvo.getContent()%>">
-						<button type="submit" class="editBtn">수정</button>
-					</form>
-					<button type="button" class="deleteBtn"
-						onclick="deletePost(<%=bvo.getNo()%>)">삭제</button>
-				</div>
-			</div>
-		</section>
+<main class="boardContentPage">
+    <section class="boardView">
+        <h2>게시글 상세 조회</h2>
+        <div class="postDetail">
+            <table>
+                <tr>
+                    <th>제목</th>
+                    <td id="postTitle">${bvo.title}</td>
+                </tr>
+                <tr>
+                    <th>글쓴이</th>
+                    <td id="postInsertr">${bvo.customerId}</td>
+                </tr>
+                <tr>
+                    <th>작성일</th>
+                    <td id="postDate">
+                        <fmt:formatDate value="${bvo.subdate}" pattern="yyyy-MM-dd HH:mm" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>조회수</th>
+                    <td id="postView">${bvo.count}</td>
+                </tr>
+            </table>
 
-		<!-- 댓글 작성 폼 -->
-		<section class="commentForm<%=(cvo != null) ? "" : " dispNone"%>">
-			<h3>댓글 작성</h3>
-			<form method="post" action="/jspHomePage/boardCommentInsert.do">
-				<input type="hidden" name="boardNo" value="<%=bvo.getNo()%>" />
-				<textarea name="content" placeholder="댓글을 입력하세요" required></textarea>
-				<button type="submit">댓글 작성</button>
-			</form>
-		</section>
+            <div id="postContent">${bvo.content}</div>
 
-		<!-- 댓글 목록 (대댓글 포함) -->
-		<section class="commentList">
-			<h3>댓글 목록</h3>
+            <c:if test="${not empty cvo && bvo.customerId == cvo.id}">
+                <div class="postActions">
+                    <form method="post" action="<c:url value='/home/board/boardListUpdatePage.jsp' />" accept-charset="UTF-8">
+                        <input type="hidden" name="no" value="${bvo.no}" />
+                        <input type="hidden" name="id" value="${bvo.customerId}" />
+                        <input type="hidden" name="title" value="${bvo.title}" />
+                        <input type="hidden" name="content" value="${bvo.content}" />
+                        <button type="submit" class="editBtn">수정</button>
+                    </form>
+                    <button type="button" class="deleteBtn" onclick="deletePost(${bvo.no})">삭제</button>
+                </div>
+            </c:if>
+        </div>
+    </section>
 
-			<%
-			/*  List<CommentVO> comments = (List<CommentVO>) request.getAttribute("comments"); */
-			for (CommentVO cmvo : cmList) {
-				String indent = "margin-left: " + (cmvo.getDepth() * 30) + "px;";
-			%>
+    <!-- 댓글 작성 폼 -->
+    <section class="commentForm" style="${empty sessionScope.cvo ? 'display:none;' : ''}">
+        <h3>댓글 작성</h3>
+        <form method="post" action="<c:url value='/boardCommentInsert.do' />">
+            <input type="hidden" name="boardNo" value="${bvo.no}" />
+            <textarea name="content" placeholder="댓글을 입력하세요" required></textarea>
+            <button type="submit">댓글 작성</button>
+        </form>
+    </section>
 
-			<!-- 댓글 블록 -->
-			<div class="comment" style="<%=indent%>">
-				<p class="commentInfo">
-					<strong><%=cmvo.getCustomerId()%></strong> <span
-						class="commentDate"><%=sf.format(cmvo.getSubdate()) %></span>
-				</p>
-				<p class="commentContent"><%=cmvo.getContent()%></p>
-				<div class="commentActions<%=(cvo != null) ? "" : " dispNone"%>">
-					<button class="commentReplyBtn"
-						onclick="toggleDisp('togle<%=cmvo.getNo()%>');">답글</button>
-					<button
-						class="commentEditBtn <%=(cvo != null && cmvo.getCustomerId().equals(cvo.getId())) ? "" : " dispNone"%>">수정</button>
-					<button
-						class="commentDeleteBtn <%=(cvo != null && cmvo.getCustomerId().equals(cvo.getId())) ? "" : " dispNone"%>">삭제</button>
-				</div>
-			</div>
-			<div class="reCommentForm dispNone" id="togle<%=cmvo.getNo()%>">
-				<form action="/jspHomePage/boardCommentInsert.do" method="post">
-					<input type="hidden" name="boardNo" value="<%=bvo.getNo()%>" /> <input
-						type="hidden" name="parentNo" value="<%=cmvo.getNo()%>" /> <input
-						type="hidden" name="depth" value="<%=cmvo.getDepth()%>" />
-					<textarea name="content" placeholder="답글을 입력하세요" required></textarea>
-					<button type="submit">작성</button>
-				</form>
-			</div>
-			<%
-			}
-			%>
-		</section>
-		<div class="toList">
-			<button onclick="location.href='<%=request.getContextPath()%>/home/board/boardPage.jsp'">목록으로</button>
-		</div>
-	</main>
+    <!-- 댓글 목록 -->
+    <section class="commentList">
+        <h3>댓글 목록</h3>
+        <c:forEach var="cmvo" items="${cmList}">
+            <div class="comment" style="margin-left: ${cmvo.depth * 30}px;">
+                <p class="commentInfo">
+                    <strong>${cmvo.customerId}</strong>
+                    <span class="commentDate">
+                        <fmt:formatDate value="${cmvo.subdate}" pattern="yyyy-MM-dd HH:mm" />
+                    </span>
+                </p>
+                <p class="commentContent">${cmvo.content}</p>
 
-	<hr>
-	<footer>
-		<%@ include file="/home/footerSection.jsp"%>
-	</footer>
-	<script src="<%=request.getContextPath()%>/home/board/js/boardContentPage.js"></script>
-	<script src="<%=request.getContextPath()%>/home/js/common.js"></script>
+                <div class="commentActions" style="${empty cvo ? 'display:none;' : ''}">
+                    <button class="commentReplyBtn" onclick="toggleDisp('togle${cmvo.no}')">답글</button>
+                    <c:if test="${not empty cvo && cmvo.customerId == cvo.id}">
+                        <button class="commentEditBtn">수정</button>
+                        <button class="commentDeleteBtn">삭제</button>
+                    </c:if>
+                </div>
+            </div>
+	
+            <div class="reCommentForm dispNone" id="togle${cmvo.no}">
+                <form action="<c:url value='/boardCommentInsert.do' />" method="post">
+                    <input type="hidden" name="boardNo" value="${bvo.no}" />
+                    <input type="hidden" name="parentNo" value="${cmvo.no}" />
+                    <input type="hidden" name="depth" value="${cmvo.depth}" />
+                    <textarea name="content" placeholder="답글을 입력하세요" required></textarea>
+                    <button type="submit">작성</button>
+                </form>
+            </div>
+        </c:forEach>
+    </section>
+
+    <div class="toList">
+        <button onclick="location.href='<c:url value='/home/board/boardPage.jsp' />'">목록으로</button>
+    </div>
+</main>
+
+<hr>
+<footer>
+    <%@ include file="/home/footerSection.jsp" %>
+</footer>
+<script src="<c:url value='/home/board/js/boardContentPage.js' />"></script>
+<script src="<c:url value='/home/js/common.js' />"></script>
 </body>
 </html>

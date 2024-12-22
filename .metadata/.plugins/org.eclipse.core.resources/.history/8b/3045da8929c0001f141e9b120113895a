@@ -1,0 +1,13 @@
+package co.kh.dev.home.model;
+
+import java.sql.Date;
+
+public class shopVO {
+	private int rownum;
+	private int no;
+	private String name;
+	private int price;
+	private int amount;
+	private Date subdate;
+
+}

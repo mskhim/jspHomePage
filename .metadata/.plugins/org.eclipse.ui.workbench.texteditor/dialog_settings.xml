@@ -3,6 +3,10 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="true"/>
 	<list key="replacehistory">
+		<item value="Product"/>
+		<item value="product"/>
+		<item value="PRODUCT"/>
+		<item value="BOARD"/>
 		<item value="notice"/>
 		<item value="Notice"/>
 		<item value="Notce"/>
@@ -14,6 +18,13 @@
 		<item value="Customer"/>
 	</list>
 	<list key="searchhistory">
+		<item value="maxPost"/>
+		<item value="max"/>
+		<item value="Notice"/>
+		<item value="notice"/>
+		<item value="BOARD"/>
+		<item value="NOTICE"/>
+		<item value="mainPage"/>
 		<item value="board"/>
 		<item value="Board"/>
 		<item value="bvo"/>
@@ -22,11 +33,6 @@
 		<item value="Servlet"/>
 		<item value="Servelt"/>
 		<item value="Servlet&apos;"/>
-		<item value="Survlet"/>
-		<item value="cvo"/>
-		<item value="CustomerVO cvo"/>
-		<item value="memberNo"/>
-		<item value="Member"/>
 	</list>
 	<section name="org.eclipse.jst.jsp.ui.internal.preferences.ui.JSPTemplatePreferencePage$JSPEditTemplateDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="46"/>

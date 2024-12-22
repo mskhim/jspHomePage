@@ -4,6 +4,7 @@
 .boardPage{
 width: 80%;	
 margin: 0 auto;
+min-width: 1200px;
 }
 article.article2 p.notice {
 	font-size: 11px;

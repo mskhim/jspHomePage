@@ -4,23 +4,8 @@
 <%@page import="co.kh.dev.home.model.BoardVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%
-CustomerVO cvo = MyUtility.returnCvoBySession(session);
-if (request.getAttribute("findValue") == null) {//강제로 접근시 서블릿으로 보내는 기능
-	response.sendRedirect("/jspHomePage/boardSelect.do");
-	return;
-}
-CommentDAO cmDAO = CommentDAO.getInstance();
-SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd   HH:mm");
-ArrayList<BoardVO> bList = (ArrayList<BoardVO>) request.getAttribute("bList");
-int viewTime = (int) request.getAttribute("viewTime");
-int pageNum = (int) request.getAttribute("pageNum");
-int pageStartNum = (int) request.getAttribute("pageStartNum");
-int pageEndNum = (int) request.getAttribute("pageEndNum");
-int pageCount = (int) request.getAttribute("pageCount");
-String findValue = (String) request.getAttribute("findValue");
-String findText = (String) request.getAttribute("findText");
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -32,7 +17,10 @@ String findText = (String) request.getAttribute("findText");
 	crossorigin="anonymous"></script>
 <%@ include file="/home/css/commonCss.jsp"%>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/home/board/css/boardPage.css" />
+	href="${pageContext.request.contextPath}/home/board/css/boardPage.css" />
+<c:if test="${empty bList}">
+<c:redirect url="/boardSelect.do"/>
+</c:if>
 </head>
 <body>
 	<header>
@@ -51,17 +39,12 @@ String findText = (String) request.getAttribute("findText");
 		<article class="article3">
 			<div class="all">
 				<form method="get" action="/jspHomePage/boardFindSelect.do">
-					<%
-					System.out.print(viewTime);
-					%>
-					<input type="hidden" name="findValue" value="<%=findValue%>">
-					<input type="hidden" name="findText" value="<%=findText%>">
 					<select name="viewTime" id="view">
 						<option value="10"
-							<%=(viewTime == 10) ? "selected='selected'" : ""%>>10개씩</option>
+							${viewTime == 10? "selected" : ""}>10개씩</option>
 						<!-- viewTime에 맞춰서 select변경 -->
 						<option value="20"
-							<%=(viewTime == 20) ? "selected='selected'" : ""%>>20개씩</option>
+							${viewTime == 20? "selected" : ""}>20개씩</option>
 						<!-- viewTime에 맞춰서 select변경 -->
 					</select>
 					<button type="submit" id="BoardViewButton">보기</button>
@@ -71,11 +54,11 @@ String findText = (String) request.getAttribute("findText");
 						onclick="location.href='/jspHomePage/boardSelect.do'">검색취소</button>
 					<select name="findValue" id="find">
 						<option value="title"
-							<%=(findValue.equals("title")) ? "selected='selected'" : ""%>>제목</option>
+							${findValue=="title"? "selected" :""}>제목</option>
 						<option value="text"
-							<%=(findValue.equals("text")) ? "selected='selected'" : ""%>>내용</option>
+							${findValue=="text"? "selected" :""}>내용</option>
 					</select> <input type="text" name="findText" id="findText"
-						value=<%=findText%>>
+						value="${findText}">
 					<button type="submit" id="findButton">검색</button>
 				</form>
 			</div>
@@ -89,49 +72,43 @@ String findText = (String) request.getAttribute("findText");
 					<th>조회수</th>
 					<th>등록일</th>
 				</tr>
-				<%
-				for (BoardVO data : bList) {
-				%>
+
+				<c:forEach var="data" items="${bList}" >
 				<tr>
-					<td class="tbNum"><%=data.getRownum()%></td>
+					<td class="tbNum">${data.rownum}</td>
 					<td class="tbMain"><a
-						href=" <%=request.getContextPath()%>/boardListSelect.do?rowNum=<%=data.getRownum()%>"><%=data.getTitle()%></a>&nbsp;&nbsp;
-						[<%=cmDAO.selectCountByBoardNoDB(data)%>]</td>
-					<td class="tbWriter"><%=data.getCustomerId()%></td>
-					<td class="tbView"><%=data.getCount()%></td>
-					<td class="tbDate"><%=sf.format(data.getSubdate())%></td>
+						href=" ${pageContext.request.contextPath}/boardListSelect.do?rowNum=${data.rownum}">${data.title}</a>&nbsp;&nbsp;
+						[${data.commentNum}]</td>
+					<td class="tbInsertr">${data.customerId}</td>
+					<td class="tbView">${data.count}</td>
+					<td class="tbDate">
+					<fmt:formatDate value="${data.subdate}" pattern="yyyy-MM-dd  HH:mm"/>
 				</tr>
-				<%
-				}
-				%>
+			</c:forEach>
 
 			</table>
 		</article>
 		<article class="article5">
 			<ul>
 				<li><i class="fa-solid fa-angles-left"
-					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=<%=viewTime%>&pageNum=<%=1%>&findValue=<%=findValue%>&findText=<%=findText%>'"></i></li>
+					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=${viewTime}&pageNum=1&findValue=${findValue}&findText=${findText}"></i></li>
 				<li><i class="fa-solid fa-angle-left"
-					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=<%=viewTime%>&pageNum=<%=((pageNum - 1) < 0) ? 1 : pageNum - 1%>&findValue=<%=findValue%>&findText=<%=findText%>'"></i></li>
-				<%
-				for (int i = pageStartNum; i <= pageEndNum; i++) {
-				%>
-				<li <%=(pageNum == i) ? "class='active'" : ""%>
-					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=<%=viewTime%>&pageNum=<%=i%>&findValue=<%=findValue%>&findText=<%=findText%>'">
-					<%=i%>
+					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=${viewTime}&pageNum=${pageNum - 1 <= 0 ? 1 : pageNum - 1}&findValue=${findValue}&findText=${findText}'"></i></li>
+				<c:forEach var="i" begin="${pageStartNum}" end="${pageEndNum}">
+				<li ${pageNum == i? "class='active'" : ""}
+					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=${viewTime}&pageNum=${i}&findValue=${findValue}&findText=${findText}'">
+					${i}
 				</li>
-				<%
-				}
-				%>
+			</c:forEach>
 				<li><i class="fa-solid fa-chevron-right"
-					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=<%=viewTime%>&pageNum=<%=((pageNum + 1) > pageCount) ? pageCount : pageNum + 1%>&findValue=<%=findValue%>&findText=<%=findText%>'"></i></li>
+					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=${viewTime}&pageNum=${pageNum + 1 > pageCount ? pageCount : pageNum + 1}&findValue=${findValue}&findText=${findText}'"></i></li>
 				<li><i class="fa-solid fa-angles-right"
-					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=<%=viewTime%>&pageNum=<%=pageCount%>&findValue=<%=findValue%>&findText=<%=findText%>'"></i></li>
+					onclick="location.href='/jspHomePage/boardFindSelect.do?viewTime=${viewTime}&pageNum=${pageCount}&findValue=${findValue}&findText=${findText}'"></i></li>
 			</ul>
 
-			<form action="#" method="get" name="boardWrite.do">
+			<form action="#" method="get" name="boardInsert.do">
 				<button type="button" id="writeButton"
-					onclick=<%=(cvo == null) ? "openLoginPopup()" : "location.href='/jspHomePage/home/board/boardWritePage.jsp';"%>>글쓰기</button>
+					onclick= "${empty cvo? 'openLoginPopup()' : 'location.href=\'/jspHomePage/home/board/boardInsertPage.jsp\';'}">글쓰기</button>
 			</form>
 		</article>
 	</main>
@@ -139,7 +116,7 @@ String findText = (String) request.getAttribute("findText");
 	<footer>
 		<%@ include file="/home/footerSection.jsp"%>
 	</footer>
-	<script src="<%=request.getContextPath()%>/home/js/common.js"></script>
+	<script src="${pageContext.request.contextPath}/home/js/common.js"></script>
 </body>
 </html>
 

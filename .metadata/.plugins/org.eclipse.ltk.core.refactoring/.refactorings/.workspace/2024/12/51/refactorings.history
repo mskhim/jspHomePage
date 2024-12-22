@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;jspHomePage/src/main/webapp/home/notice/NoticeVO.java&apos;" deleteContents="false" description="Delete resource &apos;jspHomePage/src/main/webapp/home/notice/NoticeVO.java&apos;" element1="/jspHomePage/src/main/webapp/home/notice/NoticeVO.java" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1734683927104"/>
+</session>

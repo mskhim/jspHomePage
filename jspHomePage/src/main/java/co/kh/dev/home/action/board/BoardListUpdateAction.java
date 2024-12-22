@@ -17,8 +17,8 @@ public class BoardListUpdateAction implements Action {
 		BoardDAO bDAO = BoardDAO.getInstance();
 		BoardVO bvo = new BoardVO(Integer.parseInt(request.getParameter("no")), request.getParameter("title"),
 				request.getParameter("content"));
-		bDAO.updateDB(bvo);
-		ActionForward forward = new ActionForward(request.getContextPath() + "/boardPageAlert.do?status=2",
+		bDAO.updateTCDB(bvo);
+		ActionForward forward = new ActionForward("/boardPageAlert.do?status=2",
 				false);
 		return forward;
 	}

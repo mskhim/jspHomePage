@@ -36,7 +36,21 @@ public class CustomerPopLoginCheckAction implements Action {
 					if (maint != null) {
 						Cookie ck = new Cookie("id", id);
 						response.addCookie(ck);
+					}else {
+						Cookie[] cookies = request.getCookies();
+					    if (cookies != null) {
+					        for (Cookie cookie : cookies) {
+					            if ("id".equals(cookie.getName())) {
+					                Cookie deleteCookie = new Cookie("id", null); // 값은 null로 설정
+					                deleteCookie.setMaxAge(0); // 유효기간을 0으로 설정
+					                response.addCookie(deleteCookie); // 삭제된 쿠키를 응답에 추가
+					                break;
+					            }
+					        }
+					    }
 					}
+					CustomerVO cvo2=cDAO.selectLoginCheckDB(cvo);
+					session.setAttribute("cvo", cvo2);
 					session.setAttribute("id", id);
 					session.setAttribute("pwd", pwd);
 				}

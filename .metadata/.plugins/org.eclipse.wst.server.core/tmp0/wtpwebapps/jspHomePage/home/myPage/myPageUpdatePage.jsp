@@ -28,7 +28,7 @@ String address2 = cvo.getAddress2();
 	crossorigin="anonymous"></script>
 <%@ include file="/home/css/commonCss.jsp"%>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/home/css/registPage.css" />
+	href="${pageContext.request.contextPath}/home/css/registPage.css" />
 
 </head>
 <body>
@@ -120,7 +120,7 @@ String address2 = cvo.getAddress2();
 			<div id="btns-submit">
 				<input id="btn-join" type="submit" value="정보수정" /> <input
 					id="btn-cancel" type="button" value="취소"
-					onclick="location.href='<%=request.getContextPath()%>/home/myPage/myPage.jsp'" />
+					onclick="location.href='${pageContext.request.contextPath}/home/myPage/myPage.jsp'" />
 			</div>
 		</form>
 	</main>
@@ -128,7 +128,7 @@ String address2 = cvo.getAddress2();
 	<footer>
 		<%@ include file="/home/footerSection.jsp"%>
 	</footer>
-	<script src="<%=request.getContextPath()%>/home/js/registPage.js"></script>
+	<script src="${pageContext.request.contextPath}/home/js/registPage.js"></script>
 </body>
 
 </html>

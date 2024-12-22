@@ -5,91 +5,75 @@
 <%@page import="co.kh.dev.home.model.NoticeVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-
-<%
-SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd   HH:mm");
-CustomerVO cvo = MyUtility.returnCvoBySession(session);
-ArrayList<CommentVO> cmList = (ArrayList<CommentVO>) request.getAttribute("cmList");
-NoticeVO bvo = (NoticeVO) request.getAttribute("bvo");
-if (bvo == null) {
-	response.sendRedirect("/jspHomePage/home/notice/noticePage.jsp");
-}
-String msg=(String)request.getAttribute("msg");
-boolean alertFlag=(request.getAttribute("alertFlag")==null)?false:(boolean)request.getAttribute("alertFlag");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>게시판</title>
-<script src="https://kit.fontawesome.com/6ff644124c.js"
-	crossorigin="anonymous"></script>
-<%@ include file="/home/css/commonCss.jsp"%>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/home/notice/css/noticeContentPage.css" />
-	<%
-if(alertFlag){
-%>	
-<script>
-alert("<%=msg%>");
-window.location.replace("<%=request.getContextPath()%>/noticeListSelect.do?no=<%=bvo.getNo()%>");
-</script>
-<%
-}
-%>
+<script src="https://kit.fontawesome.com/6ff644124c.js" crossorigin="anonymous"></script>
+<%@ include file="/home/css/commonCss.jsp" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/home/notice/css/noticeContentPage.css" />
+<c:if test="${alertFlag}">
+    <script>
+        alert("${msg}");
+        window.location.replace("${pageContext.request.contextPath}/noticeListSelect.do?no=${nvo.no}");
+    </script>
+</c:if>
 </head>
 <body>
-	<header>
-		<nav class="headerNav">
-			<%@ include file="/home/headerNavSection.jsp"%>
-		</nav>
-	</header>
-	<main class="noticeContentPage">
-		<section class="noticeView">
-			<h2>게시글 상세 조회</h2>
-			<!-- 게시글 상세 정보 -->
-			<div class="postDetail">
-				<table>
-					<tr>
-						<th>제목</th>
-						<td id="postTitle"><%=bvo.getTitle()%></td>
-					</tr>
-					<tr>
-						<th>작성일</th>
-						<td id="postDate"><%=sf.format(bvo.getSubdate())%></td>
-					</tr>
-					<tr>
-						<th>조회수</th>
-						<td id="postDate"><%=bvo.getCount()%></td>
-					</tr>
-				</table>
-				<div id="postContent"><%=bvo.getContent()%></div>
+<header>
+    <nav class="headerNav">
+        <%@ include file="/home/headerNavSection.jsp" %>
+    </nav>
+</header>
+<main class="noticeContentPage">
+    <section class="noticeView">
+        <h2>게시글 상세 조회</h2>
+        <!-- 게시글 상세 정보 -->
+        <div class="postDetail">
+            <table>
+                <tr>
+                    <th>제목</th>
+                    <td id="postTitle">${nvo.title}</td>
+                </tr>
+                <tr>
+                    <th>작성일</th>
+                    <td id="postDate">
+                        <fmt:formatDate value="${nvo.subdate}" pattern="yyyy-MM-dd HH:mm" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>조회수</th>
+                    <td id="postDate">${nvo.count}</td>
+                </tr>
+            </table>
+            <div id="postContent">${nvo.content}</div>
 
-				<div
-					class=<%=(cvo != null && "admin".equals(cvo.getId())) ? "postActions" : "dispNone"%>>
-					<form method="post"
-						action="/jspHomePage/home/notice/noticeListUpdatePage.jsp">
-						<input type="hidden" name="no" value="<%=bvo.getNo()%>"> <input
-							type="hidden" name="title" value="<%=bvo.getTitle()%>"> <input
-							type="hidden" name="content" value="<%=bvo.getContent()%>">
-						<button type="submit" class="editBtn">수정</button>
-					</form>
-					<button type="button" class="deleteBtn"
-						onclick="deletePost(<%=bvo.getNo()%>)">삭제</button>
-				</div>
-			</div>
-		</section>
-		<div class="toList">
-			<button onclick="location.href='<%=request.getContextPath()%>/home/notice/noticePage.jsp'">목록으로</button>
-		</div>
-	</main>
-
-	<hr>
-	<footer>
-		<%@ include file="/home/footerSection.jsp"%>
-	</footer>
-	<script src="<%=request.getContextPath()%>/home/notice/js/noticeContentPage.js"></script>
-	<script src="<%=request.getContextPath()%>/home/js/common.js"></script>
+            <c:if test="${not empty cvo && cvo.id eq 'admin'}">
+                <div class="postActions">
+                    <form method="post" action="${pageContext.request.contextPath}/home/notice/noticeListUpdatePage.jsp">
+                        <input type="hidden" name="no" value="${nvo.no}" />
+                        <input type="hidden" name="title" value="${nvo.title}" />
+                        <input type="hidden" name="content" value="${nvo.content}" />
+                        <button type="submit" class="editBtn">수정</button>
+                    </form>
+                    <button type="button" class="deleteBtn" onclick="deleteNotice(${nvo.no})">삭제</button>
+                </div>
+            </c:if>
+        </div>
+    </section>
+    <div class="toList">
+        <button onclick="location.href='${pageContext.request.contextPath}/home/notice/noticePage.jsp'">목록으로</button>
+    </div>
+</main>
+<hr>
+<footer>
+    <%@ include file="/home/footerSection.jsp" %>
+</footer>
+<script src="${pageContext.request.contextPath}/home/notice/js/noticeContentPage.js"></script>
+<script src="${pageContext.request.contextPath}/home/js/common.js"></script>
 </body>
 </html>

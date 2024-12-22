@@ -22,6 +22,11 @@ public class NoticeDAO {
 	private final String DELETE_SQL = "DELETE FROM NOTICE WHERE NO = ?";
 	private static NoticeDAO bDAO = null;
 
+		
+	private NoticeDAO() {
+		super();
+	}
+
 	public static NoticeDAO getInstance() {
 		if (bDAO == null) {
 			synchronized (NoticeDAO.class) {

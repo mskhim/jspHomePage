@@ -16,7 +16,7 @@ if (cvo == null) {
 	crossorigin="anonymous"></script>
 <%@ include file="/home/css/commonCss.jsp"%>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/home/myPage/css/myPageWithdraw.css" />
+	href="${pageContext.request.contextPath}/home/myPage/css/myPageWithdraw.css" />
 </head>
 <body>
 	<header>
@@ -29,7 +29,7 @@ if (cvo == null) {
 			<h1>회원탈퇴</h1>
 			<p>회원탈퇴를 위해 비밀번호를 입력하세요.</p>
 
-			<form action="<%=request.getContextPath()%>/customerDelete.do"
+			<form action="${pageContext.request.contextPath}/customerDelete.do"
 				method="post" class="delete-form" name="withForm">
 				<label for="password">비밀번호</label> <input type="password"
 					id="password" name="pwd" required placeholder="비밀번호 입력" /> <input
@@ -42,7 +42,7 @@ if (cvo == null) {
 		<%@ include file="/home/footerSection.jsp"%>
 	</footer>
 	<script
-		src="<%=request.getContextPath()%>/home/myPage/js/myPageWithdraw.js"></script>
+		src="${pageContext.request.contextPath}/home/myPage/js/myPageWithdraw.js"></script>
 </body>
 
 </html>

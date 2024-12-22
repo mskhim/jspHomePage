@@ -1,16 +1,16 @@
     <div class="carousel">
       <div id="slide_show">
         <a href="#"
-          ><img src="<%=request.getContextPath()%>/home/media/slide-1.jpg" alt="" class="slide" id="p1"
+          ><img src="${pageContext.request.contextPath}/home/media/slide-1.jpg" alt="" class="slide" id="p1"
         /></a>
         <a href="#"
-          ><img src="<%=request.getContextPath()%>/home/media/slide-2.jpg" alt="" class="slide" id="p2"
+          ><img src="${pageContext.request.contextPath}/home/media/slide-2.jpg" alt="" class="slide" id="p2"
         /></a>
         <a href="#"
-          ><img src="<%=request.getContextPath()%>/home/media/slide-3.jpg" alt="" class="slide" id="p3"
+          ><img src="${pageContext.request.contextPath}/home/media/slide-3.jpg" alt="" class="slide" id="p3"
         /></a>
         <a href="#"
-          ><img src="<%=request.getContextPath()%>/home/media/slide-4.jpg" alt="" class="slide" id="p4" />
+          ><img src="${pageContext.request.contextPath}/home/media/slide-4.jpg" alt="" class="slide" id="p4" />
         </a>
       </div>
       <i class="fa-solid fa-circle-chevron-left" id="navgateleft"></i>
@@ -24,5 +24,5 @@
         ><a href="#"> <i class="fa-solid fa-circle-dot"></i></a>
       </div>
       </div>
-    <script src="<%=request.getContextPath()%>/home/js/carousel.js"></script>
+    <script src="${pageContext.request.contextPath}/home/js/carousel.js"></script>
 	  

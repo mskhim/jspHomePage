@@ -21,7 +21,7 @@ boolean alertFlag=(request.getAttribute("alertFlag")==null)?false:(boolean)reque
 	crossorigin="anonymous"></script>
 <%@ include file="/home/css/commonCss.jsp"%>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/home/myPage/css/myPage.css" />
+	href="${pageContext.request.contextPath}/home/myPage/css/myPage.css" />
 
 <%
 if (alertFlag) {
@@ -29,7 +29,7 @@ System.out.println(msg);
 %>
 <script>
 alert("<%=msg%>"); 
-window.location.replace("<%=request.getContextPath()%>/home/myPage/myPage.jsp");
+window.location.replace("${pageContext.request.contextPath}/home/myPage/myPage.jsp");
 </script>
 <%
 }
@@ -47,11 +47,11 @@ window.location.replace("<%=request.getContextPath()%>/home/myPage/myPage.jsp");
 			<h2>마이페이지</h2>
 			<div class="myPageMenu">
 				<div class="menuItem"
-					onclick="location.href='<%=request.getContextPath()%>/home/myPage/myPageUpdatePage.jsp'">
+					onclick="location.href='${pageContext.request.contextPath}/home/myPage/myPageUpdatePage.jsp'">
 					<i class="fas fa-user-edit"></i> <a>회원 정보 수정</a>
 				</div>
 				<div class="menuItem"
-					onclick="location.href='<%=request.getContextPath()%>/home/myPage/myPageDeletePage.jsp'">
+					onclick="location.href='${pageContext.request.contextPath}/home/myPage/myPageDeletePage.jsp'">
 					<i class="fas fa-user-times"></i> <a href="#">회원 탈퇴</a>
 				</div>
 				<div class="menuItem">

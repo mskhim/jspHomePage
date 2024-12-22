@@ -4,11 +4,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="co.kh.dev.home.model.CustomerVO"%>
 <%@page import="java.text.SimpleDateFormat"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%
-SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd   HH:mm");
-ArrayList<BoardVO> bList = (ArrayList<BoardVO>) request.getAttribute("bList");
-%>
+
 <article class="boardArticle">
 	<h3>게시판 요약</h3>
 	<table>
@@ -20,24 +18,20 @@ ArrayList<BoardVO> bList = (ArrayList<BoardVO>) request.getAttribute("bList");
 			</tr>
 		</thead>
 		<tbody>
-	 		<%
-			int count = 0;
-			for (BoardVO data : bList) {
-				count++;
-			%>
-			<tr>
-				<td class="tbNum"><%=count%></td>
-				<td class="tbMain"><a
-					href=" <%=request.getContextPath()%>/boardListSelect.do?no=<%=data.getNo()%>&count=1"><%=data.getTitle()%></a></td>
-				<td class="tbDate"><%=sf.format(data.getSubdate())%></td>
-			</tr>
-			<%
-			}
-			%> 
-
+	
+			<c:set var="count" value="0" />
+			<c:forEach var="data" items="${bList}">
+				<c:set var="count" value="${count + 1}" />
+				<tr>
+					<td class="tbNum">${count}</td>
+					<td class="tbMain"><a
+						href=" ${pageContext.request.contextPath}/boardListSelect.do?no=${data.no}&count=1">${data.title}</a></td>
+					<td class="tbDate">${data.subdate}</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
-	<a href="<%=request.getContextPath()%>/boardSelect.do"
+	<a href="${pageContext.request.contextPath}/boardSelect.do"
 		class="moreButton">더보기</a>
 </article>
 

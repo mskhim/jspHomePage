@@ -12,7 +12,6 @@
   position: relative;
   z-index: 10;
   margin-bottom: 25px; /* 상단 영역 내부 마진 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* 메인 메뉴 스타일 */

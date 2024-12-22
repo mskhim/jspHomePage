@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인 화면</title>
 	<script src="https://kit.fontawesome.com/6ff644124c.js"	crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/common.css" />
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/headerNav.css" />
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/home/css/registPage.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/home/css/common.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/home/css/headerNav.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/home/css/registPage.css" />
  	
 </head>
 <body>
@@ -19,7 +19,7 @@
 </header>
     <main class="registPage">
        <h4>회 원 가 입</h4>
-    <form action="<%=request.getContextPath()%>/customerInsert.do" method="post" id="regForm" class="myForm" name="regForm">
+    <form action="${pageContext.request.contextPath}/customerInsert.do" method="post" id="regForm" class="myForm" name="regForm">
       <div class="title-table">사이트 이용정보 입력</div>
       <table>
         <tr>
@@ -174,7 +174,7 @@
           id="btn-cancel"
           type="button"
           value="취소"
-          onclick="location.href='<%=request.getContextPath()%>/mainPageAlert.do'"
+          onclick="location.href='${pageContext.request.contextPath}/mainPageAlert.do'"
         />
       </div>
     </form>
@@ -183,7 +183,7 @@
     <footer>
      <%@ include file="/home/footerSection.jsp" %>
     </footer>
-    <script src="<%=request.getContextPath()%>/home/js/registPage.js"></script>
+    <script src="${pageContext.request.contextPath}/home/js/registPage.js"></script>
 </body>
 
 </html>

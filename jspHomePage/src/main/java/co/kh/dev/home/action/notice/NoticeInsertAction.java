@@ -15,14 +15,14 @@ public class NoticeInsertAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-	    NoticeDAO bDAO = new NoticeDAO();
+	    NoticeDAO nDAO = NoticeDAO.getInstance();
 	    try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-	    NoticeVO bvo= new NoticeVO( request.getParameter("title"), request.getParameter("content"));
-	    bDAO.insertDB(bvo);
+	    NoticeVO nvo= new NoticeVO( request.getParameter("title"), request.getParameter("content"));
+	    nDAO.insertDB(nvo);
 		ActionForward forward = new ActionForward(request.getContextPath()+"/noticePageAlert.do?status=4", true);
 		return forward;
 	}

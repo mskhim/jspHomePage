@@ -1,45 +1,46 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <section class="noticeSection">
     <h3>공지사항</h3>
     <ul class="noticeList">
         <!-- 공지사항 데이터를 동적으로 표시 -->
-        <li>
-            <a href="<%=request.getContextPath()%>/noticeDetail.do?id=1">
-                공지사항 제목 1
-            </a>
-            <span class="date">2024-12-19</span>
-        </li>
-        <li>
-            <a href="<%=request.getContextPath()%>/noticeDetail.do?id=2">
-                공지사항 제목 2
-            </a>
-            <span class="date">2024-12-18</span>
-        </li>
-        <li>
-            <a href="<%=request.getContextPath()%>/noticeDetail.do?id=3">
-                공지사항 제목 3
-            </a>
-            <span class="date">2024-12-17</span>
-        </li>
+			<c:forEach var="data" items="${nList}">
+				<li>
+					<a href=" ${pageContext.request.contextPath}/noticeListSelect.do?no=${data.no}&count=1">${data.title}</a>
+					<span class="date">${data.subdate}</span>
+				</li>
+			</c:forEach>
     </ul>
-    <a href="<%=request.getContextPath()%>/noticeList.do" class="moreButton">더보기</a>
+    <a href="${pageContext.request.contextPath}/noticeList.do" class="moreButton">더보기</a>
 </section>
 <section class="recentProductSection">
     <h3>최근 본 상품</h3>
     <ul class="recentProductList">
         <!-- 최근 본 상품 데이터를 동적으로 표시 -->
+         <a href="${pageContext.request.contextPath}/shopListSelect.do?type=${svo1.type}&no=${svo1.no}" >
         <li>
-            <span class="name">상품 1</span>
-            <span class="price">10,000원</span>
+            <span class="name">${svo1.title}</span>
+            <span class="price">${svo1.price}</span>
         </li>
+            </a>
+        <a href="${pageContext.request.contextPath}/shopListSelect.do?type=${svo2.type}&no=${svo2.no}" >
         <li>
-            <span class="name">상품 2</span>
-            <span class="price">20,000원</span>
+            <span class="name">${svo2.title}</span>
+            <span class="price">${svo2.price}</span>
         </li>
+           </a>
+        <a href="${pageContext.request.contextPath}/shopListSelect.do?type=${svo3.type}&no=${svo3.no}" >
         <li>
-            <span class="name">상품 3</span>
-            <span class="price">30,000원</span>
+         <span class="name">${svo3.title}</span>
+            <span class="price">${svo3.price}</span>
         </li>
+            </a>
+        <a href="${pageContext.request.contextPath}/shopListSelect.do?type=${svo4.type}&no=${svo4.no}" >
+        <li>
+         <span class="name">${svo4.title}</span>
+            <span class="price">${svo4.price}</span>
+        </li>
+            </a>
     </ul>
-      <a href="<%=request.getContextPath()%>/noticeList.do" class="moreButton">더보기</a>
+      <a href="${pageContext.request.contextPath}/shopSelect.do?type=1" class="moreButton">더보기</a>
 </section>

@@ -1,0 +1,61 @@
+1734826727009	Delete element
+1734826763300	Rename local variable 'nDAO'
+1734826766874	Rename local variable 'rDAO'
+1734844353126	Rename resource 'SHOP'
+1734846164159	Copy compilation units
+1734847003471	Rename compilation unit 'shopDAO.java'
+1734847011084	Rename type 'shopVO'
+1734847233709	Rename package 'co.kh.dev.home.action.SHOP'
+1734847242729	Copy compilation units
+1734847281765	Rename compilation unit 'ProductFindSelectAction.java'
+1734847285022	Rename compilation unit 'ProductInsertAction.java'
+1734847288795	Rename compilation unit 'ProductSelectAction.java'
+1734847291570	Rename compilation unit 'ProductListDeleteAction.java'
+1734847295623	Rename compilation unit 'ProductListUpdateAction.java'
+1734848522398	Copy folder
+1734848528031	Copy files
+1734848536909	Rename resource 'productContentPage.js'
+1734848546522	Rename resource 'productContentPage.css'
+1734848552628	Rename resource 'productWritePage.css'
+1734848558721	Rename resource 'productPage.css'
+1734852076838	Rename method 'setPirce'
+1734854149136	Copy file
+1734854194380	Copy file
+1734854204814	Delete element
+1734854210830	Copy file
+1734854217019	Delete element
+1734854223950	Rename resource 'productInsertPage.jsp'
+1734854394987	Rename resource 'productWritePage.css'
+1734854406893	Rename resource 'shoptWritePage.css'
+1734854429787	Rename resource 'noticeWritePage.jsp'
+1734854435382	Rename resource 'noticeWritePage.css'
+1734854455064	Rename resource 'boardWritePage.jsp'
+1734854462218	Rename resource 'boardWritePage.css'
+1734858720648	Copy compilation unit
+1734858738138	Rename type 'ProductSelectAction'
+1734859610477	Rename resource 'shopinsertPage.js'
+1734869910433	Copy compilation unit
+1734870376514	Rename type 'shopPageAlertAction'
+1734870405174	Rename type 'shopAlertAction'
+1734872847299	Rename type 'shopPageAlertAction'
+1734874365735	Copy compilation unit
+1734874375638	Delete element
+1734874379338	Copy compilation unit
+1734874386104	Delete element
+1734874388394	Copy compilation unit
+1734874393230	Copy compilation unit
+1734874395381	Delete element
+1734874399012	Rename type 'BoardListSelectAction'
+1734874406108	Rename type 'shopInsertPageSelectAction'
+1734874434684	Rename local variable 'bDAO'
+1734874806662	Rename local variable 'bvo'
+1734875716742	Copy file
+1734875746853	Copy file
+1734878343080	Rename local variable 'pDAO'
+1734882578262	Delete element
+1734882976390	Delete element
+1734886722906	Copy compilation unit
+1734887746942	Copy file
+1734887781001	Delete element
+1734887955547	Copy compilation unit
+1734888215514	Rename local variable 'products'
