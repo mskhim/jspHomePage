@@ -31,11 +31,12 @@
 	<ul class="subMenu" data-submenu="four">
 		<li><a href="${pageContext.request.contextPath}/boardSelect.do">게시판</a></li>
 		<li><a href="${pageContext.request.contextPath}/noticeSelect.do">공지사항</a></li>
-		<li><a href="#">Submenu Gamma</a></li>
 	</ul>
+	<c:if test="${cvo.id=='admin'}">
 	<ul class="subMenu" data-submenu="five">
 		<li><a href="${pageContext.request.contextPath}/productSelect.do">제품 추가</a></li>
 	</ul>
+	</c:if>
 </div>
 <script src="${pageContext.request.contextPath}/home/js/headerNav.js"></script>
 <script src="${pageContext.request.contextPath}/home/js/common.js"></script>

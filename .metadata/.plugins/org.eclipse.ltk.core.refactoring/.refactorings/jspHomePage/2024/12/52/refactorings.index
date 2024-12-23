@@ -59,3 +59,6 @@
 1734887781001	Delete element
 1734887955547	Copy compilation unit
 1734888215514	Rename local variable 'products'
+1734911443215	Copy compilation unit
+1734911475999	Rename local variable 'bvo'
+1734911486499	Rename local variable 'bDAO'

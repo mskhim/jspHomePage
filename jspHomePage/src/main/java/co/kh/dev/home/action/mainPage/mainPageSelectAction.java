@@ -30,9 +30,9 @@ public class mainPageSelectAction implements Action {
     	//get 방식으로 받은 값으로 설정하는값들
 		int startListNum =(srecordCount-3<0)?1:srecordCount-3;
 		int endListNum =srecordCount;
-		ArrayList<ShopVO> sList = sDAO.selectDB(startListNum, endListNum,svo);//원하는 구간의 db를 출력
+		ArrayList<ShopVO> sList =null;
+		sList = sDAO.selectDB(startListNum, endListNum,svo);//원하는 구간의 db를 출력
 		request.setAttribute("sList", sList);
-		
 		BoardDAO bDAO = BoardDAO.getInstance();
 		int bviewTime = 8; // 한페이지에 보여줄 리스트 개수
 		int brecordCount = bDAO.selectRecordDB(); // 전체 리스트 개수 findText값이 있을시 해당 항목으로 변경

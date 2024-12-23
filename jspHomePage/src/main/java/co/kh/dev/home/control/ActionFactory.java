@@ -9,6 +9,7 @@ import co.kh.dev.home.action.alert.NoticePageAlertAction;
 import co.kh.dev.home.action.alert.PopLoginAlertAction;
 import co.kh.dev.home.action.alert.ProductPageAlertAction;
 import co.kh.dev.home.action.alert.ShopPageAlertAction;
+import co.kh.dev.home.action.board.BoardCommentDeleteAction;
 import co.kh.dev.home.action.board.BoardCommentInsertAction;
 import co.kh.dev.home.action.board.BoardFindSelectAction;
 import co.kh.dev.home.action.board.BoardInsertAction;
@@ -110,6 +111,9 @@ public class ActionFactory {
 			break;
 		case "boardCommentInsert": 
 			action = new BoardCommentInsertAction();
+			break;
+		case "boardCommentDelete": 
+			action = new BoardCommentDeleteAction();
 			break;
 		case "customerUpdate": 
 			action = new CustomerUpdateAction();

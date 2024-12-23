@@ -96,11 +96,14 @@ window.location.replace("<c:url value='/boardListSelect.do?no=${bvo.no}' />");
                 </p>
                 <p class="commentContent">${cmvo.content}</p>
 
-                <div class="commentActions" style="${empty cvo ? 'display:none;' : ''}">
+                <div class="commentActions" style="${empty cvo ? 'display:none;' : 'display:flex;  justify-content: flex-end;'}">
                     <button class="commentReplyBtn" onclick="toggleDisp('togle${cmvo.no}')">답글</button>
                     <c:if test="${not empty cvo && cmvo.customerId == cvo.id}">
-                        <button class="commentEditBtn">수정</button>
-                        <button class="commentDeleteBtn">삭제</button>
+                        <form action="/jspHomePage/boardCommentDelete.do">
+                        <input type="hidden" value="${cmvo.no}" name="no">
+                        <input type="hidden" value="${bvo.no}" name="boardNo">
+                        <button type="submit" class="commentDeleteBtn">삭제</button>
+                        </form>
                     </c:if>
                 </div>
             </div>

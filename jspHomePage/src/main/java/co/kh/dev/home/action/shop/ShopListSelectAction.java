@@ -34,6 +34,7 @@ public class ShopListSelectAction implements Action {
     	svo.setType(Integer.parseInt(request.getParameter("type")));
     	svo = sDAO.selectListDB(svo);
     	sivo.setShopNo(svo.getNo());
+    	System.out.println(svo.getRownum());
     	siList= siDAO.selectContentDB(sivo);
     	request.setAttribute("svo",svo);
     	request.setAttribute("siList",siList);

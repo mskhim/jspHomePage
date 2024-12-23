@@ -15,35 +15,31 @@ public class ShopDAO {
 
     // SQL 쿼리문 정의
     private final String SELECT_SQL = 
-    	    "SELECT * " +
-    	    "FROM (" +
-    	    "    SELECT " +
-    	    "        ROWNUM AS RNUM, " +
-    	    "        s.NO, " +
-    	    "        s.TYPE, " +
-    	    "        s.PRODUCT_NO, " +
-    	    "        p.NAME, " +
-    	    "        p.PRICE, " +
-    	    "        p.AMOUNT, " +
-    	    "        s.TITLE, " +
-    	    "        s.CONTENT, " +
-    	    "        i.URL AS TITLEURL, " +
-    	    "        s.SUBDATE " +
-    	    "    FROM (" +
-    	    "        SELECT * " +
-    	    "        FROM SHOP " +
-    	    "        WHERE TYPE = ? " +
-    	    "        ORDER BY SUBDATE DESC " +
-    	    "    ) s " +
-    	    "    LEFT JOIN PRODUCT p ON s.PRODUCT_NO = p.NO " +
-    	    "    LEFT JOIN (" +
-    	    "        SELECT URL, SHOP_NO " +
-    	    "        FROM SHOP_IMG " +
-    	    "        WHERE TYPE = 'TITLE' " +
-    	    "    ) i ON s.NO = i.SHOP_NO " +
-    	    ") " +
-    	    "WHERE RNUM BETWEEN ? AND ? " +
-    	    "ORDER BY RNUM";
+    	    "SELECT \r\n"
+    	    + "    RNUM, \r\n"
+    	    + "    NO, TYPE, PRODUCT_NO, NAME, PRICE, AMOUNT, TITLE, CONTENT, TITLEURL, SUBDATE from(\r\n"
+    	    + "select  ROWNUM RNUM, NO, TYPE, PRODUCT_NO, NAME, PRICE, AMOUNT,TITLE, CONTENT, TITLEURL, SUBDATE FROM (\r\n"
+    	    + "    SELECT \r\n"
+    	    + "        s.NO, s.TYPE, s.PRODUCT_NO, p.NAME, p.PRICE, p.AMOUNT, \r\n"
+    	    + "        s.TITLE, s.CONTENT, i.URL AS TITLEURL, s.SUBDATE \r\n"
+    	    + "    FROM (\r\n"
+    	    + "        SELECT * \r\n"
+    	    + "        FROM SHOP \r\n"
+    	    + "        WHERE TYPE = ? \r\n"
+    	    + "        ORDER BY NO DESC\r\n"
+    	    + "    ) s \r\n"
+    	    + "    LEFT JOIN PRODUCT p ON s.PRODUCT_NO = p.NO \r\n"
+    	    + "    LEFT JOIN (\r\n"
+    	    + "        SELECT URL, SHOP_NO \r\n"
+    	    + "        FROM SHOP_IMG \r\n"
+    	    + "        WHERE TYPE = 'TITLE'\r\n"
+    	    + "    ) i ON s.NO = i.SHOP_NO\r\n"
+    	    + "    order by s.no\r\n"
+    	    + ") \r\n"
+    	    + ")\r\n"
+    	    + "WHERE RNUM BETWEEN ? AND ? ORDER BY RNUM DESC";
+
+
 
 
     private final String SELECT_LIST_SQL = "SELECT * FROM (SELECT ROWNUM AS RNUM , s.NO ,s.type,s.PRODUCT_NO,p.name,p.price,p.amount,s.TITLE,s.CONTENT,url as titleurl,s.SUBDATE FROM SHOP s left join\r\n"
@@ -104,7 +100,6 @@ public class ShopDAO {
             pstmt.setInt(1, svo.getType());
             pstmt.setInt(2, startListNum);
             pstmt.setInt(3, endListNum);
-            
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 int rownum = rs.getInt("RNUM");

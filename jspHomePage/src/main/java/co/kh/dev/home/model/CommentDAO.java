@@ -16,7 +16,7 @@ public class CommentDAO {
 	private final String SELECT_COUNT_BY_BOARD_NO_SQL = "SELECT COUNT(*) COUNT FROM B_COMMENT WHERE BOARD_NO = ?";
 //	private final String SELECT_LOGIN_CHECK_SQL = "SELECT * FROM Customer WHERE ID = ? AND PWD = ?";
 //	private final String UPDATE_SQL = "UPDATE CUSTOMER SET PWD = ?, NAME = ?, NICKNAME = ?, EMAIL = ?, TEL = ?, PHONE = ?, BIRTH = ?, ZIPCODE = ?, ADDRESS1 = ?, ADDRESS2 = ? WHERE ID = ? AND PWD = ?";
-//	private final String DELETE_SQL = "DELETE FROM CUSTOMER WHERE ID=?";
+	private final String DELETE_SQL = "DELETE FROM B_COMMENT WHERE NO=?";
 	private static CommentDAO cDAO;
 
 	private CommentDAO() {
@@ -107,23 +107,23 @@ public class CommentDAO {
 		return count;
 	}
 
-//	// ID 삭제 메서드
-//	public boolean deleteDB(CommentVO cmvo) {
-//		Connection con = cp.getConnection();
-//		PreparedStatement pstmt = null;
-//		int rs = 0;
-//		try {
-//			pstmt = con.prepareStatement(DELETE_SQL);
-//			pstmt.setString(1, cmvo.getId());
-//			rs = pstmt.executeUpdate();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			cp.dbClose(con, pstmt);
-//		}
-//
-//		return (rs != 0) ? true : false;
-//	}
+	// 삭제 메서드
+	public boolean deleteDB(CommentVO cmvo) {
+		Connection con = cp.getConnection();
+		PreparedStatement pstmt = null;
+		int rs = 0;
+		try {
+			pstmt = con.prepareStatement(DELETE_SQL);
+			pstmt.setInt(1, cmvo.getNo());
+			rs = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			cp.dbClose(con, pstmt);
+		}
+
+		return (rs != 0) ? true : false;
+	}
 
 //	public CustomerVO selectByIdDB(CommentVO cmvo) {
 //		Connection con = cp.getConnection();
