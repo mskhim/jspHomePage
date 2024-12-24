@@ -2,9 +2,11 @@ package co.kh.dev.home.action.mainPage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.kh.dev.home.action.Action;
 import co.kh.dev.home.control.ActionForward;
@@ -17,22 +19,31 @@ import co.kh.dev.home.model.ShopVO;
 
 public class mainPageSelectAction implements Action {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession();
+		Map<String, ShopVO> sMap= null;
+		if(session.getAttribute("sMap")!=null) {
+			sMap=(Map<String, ShopVO>) session.getAttribute("sMap");
+		}
+        ArrayList<ShopVO> selectSList = new ArrayList<>();
+        if (sMap != null) {
+            selectSList.addAll(sMap.values());
+        }
+		request.setAttribute("selectSList", selectSList);
+		System.out.println(selectSList.size());
+		
 		ShopDAO sDAO = ShopDAO.getInstance();
 		ShopVO svo = new ShopVO();
 		svo.setType(1);
-    	//객체들의 기본값 요소 설정
-    	//항상 get 방식으로 전달되어야 하는 값들
-    	//데이터베이스 에서 가져오는 값
     	int srecordCount = sDAO.selectRecordDB(svo);
-    	//전체 리스트 개수 findText값이 있을시 해당 항목으로 변경
-    	//get 방식으로 받은 값으로 설정하는값들
 		int startListNum =(srecordCount-3<0)?1:srecordCount-3;
 		int endListNum =srecordCount;
 		ArrayList<ShopVO> sList =null;
 		sList = sDAO.selectDB(startListNum, endListNum,svo);//원하는 구간의 db를 출력
 		request.setAttribute("sList", sList);
+		
 		BoardDAO bDAO = BoardDAO.getInstance();
 		int bviewTime = 8; // 한페이지에 보여줄 리스트 개수
 		int brecordCount = bDAO.selectRecordDB(); // 전체 리스트 개수 findText값이 있을시 해당 항목으로 변경

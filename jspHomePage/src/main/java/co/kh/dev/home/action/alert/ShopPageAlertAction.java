@@ -29,6 +29,9 @@ public class ShopPageAlertAction implements Action {
 		case "4":
 			msg = "장바구니에 등록되었습니다.";
 			break;
+		case "5":
+			msg = "이미 추가된 상품이거나, 장바구니에 추가할수 없는 상품입니다.";
+			break;
 		default:
 			alertFlag = false;
 			ActionForward forward = new ActionForward("/shopSelect.do?type="+type, false);

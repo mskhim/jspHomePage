@@ -2,6 +2,8 @@ package co.kh.dev.home.action.shop;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,15 +17,14 @@ import co.kh.dev.home.model.ShopImgVO;
 import co.kh.dev.home.model.ShopVO;
 
 public class ShopListSelectAction implements Action {
+	@SuppressWarnings("unchecked")
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession(false);
-		ShopVO svo1= null;
-		ShopVO svo2= null;
-		ShopVO svo3= null;
-		if(session.getAttribute("svo1")!=null) {svo1=(ShopVO)session.getAttribute("svo1");}
-		if(session.getAttribute("svo2")!=null) {svo2=(ShopVO)session.getAttribute("svo2");}
-		if(session.getAttribute("svo3")!=null) {svo3=(ShopVO)session.getAttribute("svo3");}
+		Map<String, ShopVO> sMap = new HashMap<String, ShopVO>();
+		if(session.getAttribute("sMap")!=null) {
+			sMap=(Map<String, ShopVO>) session.getAttribute("sMap");
+		}
 		ShopDAO sDAO = ShopDAO.getInstance();
     	ShopImgDAO siDAO = ShopImgDAO.getInstance();
     	ShopVO svo = new ShopVO();
@@ -34,15 +35,11 @@ public class ShopListSelectAction implements Action {
     	svo.setType(Integer.parseInt(request.getParameter("type")));
     	svo = sDAO.selectListDB(svo);
     	sivo.setShopNo(svo.getNo());
-    	System.out.println(svo.getRownum());
     	siList= siDAO.selectContentDB(sivo);
     	request.setAttribute("svo",svo);
     	request.setAttribute("siList",siList);
-    	session.setAttribute("svo1", svo);
-    	session.setAttribute("svo2", svo1);
-    	session.setAttribute("svo3", svo2);
-    	session.setAttribute("svo4", svo3);
-    	
+    	sMap.put(request.getParameter("no"), svo);
+    	session.setAttribute("sMap", sMap);
 		ActionForward forward = new ActionForward("/home/shop/shopListPage.jsp", false);
 		return forward;
 	}

@@ -17,30 +17,16 @@
     <h3>최근 본 상품</h3>
     <ul class="recentProductList">
         <!-- 최근 본 상품 데이터를 동적으로 표시 -->
-         <a href="${pageContext.request.contextPath}/shopListSelect.do?type=${svo1.type}&no=${svo1.no}" >
+        <c:forEach var="data" items="${selectSList}">
+         <a href="${pageContext.request.contextPath}/shopListSelect.do?type=${data.type}&no=${data.no}" >
         <li>
-            <span class="name">${svo1.title}</span>
-            <span class="price">${svo1.price}</span>
+            <span class="name">${data.title}</span>
+            <span class="price">${data.price}</span>
         </li>
             </a>
-        <a href="${pageContext.request.contextPath}/shopListSelect.do?type=${svo2.type}&no=${svo2.no}" >
-        <li>
-            <span class="name">${svo2.title}</span>
-            <span class="price">${svo2.price}</span>
-        </li>
-           </a>
-        <a href="${pageContext.request.contextPath}/shopListSelect.do?type=${svo3.type}&no=${svo3.no}" >
-        <li>
-         <span class="name">${svo3.title}</span>
-            <span class="price">${svo3.price}</span>
-        </li>
-            </a>
-        <a href="${pageContext.request.contextPath}/shopListSelect.do?type=${svo4.type}&no=${svo4.no}" >
-        <li>
-         <span class="name">${svo4.title}</span>
-            <span class="price">${svo4.price}</span>
-        </li>
-            </a>
+            </c:forEach>
+      
+       
     </ul>
       <a href="${pageContext.request.contextPath}/shopSelect.do?type=1" class="moreButton">더보기</a>
 </section>

@@ -24,17 +24,19 @@
 <div class="subMenuContainer">
 
 	<ul class="subMenu" data-submenu="three">
-		<li><a href="${pageContext.request.contextPath}/shopSelect.do?type=1">고양이 용품</a></li>
-		<li><a href="${pageContext.request.contextPath}/shopSelect.do?type=2">강아지 용품</a></li>
-		<li><a href="${pageContext.request.contextPath}/shopSelect.do?type=3">기타 제품</a></li>
+		<a href="${pageContext.request.contextPath}/shopSelect.do?type=1"><li>고양이 용품</li></a>
+		<a href="${pageContext.request.contextPath}/shopSelect.do?type=2"><li>강아지 용품</li></a>
+		<a href="${pageContext.request.contextPath}/shopSelect.do?type=3"><li>기타 제품</li></a>
 	</ul>
 	<ul class="subMenu" data-submenu="four">
-		<li><a href="${pageContext.request.contextPath}/boardSelect.do">게시판</a></li>
-		<li><a href="${pageContext.request.contextPath}/noticeSelect.do">공지사항</a></li>
+		<a href="${pageContext.request.contextPath}/boardSelect.do"><li>게시판</li></a>
+		<a href="${pageContext.request.contextPath}/noticeSelect.do"><li>공지사항</li></a>
 	</ul>
 	<c:if test="${cvo.id=='admin'}">
 	<ul class="subMenu" data-submenu="five">
-		<li><a href="${pageContext.request.contextPath}/productSelect.do">제품 추가</a></li>
+		
+		<a href="${pageContext.request.contextPath}/productSelect.do"><li>제품 추가</li></a>
+		
 	</ul>
 	</c:if>
 </div>

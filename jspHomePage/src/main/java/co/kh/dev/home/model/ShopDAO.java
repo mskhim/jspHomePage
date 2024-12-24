@@ -38,17 +38,12 @@ public class ShopDAO {
     	    + ") \r\n"
     	    + ")\r\n"
     	    + "WHERE RNUM BETWEEN ? AND ? ORDER BY RNUM DESC";
-
-
-
-
     private final String SELECT_LIST_SQL = "SELECT * FROM (SELECT ROWNUM AS RNUM , s.NO ,s.type,s.PRODUCT_NO,p.name,p.price,p.amount,s.TITLE,s.CONTENT,url as titleurl,s.SUBDATE FROM SHOP s left join\r\n"
     		+ "product p\r\n"
     		+ "on s.product_no=p.no\r\n"
     		+ "left join\r\n"
     		+ "(select url,shop_no from SHOP_IMG where type='TITLE') i\r\n"
     		+ "on s.no=i.shop_no\r\n"
-    		+ "where type=?\r\n"
     		+ "ORDER BY S.SUBDATE) WHERE no = ?  ORDER BY RNUM DESC";
     private final String SELECT_LAST_NO_SQL = "SELECT * FROM (SELECT * FROM SHOP_RNUM ORDER BY NO DESC) WHERE ROWNUM=1 ";
     private final String SELECT_RECORD_SQL = "SELECT COUNT(*) COUNT FROM SHOP WHERE TYPE=?";
@@ -129,8 +124,7 @@ public class ShopDAO {
     	ResultSet rs = null;
     	try {
     		pstmt = con.prepareStatement(SELECT_LIST_SQL);
-    		pstmt.setInt(1, svo.getType());
-    		pstmt.setInt(2, svo.getNo());
+    		pstmt.setInt(1, svo.getNo());
     		rs = pstmt.executeQuery();
     		while (rs.next()) {
     			int rownum = rs.getInt("RNUM");

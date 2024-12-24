@@ -9,7 +9,7 @@
         <c:forEach var="product" items="${sList}" varStatus="status">
 					<div class="productItem">
 						<a
-							href="<c:url value='/shopListSelect.do?rownum=${count}&type=${param.type}' />">
+							href="<c:url value='/shopListSelect.do?no=${product.no}&type=${product.type}' />">
 							<img src="<c:url value='${product.titleUrl}' />"alt="${product.name}" class="productImg">
 								<div class="price">
 									<fmt:formatNumber value="${product.price}" type="currency" />

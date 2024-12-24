@@ -33,12 +33,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:if test="${not empty sList}">
-                        <c:forEach var="product" items="${sList}">
+                    <c:if test="${not empty ctList}">
+                        <c:forEach var="cart" items="${ctList}">
                             <tr>
-                                <td><input type="checkbox" name="productNo" value="${product.no}"></td>
-                                <td>${product.title}</td>
-                                <td><fmt:formatNumber value="${product.price}" pattern="#,##0"/>원</td>
+                                <td><input type="checkbox" name="cartNo" value="${cart.no}"></td>
+                                <td>${cart.title}</td>
+                                <td><fmt:formatNumber value="${cart.price}" pattern="#,##0"/>원</td>
                             </tr>
                         </c:forEach>
                     </c:if>
