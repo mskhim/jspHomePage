@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.kh.dev.common.MyUtility;
 import co.kh.dev.home.action.Action;
 import co.kh.dev.home.control.ActionForward;
 import co.kh.dev.home.model.BoardDAO;
@@ -38,8 +37,8 @@ public class BoardFindSelectAction implements Action {
 			viewTime = Integer.parseInt(request.getParameter("viewTime"));
 		}
 		// 데이터베이스 에서 가져오는 값
-		int recordCount = (MyUtility.isNullOrEmpty(findText)) ? bDAO.selectRecordDB()
-				: bDAO.selectRecordByTitleDB(findText); // 전체 리스트 개수 findText값이 있을시 해당 항목으로 변경
+		int recordCount = (findValue.equals("title")) ? bDAO.selectRecordByTitleDB(findText)
+				: bDAO.selectRecordByIdDB(findText); // 전체 리스트 개수 findText값이 있을시 해당 항목으로 변경
 		// get 방식으로 받은 값으로 설정하는값들
 		int pageCount = recordCount / viewTime + 1; // 전체 페이지 개수
 		int pageStartNum = 1; // 페이지 첫번째번호
@@ -55,8 +54,9 @@ public class BoardFindSelectAction implements Action {
 		startListNum = (recordCount - viewTime * pageNum + 1 < 0) ? 1 : recordCount - viewTime * pageNum + 1;// 시작 리스트
 																												// 구하
 		endListNum = recordCount - viewTime * (pageNum - 1);
-		ArrayList<BoardVO> bList = (MyUtility.isNullOrEmpty(findText)) ? bDAO.selectDB(startListNum, endListNum)
-				: bDAO.selectByTitleDB(findText, startListNum, endListNum);// 원하는 구간의 db를 출력
+		ArrayList<BoardVO> bList = (findValue.equals("title")) ? bDAO.selectByTitleDB(findText, startListNum, endListNum)
+				: bDAO.selectByIdDB(findText, startListNum, endListNum);
+					// 원하는 구간의 db를 출력
 		request.setAttribute("bList", bList);
 		request.setAttribute("viewTime", viewTime);
 		request.setAttribute("pageNum", pageNum);

@@ -81,7 +81,7 @@ public class CartDAO {
     }
 
     // 카트 항목 업데이트
-    public boolean updateCartAmount(CartVO ctvo) {
+    public boolean updateDB(CartVO ctvo) {
         Connection con = cp.getConnection();
         PreparedStatement pstmt = null;
         int rs = 0;
@@ -99,7 +99,7 @@ public class CartDAO {
     }
 
     // 카트 항목 삭제
-    public boolean deleteCart(CartVO ctvo) {
+    public boolean deleteDB(CartVO ctvo) {
         Connection con = cp.getConnection();
         PreparedStatement pstmt = null;
         int rs = 0;

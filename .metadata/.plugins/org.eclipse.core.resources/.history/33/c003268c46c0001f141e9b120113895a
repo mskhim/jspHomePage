@@ -1,6 +1,0 @@
-function updatePrice() {
-    const select = document.getElementById("productSelect");
-    const selectedOption = select.options[select.selectedIndex];
-    const price = selectedOption.getAttribute("data-price");
-    document.getElementById("price").value = price || "";
-}

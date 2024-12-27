@@ -56,6 +56,8 @@
                 </select>
                 <input type="text" name="findText" id="findText" />
                 <button type="submit" id="findButton">검색</button>
+                					<button type="button"
+						onclick="location.href='/jspHomePage/noticeSelect.do'">검색취소</button>
             </form>
         </div>
     </article>

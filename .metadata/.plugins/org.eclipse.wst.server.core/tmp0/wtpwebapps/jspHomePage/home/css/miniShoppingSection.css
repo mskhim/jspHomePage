@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* 게시판 미리보기 스타일 */
-.boardArticle { background: #f9f9f9; border-radius: 8px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px auto; width: 90%;
+.boardArticle { border-radius: 8px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px auto; width: 90%;
 }
 
 .boardArticle h3 {

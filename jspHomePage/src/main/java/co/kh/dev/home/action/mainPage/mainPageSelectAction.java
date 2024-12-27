@@ -2,6 +2,7 @@ package co.kh.dev.home.action.mainPage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,12 +28,14 @@ public class mainPageSelectAction implements Action {
 		if(session.getAttribute("sMap")!=null) {
 			sMap=(Map<String, ShopVO>) session.getAttribute("sMap");
 		}
-        ArrayList<ShopVO> selectSList = new ArrayList<>();
+        ArrayList<ShopVO> sortList = new ArrayList<>();
         if (sMap != null) {
-            selectSList.addAll(sMap.values());
+            sortList.addAll(sMap.values());
+            Collections.reverse(sortList);
+        }if(sortList.size()>4){
+        	sortList.subList(4, sortList.size()).clear();
         }
-		request.setAttribute("selectSList", selectSList);
-		System.out.println(selectSList.size());
+		request.setAttribute("selectSList", sortList);
 		
 		ShopDAO sDAO = ShopDAO.getInstance();
 		ShopVO svo = new ShopVO();

@@ -2,7 +2,7 @@ package co.kh.dev.home.action.shop;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +21,7 @@ public class ShopListSelectAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession(false);
-		Map<String, ShopVO> sMap = new HashMap<String, ShopVO>();
+		Map<String, ShopVO> sMap = new LinkedHashMap<String, ShopVO>();
 		if(session.getAttribute("sMap")!=null) {
 			sMap=(Map<String, ShopVO>) session.getAttribute("sMap");
 		}
@@ -35,10 +35,14 @@ public class ShopListSelectAction implements Action {
     	svo.setType(Integer.parseInt(request.getParameter("type")));
     	svo = sDAO.selectListDB(svo);
     	sivo.setShopNo(svo.getNo());
-    	siList= siDAO.selectContentDB(sivo);
+    	siList= siDAO.selectContentDB(sivo);	
     	request.setAttribute("svo",svo);
     	request.setAttribute("siList",siList);
-    	sMap.put(request.getParameter("no"), svo);
+    	ShopVO key = sMap.put(request.getParameter("no"), svo);
+    	if(key!=null) {
+    		sMap.remove(request.getParameter("no"));
+    		sMap.put(request.getParameter("no"), svo);
+    	}
     	session.setAttribute("sMap", sMap);
 		ActionForward forward = new ActionForward("/home/shop/shopListPage.jsp", false);
 		return forward;

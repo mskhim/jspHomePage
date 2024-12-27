@@ -54,14 +54,12 @@ window.location.replace("<c:url value='/noticeSelect.do' />");
                 <label for="find">검색 기준:</label>
                 <select name="findValue" id="find">
                     <option value="title">제목</option>
-                    <option value="text">내용</option>
                 </select>
                 <input type="text" name="findText" id="findText" />
                 <button type="submit" id="findButton">검색</button>
             </form>
         </div>
     </article>
-
     <!-- 공지사항 목록 -->
     <article class="article4">
         <table>

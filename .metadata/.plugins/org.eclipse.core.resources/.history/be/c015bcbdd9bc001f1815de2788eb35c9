@@ -1,6 +1,0 @@
-package co.kh.dev.home.control;
-
-
-public interface Action {
-
-}

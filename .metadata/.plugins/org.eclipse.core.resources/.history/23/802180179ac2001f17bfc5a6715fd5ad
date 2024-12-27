@@ -1,0 +1,35 @@
+function toggleAll(checkbox) {
+	const checkboxes = document.querySelectorAll('input[name="cartNo"]');
+	checkboxes.forEach(cb => cb.checked = checkbox.checked);
+}
+
+function deleteCartItem(cartNo) {
+	if (confirm("정말 삭제하시겠습니까?")) {
+		// Ajax 요청으로 삭제 처리
+		fetch(`/jspHomePage/shopCartDelete.do?no=${cartNo}`, { method: 'POST' }).then(response => response.text()).then(data => {
+			if (data === "SUCCESS") {
+				alert("삭제되었습니다.")
+				window.location.reload();
+			} else {
+				alert("잘못된 접근입니다.")
+			}
+		}
+		)
+	}
+}
+
+
+function changePrice(cartNo,cartPrice){
+	const qt = document.querySelector(`.quantity-input${cartNo}`);
+	const ecPrice= document.querySelector(`.eachPrice${cartNo}`);
+	ecPrice.value=qt.value*cartPrice;
+	
+}
+
+function totlaPrice(checkbox) {
+	const totalPrice = document.querySelector('.totalPrice');
+	fetch(`/shopCartNoSelect.do?`, {method: 'POST'}).then(response=>response.text()).then((data)=>{
+		
+	})
+	totalPrice.value
+}

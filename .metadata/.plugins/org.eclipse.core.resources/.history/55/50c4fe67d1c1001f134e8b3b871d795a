@@ -1,0 +1,108 @@
+<%@page import="co.kh.dev.home.model.ProductVO"%>
+<%@page import="co.kh.dev.home.model.ProductDAO"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>장바구니</title>
+<script src="https://kit.fontawesome.com/6ff644124c.js" crossorigin="anonymous"></script>
+<%@ include file="/home/css/commonCss.jsp" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/home/shop/css/shopCartPage.css" />
+<style>
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.cart-container {
+    width: 80%;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333333;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.cart-table th,
+.cart-table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 10px;
+}
+
+.cart-table th {
+    background-color: #f2f2f2;
+}
+
+.cart-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.cart-actions {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.order-all-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-all-btn:hover {
+    background-color: #218838;
+}
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.delete-btn {
+    padding: 5px 8px;
+    background-color: #dc3545;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.cart-table th:first-child, .cart-table td:first-child {
+    width: 5%;
+}
+.cart-table th:nth-child(4), .cart-table td:nth-child(4) {
+    width: 10%;
+}
+.cart-table th:last-child, .cart-table td:last-child {
+    width: 10%;
+}

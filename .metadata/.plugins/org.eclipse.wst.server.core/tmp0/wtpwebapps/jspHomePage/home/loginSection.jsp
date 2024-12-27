@@ -26,8 +26,6 @@
 
         <nav class="loginNav">
             <ul style="display: flex">
-                <li><a href="#">비밀번호 찾기</a></li>
-                <li><a href="#">아이디 찾기</a></li>
                 <li><a href="${pageContext.request.contextPath}/home/customerRegistPage.jsp">회원가입</a></li>
             </ul>
         </nav>

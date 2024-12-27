@@ -53,15 +53,14 @@ window.location.replace("<c:url value='/shopSelect.do?type=${param.type} ' />");
 
 		<!-- 검색 기능 -->
 		<section class="searchBar">
-			<form method="get" action="<c:url value='/shopSearch.do' />">
+			<form method="post" action="<c:url value='/shopFindSelect.do?type=${param.type}' />">
 				<label for="searchCriteria">검색 기준:</label> <select
 					name="searchCriteria" id="searchCriteria">
-					<option value="title">제목</option>
-					<option value="content">내용</option>
-				</select> <input type="text" name="searchKeyword" id="searchKeyword"
+					<option value="title">상품명</option>
+				</select> <input type="text" name="findText" id="searchKeyword"
 					placeholder="검색어를 입력하세요" required>
 				<button type="submit" class="searchButton">검색</button>
-			</form>
+			</form>	
 		</section>
 
 		<!-- 상품 목록 -->

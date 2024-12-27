@@ -57,11 +57,8 @@ window.location.replace("${pageContext.request.contextPath}/home/myPage/myPage.j
 				<div class="menuItem">
 					<i class="fas fa-file-alt"></i> <a href="#">내가 쓴 게시글</a>
 				</div>
-				<div class="menuItem">
+				<div class="menuItem" onclick="location.href='${pageContext.request.contextPath}/shopCartSelect.do'">
 					<i class="fas fa-shopping-cart"></i> <a href="#">장바구니 확인</a>
-				</div>
-				<div class="menuItem">
-					<i class="fas fa-heart"></i> <a href="#">찜한 상품</a>
 				</div>
 			</div>
 		</div>

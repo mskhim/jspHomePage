@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>상품 등록</title>
+<title>장바구니</title>
 <script src="https://kit.fontawesome.com/6ff644124c.js" crossorigin="anonymous"></script>
 <%@ include file="/home/css/commonCss.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/home/shop/css/shopCartPage.css" />
@@ -27,48 +27,51 @@
             <table class="cart-table">
                 <thead>
                     <tr>
-                        <th><input type="checkbox" id="checkAll" onclick="toggleAll(this)"> 전체 선택</th>
+                        <th><input type="checkbox" id="checkAll" onchange="toggleAll(this)"></th>
                         <th>상품명</th>
                         <th>가격</th>
+                        <th>수량</th>
+                        <th>삭제</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:if test="${not empty ctList}">
                         <c:forEach var="cart" items="${ctList}">
                             <tr>
-                                <td><input type="checkbox" name="cartNo" value="${cart.no}"></td>
+                                <td><input type="checkbox" name="cartNo" value="${cart.no}" onchange="setPrice(this)"></td>
                                 <td>${cart.title}</td>
-                                <td><fmt:formatNumber value="${cart.price}" pattern="#,##0"/>원</td>
+                                <td><fmt:formatNumber value="${cart.price}" pattern="#,##0" />원</td>
+                                <td><input type="number" name="quantity" value="${cart.qt}" min="1" class="quantity-input${cart.no}" onchange="changeQt(${cart.no},${cart.price})"></td>
+                                <td><button type="button" class="delete-btn" onclick="deleteCartItem(${cart.no})">삭제</button></td>
                             </tr>
+                                <input type="hidden" class="eachPrice${cart.no}" value="${cart.qt*cart.price}">
                         </c:forEach>
                     </c:if>
-                    <c:if test="${empty products}">
+                    <c:if test="${empty ctList}">
                         <tr>
-                            <td colspan="3" style="text-align: center;">장바구니가 비어 있습니다.</td>
+                            <td colspan="5" style="text-align: center;">장바구니가 비어 있습니다.</td>
                         </tr>
                     </c:if>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">총 합계:</td>
+                        <td colspan="3" style="text-align: right;"><input type="text" id="totalPrice" value="<fmt:formatNumber value="0" pattern="#,##0" />" readOnly/>원</td>
+                    </tr>
+                </tfoot>
             </table>
             <div class="cart-actions">
-                <button type="submit" class="order-all-btn">전체 주문하기</button>
+                <button type="submit" class="order-all-btn">주문하기</button>
             </div>
         </form>
     </div>
-
-
 
 <br>
 <hr>
 <footer>
     <%@ include file="/home/footerSection.jsp" %>
 </footer>
-    <script>
-        function toggleAll(checkbox) {
-            const checkboxes = document.querySelectorAll('input[name="productNo"]');
-            checkboxes.forEach(cb => cb.checked = checkbox.checked);
-        }
-    </script>
 <script src="${pageContext.request.contextPath}/home/js/common.js"></script>
-<script src="${pageContext.request.contextPath}/home/shop/js/shopInsertPage.js"></script>
+<script src="${pageContext.request.contextPath}/home/shop/js/shopCartPage.js"></script>
 </body>
 </html>

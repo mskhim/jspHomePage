@@ -37,8 +37,10 @@ import co.kh.dev.home.action.product.ProductInsertAction;
 import co.kh.dev.home.action.product.ProductListDeleteAction;
 import co.kh.dev.home.action.product.ProductListUpdateAction;
 import co.kh.dev.home.action.product.ProductSelectAction;
+import co.kh.dev.home.action.shop.ShopCartDeleteAction;
 import co.kh.dev.home.action.shop.ShopCartInsertAction;
 import co.kh.dev.home.action.shop.ShopCartSelectAction;
+import co.kh.dev.home.action.shop.ShopFindSelectAction;
 import co.kh.dev.home.action.shop.ShopInsertAction;
 import co.kh.dev.home.action.shop.ShopInsertPageSelectAction;
 import co.kh.dev.home.action.shop.ShopListDeleteAction;
@@ -197,6 +199,12 @@ public class ActionFactory {
 			break;
 		case "shopCartSelect": 
 			action = new ShopCartSelectAction();
+			break;
+		case "shopCartDelete": 
+			action = new ShopCartDeleteAction();
+			break;
+		case "shopFindSelect": 
+			action = new ShopFindSelectAction();
 			break;
 		default: 
 			action = null;

@@ -15,6 +15,8 @@ public class BoardDAO {
 	private final String SELECT_RECORD_SQL = "SELECT COUNT(*) COUNT FROM BOARD_J_CUSTOMER_ROWNUM";
 	private final String SELECT_BY_TITLE_SQL = "SELECT * FROM (SELECT ROWNUM AS RNUM,CUSTOMER_ID, NO, NAME,TITLE,CONTENT,COUNT,SUBDATE  FROM BOARD_J_CUSTOMER WHERE TITLE LIKE '%'||?||'%') A LEFT JOIN(SELECT BOARD_NO,COUNT(*) COMMENT_NUM FROM B_COMMENT GROUP BY BOARD_NO) B ON A.NO=B.BOARD_NO WHERE RNUM BETWEEN ? AND ? ORDER BY RNUM DESC";
 	private final String SELECT_BY_TITLE_RECORD_SQL = "SELECT COUNT(*) COUNT FROM BOARD_J_CUSTOMER_ROWNUM WHERE TITLE LIKE '%'||?||'%'";
+	private final String SELECT_BY_ID_SQL = "SELECT * FROM (SELECT ROWNUM AS RNUM,CUSTOMER_ID, NO, NAME,TITLE,CONTENT,COUNT,SUBDATE  FROM BOARD_J_CUSTOMER WHERE CUSTOMER_ID LIKE '%'||?||'%') A LEFT JOIN(SELECT BOARD_NO,COUNT(*) COMMENT_NUM FROM B_COMMENT GROUP BY BOARD_NO) B ON A.NO=B.BOARD_NO WHERE RNUM BETWEEN ? AND ? ORDER BY RNUM DESC";
+	private final String SELECT_BY_ID_RECORD_SQL = "SELECT COUNT(*) COUNT FROM BOARD_J_CUSTOMER_ROWNUM WHERE CUSTOMER_ID LIKE '%'||?||'%'";
 	private final String SELECT_BY_RNUM_SQL = "SELECT * FROM BOARD_J_CUSTOMER_ROWNUM WHERE NO=?";
 	private final String UPDATE_SQL = "UPDATE BOARD SET TITLE = ?, CONTENT = ?, COUNT = ? WHERE NO = ?";
 	private final String UPDATE_TC_SQL = "UPDATE BOARD SET TITLE = ?, CONTENT = ? WHERE NO = ?";
@@ -112,6 +114,37 @@ public class BoardDAO {
 		cp.dbClose(con, rs, pstmt);
 		return mList;
 	}
+	// 작성자를 입력받아서 비슷한 내용들을출력
+	public ArrayList<BoardVO> selectByIdDB(String id, int startListNum, int endListNum) {
+		Connection con = cp.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<BoardVO> mList = new ArrayList<BoardVO>();
+		try {
+			pstmt = con.prepareStatement(SELECT_BY_ID_SQL);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, startListNum);
+			pstmt.setInt(3, endListNum);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int rownum = rs.getInt("RNUM");
+				int no = rs.getInt("NO");
+				String name = rs.getString("NAME");
+				String customerId = rs.getString("CUSTOMER_ID");
+				String title = rs.getString("TITLE");
+				String content = rs.getString("CONTENT");
+				int count = rs.getInt("COUNT");
+				Date subdate = rs.getDate("SUBDATE");
+				int commentNum = rs.getInt("COMMENT_NUM");
+				BoardVO mvo2 = new BoardVO(rownum, no, customerId, name, title, content, count, subdate, commentNum);
+				mList.add(mvo2);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		cp.dbClose(con, rs, pstmt);
+		return mList;
+	}
 
 	// 제목을 입력받아서 비슷한 내용의BOARD의 레코드 개수를 출력
 	public int selectRecordByTitleDB(String findText) {
@@ -122,6 +155,25 @@ public class BoardDAO {
 		try {
 			pstmt = con.prepareStatement(SELECT_BY_TITLE_RECORD_SQL);
 			pstmt.setString(1, findText);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				count = rs.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		cp.dbClose(con, rs, pstmt);
+		return count;
+	}
+	// 제목을 입력받아서 비슷한 내용의BOARD의 레코드 개수를 출력
+	public int selectRecordByIdDB(String id) {
+		Connection con = cp.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		try {
+			pstmt = con.prepareStatement(SELECT_BY_ID_RECORD_SQL);
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				count = rs.getInt("COUNT");

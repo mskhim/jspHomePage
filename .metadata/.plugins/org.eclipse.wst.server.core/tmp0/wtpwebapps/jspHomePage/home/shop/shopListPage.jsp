@@ -78,7 +78,6 @@
 							<input value="${svo.no}" type="hidden" name="no"> <input
 								value="${svo.type}" type="hidden" name="type">
 							<button type="submit">장바구니에 담기</button>
-							<button type="button">찜하기</button>
 							<button type="button">바로 구매하기</button>
 						</div>
 					</form>

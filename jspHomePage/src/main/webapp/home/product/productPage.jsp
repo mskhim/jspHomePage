@@ -53,7 +53,6 @@ window.location.replace("<c:url value='/home/product/productPage.jsp' />");
 				<form method="get" action="<c:url value='/productFindSelect.do' />">
 					<label for="find">검색 기준:</label> <select name="findValue" id="find">
 						<option value="name">상품명</option>
-						<option value="description">설명</option>
 					</select> <input type="text" name="findText" id="findText" />
 					<button type="submit" id="findButton">검색</button>
 				</form>

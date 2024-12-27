@@ -11,8 +11,10 @@ main.mainPage {
 
 .sideSection {
   grid-column: 1 / 2;
-  background-color: rgba(9, 170, 92, 0.5);
   padding: 15px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  padding: 20px;
   border-radius: 8px;
 }
 

@@ -1,8 +1,0 @@
-package co.kh.dev.common;
-
-import javax.servlet.http.HttpSession;
-
-public interface Action {
-
-	void excute(HttpSession);
-}

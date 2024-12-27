@@ -19,7 +19,7 @@ public class ProductDAO {
 	private final String SELECT_BY_TITLE_SQL = "SELECT * FROM (select rownum as rnum, no, NAME, PRICE, AMOUNT,subdate from PRODUCT WHERE NAME LIKE '%'||?||'%' order by subdate ) WHERE RNUM BETWEEN ? AND ? ORDER BY RNUM DESC";
 	private final String SELECT_BY_TITLE_RECORD_SQL = "SELECT COUNT(*) COUNT FROM PRODUCT_RNUM WHERE NAME LIKE '%'||?||'%'";
 	private final String SELECT_BY_NO_SQL = "SELECT * FROM PRODUCT_RNUM WHERE NO=?";
-	private final String UPDATE_COUNT_SQL = "UPDATE PRODUCT SET COUNT = ? WHERE NO = ?";
+//	private final String UPDATE_COUNT_SQL = "UPDATE PRODUCT SET COUNT = ? WHERE NO = ?";
 	private final String UPDATE_SQL = "UPDATE PRODUCT SET NAME = ?, PRICE=?, AMOUNT = ? WHERE NO = ?";
 	private final String INSERT_SQL = "INSERT INTO PRODUCT VALUES((SELECT NVL(MAX(NO),0)+1 FROM PRODUCT),?,?,?,SYSDATE)";
 	private final String DELETE_SQL = "DELETE FROM PRODUCT WHERE NO = ?";

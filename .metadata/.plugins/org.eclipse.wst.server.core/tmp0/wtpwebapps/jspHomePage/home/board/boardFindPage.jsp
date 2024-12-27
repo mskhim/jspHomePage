@@ -50,8 +50,6 @@
 					<button type="submit" id="BoardViewButton">보기</button>
 				</form>
 				<form method="get" action="/jspHomePage/boardFindSelect.do">
-					<button type="button"
-						onclick="location.href='/jspHomePage/boardSelect.do'">검색취소</button>
 					<select name="findValue" id="find">
 						<option value="title"
 							${findValue=="title"? "selected" :""}>제목</option>
@@ -60,6 +58,8 @@
 					</select> <input type="text" name="findText" id="findText"
 						value="${findText}">
 					<button type="submit" id="findButton">검색</button>
+					<button type="button"
+						onclick="location.href='/jspHomePage/boardSelect.do'">검색취소</button>
 				</form>
 			</div>
 		</article>

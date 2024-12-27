@@ -60,7 +60,7 @@ window.location.replace("<c:url value='/home/board/boardPage.jsp' />");
             <form method="get" action="<c:url value='/boardFindSelect.do' />">
                 <select name="findValue" id="find">
                     <option value="title">제목</option>
-                    <option value="text">내용</option>
+                    <option value="author">작성자</option>
                 </select>
                 <input type="text" name="findText" id="findText" />
                 <button type="submit" id="findButton">검색</button>
