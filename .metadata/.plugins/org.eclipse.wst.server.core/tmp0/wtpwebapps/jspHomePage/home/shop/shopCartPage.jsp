@@ -23,7 +23,7 @@
 </header>
     <div class="cart-container">
         <h1>장바구니</h1>
-        <form action="/orderAll.do" method="post">
+        <form action="/jspHomePage/shopOrderSelect.do" method="post">
             <table class="cart-table">
                 <thead>
                     <tr>
@@ -41,10 +41,11 @@
                                 <td><input type="checkbox" name="cartNo" value="${cart.no}" onchange="setPrice(this)"></td>
                                 <td>${cart.title}</td>
                                 <td><fmt:formatNumber value="${cart.price}" pattern="#,##0" />원</td>
-                                <td><input type="number" name="quantity" value="${cart.qt}" min="1" class="quantity-input${cart.no}" onchange="changeQt(${cart.no},${cart.price})"></td>
+                                <td><input type="number" name="qt${cart.no}" value="${cart.qt}" min="1" class="quantity-input${cart.no}" onchange="changeQt(${cart.no},${cart.price})"></td>
                                 <td><button type="button" class="delete-btn" onclick="deleteCartItem(${cart.no})">삭제</button></td>
                             </tr>
                                 <input type="hidden" class="eachPrice${cart.no}" value="${cart.qt*cart.price}">
+                                <input type="hidden" name="shopNo${cart.no}" value="${cart.shopNo}">
                         </c:forEach>
                     </c:if>
                     <c:if test="${empty ctList}">

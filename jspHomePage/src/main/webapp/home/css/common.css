@@ -15,10 +15,6 @@ input[type="button"]:hover,
 button:hover {
 	cursor: pointer;
 }
-main{
-	padding-top: 50px;
-	
-}
 button {
 	padding: 5px 10px;
 	background-color: rgb(114, 114, 114);

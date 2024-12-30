@@ -18,6 +18,7 @@
 		<item value="Customer"/>
 	</list>
 	<list key="searchhistory">
+		<item value="50px"/>
 		<item value="maxPost"/>
 		<item value="max"/>
 		<item value="Notice"/>
@@ -32,7 +33,6 @@
 		<item value="boardContentModifyPage.jsp"/>
 		<item value="Servlet"/>
 		<item value="Servelt"/>
-		<item value="Servlet&apos;"/>
 	</list>
 	<section name="org.eclipse.jst.jsp.ui.internal.preferences.ui.JSPTemplatePreferencePage$JSPEditTemplateDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="46"/>

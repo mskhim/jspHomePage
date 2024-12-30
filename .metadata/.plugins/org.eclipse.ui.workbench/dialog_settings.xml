@@ -15,12 +15,18 @@
 			<item value="org.eclipse.jst.ws.creation.ui.wsexport.category"/>
 		</list>
 		<section name="ImportExportWizard.dialogBounds">
+			<item key="DIALOG_X_ORIGIN" value="663"/>
+			<item key="DIALOG_Y_ORIGIN" value="147"/>
+			<item key="DIALOG_WIDTH" value="613"/>
+			<item key="DIALOG_HEIGHT" value="550"/>
+			<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 		</section>
 	</section>
 	<section name="ZipFileExportWizard">
 		<item key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID" value="true"/>
 		<item key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID" value="true"/>
 		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="\\192.168.20.27\352공유방\05.jsp\김민석 개인홈페이지\jspHomePage.zip"/>
 			<item value="C:\Users\KMS\Desktop\jspHomePage.zip"/>
 		</list>
 		<section name="ZipFileExportWizard.dialogBounds">

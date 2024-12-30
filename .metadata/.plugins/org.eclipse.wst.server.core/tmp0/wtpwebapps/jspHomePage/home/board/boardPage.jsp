@@ -40,7 +40,6 @@ window.location.replace("<c:url value='/home/board/boardPage.jsp' />");
 
     <article class="article2">
         <p class="notice">
-        ${sessionScope.cvo.id}
             - 본 게시판과 관련이 없거나 상업적인 내용, 특정인이나 특정사안을 비방하는 내용 등은 예고 없이 삭제될 수 있습니다.
         </p>
     </article>

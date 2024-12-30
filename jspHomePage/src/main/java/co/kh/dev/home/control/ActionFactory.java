@@ -18,6 +18,7 @@ import co.kh.dev.home.action.board.BoardListSelectAction;
 import co.kh.dev.home.action.board.BoardListUpdateAction;
 import co.kh.dev.home.action.board.BoardSelectAction;
 import co.kh.dev.home.action.customer.CustomerDeleteAction;
+import co.kh.dev.home.action.customer.CustomerDeleteSessionAction;
 import co.kh.dev.home.action.customer.CustomerIdDupCheckAction;
 import co.kh.dev.home.action.customer.CustomerInsertAction;
 import co.kh.dev.home.action.customer.CustomerInsertCheckAction;
@@ -45,6 +46,7 @@ import co.kh.dev.home.action.shop.ShopInsertAction;
 import co.kh.dev.home.action.shop.ShopInsertPageSelectAction;
 import co.kh.dev.home.action.shop.ShopListDeleteAction;
 import co.kh.dev.home.action.shop.ShopListSelectAction;
+import co.kh.dev.home.action.shop.ShopOrderSelectAction;
 import co.kh.dev.home.action.shop.ShopSelectAction;
 
 
@@ -205,6 +207,12 @@ public class ActionFactory {
 			break;
 		case "shopFindSelect": 
 			action = new ShopFindSelectAction();
+			break;
+		case "shopOrderSelect": 
+			action = new ShopOrderSelectAction();
+			break;
+		case "customerDeleteSession": 
+			action = new CustomerDeleteSessionAction();
 			break;
 		default: 
 			action = null;

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="co.kh.dev.home.control.ActionForward"/>
-    <fullyQualifiedTypeName name="co.kh.dev.home.action.customer.CustomerInsertAction"/>
     <fullyQualifiedTypeName name="co.kh.dev.home.action.alert.CustomerRegistPageAlertAction"/>
     <fullyQualifiedTypeName name="co.kh.dev.home.action.customer.CustomerInsertCheckAction"/>
     <fullyQualifiedTypeName name="co.kh.dev.home.action.mainPage.miniBoardSelectAction"/>
@@ -11,7 +9,6 @@
     <fullyQualifiedTypeName name="co.kh.dev.home.action.alert.NoticeListAlertAction"/>
     <fullyQualifiedTypeName name="co.kh.dev.home.action.alert.BoardPageAlertAction"/>
     <fullyQualifiedTypeName name="co.kh.dev.home.action.alert.NoticePageAlertAction"/>
-    <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="co.kh.dev.home.model.NoticeVO"/>
     <fullyQualifiedTypeName name="co.kh.dev.home.action.product.ProductListUpdateAction"/>
     <fullyQualifiedTypeName name="co.kh.dev.home.action.product.ProductListDeleteAction"/>
@@ -47,7 +44,6 @@
     <fullyQualifiedTypeName name="co.kh.dev.home.model.CommentVO"/>
     <fullyQualifiedTypeName name="co.kh.dev.home.action.board.BoardCommentDeleteAction"/>
     <fullyQualifiedTypeName name="co.kh.dev.home.action.shop.ShopCartSelectAction"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
@@ -60,4 +56,8 @@
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="java.util.LinkedHashMap"/>
     <fullyQualifiedTypeName name="co.kh.dev.home.action.shop.ShopFindSelectAction"/>
+    <fullyQualifiedTypeName name="co.kh.dev.home.action.shop.ShopOrderSelectAction"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>

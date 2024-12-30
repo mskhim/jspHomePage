@@ -77,7 +77,7 @@
 				<tr>
 					<td class="tbNum">${data.rownum}</td>
 					<td class="tbMain"><a
-						href=" ${pageContext.request.contextPath}/boardListSelect.do?rowNum=${data.rownum}">${data.title}</a>&nbsp;&nbsp;
+						href=" ${pageContext.request.contextPath}/boardListSelect.do?no=${data.no}">${data.title}</a>&nbsp;&nbsp;
 						[${data.commentNum}]</td>
 					<td class="tbInsertr">${data.customerId}</td>
 					<td class="tbView">${data.count}</td>
