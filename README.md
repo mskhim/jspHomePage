@@ -85,7 +85,8 @@
 
 ### ERD
 
-ERD 다이어그램은 프로젝트 경로 내 `/docs` 폴더에 포함되어 있습니다.
+![image](https://github.com/user-attachments/assets/f4ab64d9-ff2b-4c22-9037-83eb0ea82eda)
+
 
 ---
 
