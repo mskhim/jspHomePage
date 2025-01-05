@@ -85,7 +85,7 @@
 
 ### ERD
 
-![image](https://github.com/user-attachments/assets/f4ab64d9-ff2b-4c22-9037-83eb0ea82eda)
+![image](https://github.com/user-attachments/assets/e8a3d788-aead-4b81-9261-a0c087dae321)
 
 
 ---
