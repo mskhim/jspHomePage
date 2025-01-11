@@ -3,7 +3,7 @@
 ## 📅 프로젝트 개요
 
 - **프로젝트 이름**: ShoppingMallService
-- **제작 기간**: 2024년 12월 11일 ~ 1월 2일
+- **제작 기간**: 2024년 12월 11일 ~ 2025년 1월 2일
 - **목적**: 사용자와 관리자를 위한 직관적이고 효율적인 쇼핑몰 시스템 구축
 
 ---
@@ -83,11 +83,6 @@
 5. **NOTICE**: 공지사항 정보
    - **주요 컬럼**: 공지 ID, 제목, 내용, 작성 날짜
 
-### ERD
-
-![image](https://github.com/user-attachments/assets/e8a3d788-aead-4b81-9261-a0c087dae321)
-
-
 ---
 
 ## 🚀 실행 방법
@@ -100,6 +95,7 @@
    - `/WEB-INF/web.xml`에 정의된 URL 패턴 확인
 3. **구동**:
    - 브라우저에서 `http://localhost:8080/ShoppingMallService`로 접속
+   - [구동 화면 보기](https://www.youtube.com/watch?v=kCyFv_LV02U)
 
 ---
 
@@ -129,7 +125,7 @@
      ```sql
      ALTER TABLE CART ADD CONSTRAINT cart_user_product_unique UNIQUE (USER_ID, PRODUCT_ID);
      ```
-     - 동시성 문제를 해결하기 위해 데이터베이스 제약 조건추가.
+     - 동시성 문제를 해결하기 위해 데이터베이스 제약 조건 추가.
 
 ---
 
